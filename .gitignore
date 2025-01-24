@@ -1,0 +1,10 @@
+node_modules
+/h5
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+/index
+*.zip
+production
+test
+.DS_Store

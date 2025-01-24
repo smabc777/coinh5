@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 9</title>
+    <defs>
+        <linearGradient x1="5.69286964%" y1="92.905847%" x2="94.2975396%" y2="7.09415815%" id="linearGradient-1">
+            <stop stop-color="#CB4EE8" offset="0%"></stop>
+            <stop stop-color="#10F4B1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页2" transform="translate(-16.000000, -56.000000)">
+            <g id="编组-9" transform="translate(16.000000, 56.000000)">
+                <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="20" height="20"></rect>
+                <path d="M5.5,8.96151337 L19,8.96151337 L19,11.0489237 L5.5,11.0489237 L5.5,8.96151337 Z M1,2 L19,2 L19,4.08741031 L1,4.08741031 L1,2 Z M1,15.9125897 L19,15.9125897 L19,18 L1,18 L1,15.9125897 Z" id="菜单" fill="url(#linearGradient-1)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

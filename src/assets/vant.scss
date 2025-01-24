@@ -1,0 +1,62 @@
+:root body {
+  // vant 自定义颜色
+
+  //Tabs 标签
+  --van-tabs-nav-background: 'none'; //背景色
+  --van-tabs-line-height: 'auto'; //高度
+  --van-tab-text-color: var(--ex-home-tabs-text-color); //默认字体颜色
+  --van-tab-active-text-color: var(--ex-home-tabs-text-atv-color); //高亮字体颜色
+  --van-tabs-bottom-bar-color: var(--ex-home-tabs-text-atv-color); //高亮横条颜色
+
+  //  宫格
+  --van-grid-item-content-background: 'none'; //背景
+  --van-grid-item-content-active-color: var(--ex--home-grid-text-color); //字体颜色
+
+  //  单选框
+  --van-radio-label-color: var(--ex-default-font-color); //默认字体颜色
+  --van-radio-checked-icon-color:var(--ex-primary-color); //默认图标颜色
+
+  // popup弹窗
+  --van-popup-background: var(--ex-popup-background-color);//背景颜色
+
+  // picker日期时间选择器
+  --van-picker-group-background:  var(--ex-popup-background-color);//背景颜色
+  // picker选择器
+  --van-picker-background:  var(--ex-popup-background-color);//背景颜色
+  --van-picker-mask-color:  var(--ex-popup-background-color);//背景颜色
+  --van-picker-option-text-color:  var(--ex-default-font-color);//默认字体颜色
+
+  //van-image
+  --van-image-placeholder-background: none;//背景颜色
+
+  //cell
+  --van-cell-background: var(--ex-input-background-color);//背景颜色
+  --van-cell-border-color: 'none';//边框颜色
+
+  //输入框
+  --van-field-placeholder-text-color: var(--ex-input-label-ftcolor);//placeholder字体颜色
+  --van-field-input-text-color: var(--ex-default-font-color);//字体颜色
+
+  //搜索框
+  --van-search-content-background: var(--ex-input-background-color);//输入框内背景颜色
+  --van-search-background: var(--ex-input-background-color);////背景颜色
+
+  //按钮
+  --van-button-default-background: var(--ex-primary-color);//背景颜色
+
+  //倒计时
+  --van-count-down-text-color: var(--ex-default-font-color);//字体颜色
+
+  //dialog确认弹窗
+  --van-dialog-background: var(--ex-default-background-color);//背景颜色
+  --van-dialog-confirm-button-text-color: var(--ex-default-font-color);//确认按钮颜色
+  --van-dialog-has-title-message-text-color: var(--ex-default-font-color);//确认按钮颜色
+
+  //ActionSheet 动作面板
+  --van-action-sheet-item-background: var(--ex-default-background-color);//背景颜色
+  --van-action-sheet-item-text-color: var(--ex-home-tabs-text-color);//字体颜色
+  --van-active-color: var(--ex-default-background-color);//字体颜色
+
+  //通用字体颜色
+  --van-text-color:var(--ex-default-font-color);
+}

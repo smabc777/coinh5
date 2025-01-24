@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="14px" viewBox="0 0 19 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Vector 6</title>
+    <defs>
+        <linearGradient x1="5.69286964%" y1="81.9040519%" x2="94.2975396%" y2="18.0959519%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#10F4B1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="交易-秒合约" transform="translate(-30.000000, -134.000000)" fill="url(#linearGradient-1)">
+            <path d="M30,140.091324 L48.2648402,140.091324 L48.2648402,141.917808 L30,141.917808 L30,140.091324 Z M30,134 L48.2648402,134 L48.2648402,135.826484 L30,135.826484 L30,134 Z M30,146.173516 L48.2648402,146.173516 L48.2648402,148 L30,148 L30,146.173516 Z" id="Vector-6"></path>
+        </g>
+    </g>
+</svg>

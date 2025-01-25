@@ -61,7 +61,7 @@ _axios.interceptors.response.use((response) => {
             userStore.signOut()
 
             //跳转登录页
-            _toView('/login')
+            _toView('/')
             // setTimeout(() => location.reload(), 10)
         }
         if (response.data.code == '500' && response.data?.msg?.includes('Token')) {
@@ -70,7 +70,7 @@ _axios.interceptors.response.use((response) => {
             userStore.signOut()
 
             //跳转登录页
-            _toView('/login')
+            _toView('/')
             // setTimeout(() => location.reload(), 10)
         }
         if (response.data && response.data.code > 0) {

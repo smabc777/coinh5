@@ -209,7 +209,7 @@ const headerList = computed(() => {
       name: _showName(`stock104`), //热门股票
 
       
-      show: true, //是否显示
+      show: false, //是否显示
       coinType: [6], //当前分类
       sort: 2,
       currentCoinList: [],
@@ -321,12 +321,12 @@ const currentCoinList = computed(() => {
   })
 
   // 股票列表
-  list[1].currentCoinList = tradeStore.stockList
+  // list[1].currentCoinList = tradeStore.stockList
 
   //外汇
-  list[2].currentCoinList = toRaw(tradeStore.foreignExchangeList)
+  list[1].currentCoinList = toRaw(tradeStore.foreignExchangeList)
   // 贵金属
-  list[3].currentCoinList = toRaw(tradeStore.preciousMetalsList)
+  list[2].currentCoinList = toRaw(tradeStore.preciousMetalsList)
 
   return list
 })

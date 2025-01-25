@@ -97,7 +97,7 @@
 
     <div class="is-account">
       {{ _t18('i18n_temp.fanyi.282058-8', ['vitc']) }}
-      <span @click="_toReplace('/login')">
+      <span @click="_toReplace('/')">
         {{ _t18('i18n_temp.fanyi.282058-9', ['vitc']) }}
       </span>
     </div>
@@ -173,7 +173,7 @@ const submit = async () => {
     return showToast({
       message: _showName('register_success'),
       onClose: () => {
-        _toReplace('/login')
+        _toReplace('/')
       }
     })
   } else {

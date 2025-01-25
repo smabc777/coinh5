@@ -63,7 +63,7 @@
 
     <div class="is-account">
       {{ _t18('register_haveAccount') }}？
-      <span @click="_toReplace('/login')">
+      <span @click="_toReplace('/')">
         {{ _t18('register_toLogin') }}
       </span>
     </div>
@@ -207,7 +207,7 @@ const submit = async () => {
     return showToast({
       message: _showName('register_success'),
       onClose: () => {
-        _toReplace('/login')
+        _toReplace('/')
       }
     })
   } else {

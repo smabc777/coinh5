@@ -127,7 +127,7 @@ const linkTo = (item, index) => {
         flex-direction: column;
         align-items: center;
 
-        background: rgba(86, 93, 140, 0.32);
+        background: var(--ex--home-grid-bg);
         border-radius: 10px;
         border: 1px solid var(--ex-border-line);
         backdrop-filter: blur(10px);

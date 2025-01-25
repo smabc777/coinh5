@@ -124,8 +124,8 @@
 
   /* 按钮*/
   /* 提交按钮背景 字体 边框*/
-  --ex-btn-background-color: #f0f0f0;
-  --ex-btn-font-color: #333;
+  --ex-btn-background-color: #613af1;
+  --ex-btn-font-color: #fff;
   --ex-btn-background-color2: #fff;
   --ex-btn-font-color2: #613af1;
 
@@ -211,8 +211,8 @@
   --ex-candlestick-bg: #f0f0f0;
 
   /* 基础字体色 */
-  --ex-font-color: #fff;
-  --ex-font-color6: #ffffff;
+  --ex-font-color: #000;
+  --ex-font-color6: #000;
   --ex-font-color8: #999;
   --ex-font-color14: red;
   --ex-font-color17: #bbb;
@@ -307,5 +307,5 @@
   --ex-border-color10: rgba(136,133,251,0.4);
 
   /* 线条色 */
-  --ex-border-line: rgb(208 218 213 / 10%);
+  --ex-border-line: rgb(208 218 213 / 50%);
 }

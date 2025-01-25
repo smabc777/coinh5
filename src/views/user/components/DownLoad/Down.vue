@@ -7,7 +7,7 @@
         :bgColor="'rgb(255 255 255 / 0%)'"
       ></HeaderBar>
       <div class="sub-title">{{ _getConfig('_APP_META_TITLE').toUpperCase() }} {{ _t18('dev-platform','smartfund') }}</div>
-      <div class="btn-list" v-if="downLoadList.length">
+      <!-- <div class="btn-list" v-if="downLoadList.length">
         <image-load
           v-for="item in downLoadList"
           :key="item.path"
@@ -15,7 +15,7 @@
           class="btn-img"
           @click="tohref(item.path)"
         ></image-load>
-      </div>
+      </div> -->
     </div>
     <div class="load-section">
       <div class="title">{{ _t18('world_product') }}</div>
@@ -74,7 +74,7 @@ const tohref = (url) => {
 </script>
 <style lang="scss" scoped>
 .content {
-  min-height: 100vh;
+  // min-height: 100vh;
   width: 100%;
   box-sizing: border-box;
 

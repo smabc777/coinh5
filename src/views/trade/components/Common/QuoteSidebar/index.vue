@@ -193,9 +193,9 @@ const linkTo = async (item) => {
     query: { ...$route.query, symbol: item.coin }
   })
   let a = ''
-  if (sidebarType.value) {
+  if (sidebarType.value == 1) {
     a = 'event_secondContract'
-  } {
+  } else{
     a = 'event_tradeSymbolChange'
   }
   dispatchCustomEvent(a, {

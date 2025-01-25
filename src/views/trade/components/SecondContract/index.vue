@@ -36,6 +36,7 @@ import { useUserStore } from "@/store/user";
 import Candlestick1 from "../Common/Candlestick1/index.vue";
 import { useTradeStore } from "@/store/trade";
 import { useRoute } from "vue-router";
+import { dispatchCustomEvent } from "@/utils";
 
 const tradeStore = useTradeStore()
 const $route = useRoute()
@@ -67,7 +68,12 @@ const coinInfo = computed(() => {
   if (Info == null || !Info) {
     Info = currentList[0]
   }
-
+  dispatchCustomEvent('event_secondContract', {
+    type: '',
+    symbol: Info.symbol,
+    coin: Info.coin,
+    coinInfo: Info.value
+  })
   return Info
 })
 provide('coinInfo', coinInfo)

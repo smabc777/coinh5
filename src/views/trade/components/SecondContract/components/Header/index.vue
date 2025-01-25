@@ -102,7 +102,7 @@ const kLineRefresh = () => {
     value: { ...coinInfo.value, symbol: coinInfo.coin }
   })
 
-  dispatchCustomEvent('event_tradeSymbolChange', {
+  dispatchCustomEvent('event_secondContract', {
     type: type,
     symbol: coinInfo.value.symbol,
     coin: coinInfo.value.coin,

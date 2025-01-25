@@ -162,6 +162,7 @@ onUnmounted(() => {
 .tradeDetail {
   height: 100vh;
   overflow: scroll;
+  background:var(--ex-backup--background-color);
 
   header {
     width: 100%;
@@ -169,7 +170,7 @@ onUnmounted(() => {
     height: 60px;
     padding: 0 15px;
     align-items: center;
-    background-color: var(--ex-default-background-color);
+    // background-color: var(--ex-default-background-color);
     z-index: 99;
     justify-content: space-between;
     border-bottom: 1px solid var(--ex-border-color);
@@ -208,8 +209,8 @@ onUnmounted(() => {
   }
 
   .top {
-    background-color: var(--ex-default-background-color);
-
+    // background-color: var(--ex-default-background-color);
+    
     .second {
       display: flex;
       justify-content: space-between;

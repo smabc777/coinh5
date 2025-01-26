@@ -101,6 +101,8 @@ const routeLink = (link, item) => {
     //触发客服弹窗
     dispatchCustomEvent('event_serviceChange')
   } else {
+    console.log('121212','1212',link);
+    
     // 跳转页面
     $router.push(link)
   }
@@ -169,14 +171,14 @@ onMounted(() => {
     }
 
     .grid-img {
-      width: 54px;
-      height: 54px;
-      margin-bottom: 10px;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 14px;
     }
 
     .grid-text {
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       word-break: break-word;
       color: var(--ex--home-grid-text-color);
     }

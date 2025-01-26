@@ -77,6 +77,7 @@ onMounted(()=>{
   color: var(--ex-passive-font-color);
   background: var(--ex-backup--background-color);
   padding: 20px 14px;
+  border:1px solid var(--ex--backup-background-color-2);
   .top {
     display: flex;
     align-items: center;
@@ -95,8 +96,8 @@ onMounted(()=>{
         }
         .right_content{
           border-radius: 8px;
-          border: 1px solid var(--ex-text-color);
           color: var(--ex-font-color);
+          background: var(--ex-primary-color);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -112,7 +113,7 @@ onMounted(()=>{
         font-size: 15px;
         font-family: PingFangSC, PingFang SC;
         font-weight: 500;
-        color: var(--ex-default-font-color);
+        color: #fff;
         display: flex;
         justify-content: center;
         align-items: center;

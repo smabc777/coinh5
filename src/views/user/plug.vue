@@ -374,6 +374,7 @@ const changeIndex = (v) => {
           margin-left: 4px;
           font-size: 16px;
           font-weight: 500;
+          color:#fff;
         }
       }
 
@@ -444,6 +445,7 @@ const changeIndex = (v) => {
       text-align: center;
       background: var(--ex-copy-font-color);
       border-radius: 8px;
+      color:#fff;
     }
   }
 }

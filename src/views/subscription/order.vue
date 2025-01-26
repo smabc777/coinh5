@@ -346,7 +346,7 @@ onMounted(() => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--ex-home-box-border-color);
+          // background: var(--ex-home-box-border-color);
           font-size: 14px;
           margin-right: 4px;
         }

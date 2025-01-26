@@ -198,8 +198,8 @@ const toView = async (item) => {
       align-items: center;
 
       .itemImg {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         margin-right: 12px;
       }
 

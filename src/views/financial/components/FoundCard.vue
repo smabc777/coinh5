@@ -65,10 +65,12 @@ const props = defineProps({
 <style lang="scss" scoped>
 .item {
   border-radius: 5px;
-  background: var(--ex-financial-card-bg-color);
+  // background: var(--ex--home-grid-bg);
   margin-bottom: 22px;
   padding: 20px 14px;
   box-sizing: border-box;
+  border:1px solid var(--ex--backup-background-color-2);
+
   .item-header {
     .header-top {
       display: flex;
@@ -101,7 +103,7 @@ const props = defineProps({
         min-width: 76px;
         background: var(--ex-primary-color);
         border-radius: 8px;
-        color: var(--ex-default-font-color);
+        color: var(--ex-font-color);
         font-size: 12px;
         text-align: center;
       }
@@ -147,7 +149,7 @@ const props = defineProps({
         font-weight: 400;
       }
       .row-value {
-        color: var(--ex-font-color);
+        color: #000;
       }
       .num {
         color: var(--ex-financial-num-bg-color);

@@ -54,8 +54,10 @@ const props = defineProps({
 <style lang="scss" scoped>
 .detail {
   padding: 20px 15px 0;
-  background: var(--ex-financial-card-bg-color);
+  // background: var(--ex--home-grid-bg);
   border-radius: 8px;
+  border:1px solid var(--ex--backup-background-color-2);
+
   .title {
     color: var(--ex-default-font-color);
     font-size: 16px;

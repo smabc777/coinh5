@@ -207,7 +207,7 @@ export default {
       font-size: 15px;
       border-radius: 8px;
       text-align: center;
-      color: var(--ex-default-font-color);
+      color: #fff;
     }
 
     .ups {

@@ -381,7 +381,7 @@ const submit = async () => {
     margin-top: 20px;
     padding: 15px;
     border-radius: 5px;
-    background: var(--ex-card-deep-bg-color);
+    // background: var(--ex-card-deep-bg-color);
 
     .rateImg {
       width: 22px;
@@ -398,10 +398,11 @@ const submit = async () => {
 .available-amount {
   display: flex;
   justify-content: space-between;
-  background: var(--ex-card-deep-bg-color);
+  // background: var(--ex-card-deep-bg-color);
   margin-top: 20px;
   border-radius: 5px;
   padding: 15px;
+  border:1px solid var(--ex--backup-background-color-2);
 
   :first-child {
     font-size: 13px;

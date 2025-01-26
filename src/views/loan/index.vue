@@ -533,7 +533,7 @@ const blur = () => {
       font-size: 16px;
       border-radius: 8px;
       background: var(--ex-primary-color);
-      color: var(--ex-default-font-color);
+      color: #fff;
     }
   }
 

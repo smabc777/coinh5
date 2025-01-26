@@ -165,7 +165,7 @@ const linkTo = (item, index) => {
         .item-price {
           margin-top: 4px;
           font-size: 18px;
-          color: #FFFFFF;
+          color: #000;
         }
 
         .item-price2 {

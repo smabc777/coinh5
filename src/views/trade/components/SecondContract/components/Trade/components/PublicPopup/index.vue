@@ -27,7 +27,7 @@
           </div>
 
           <div class="titleRight" @click="SecondTradeData.show = false">
-            <van-icon name="close" size="18" color="var(--ex--home-grid-text-color)" />
+            <van-icon name="close" size="18" color="#fff" />
           </div>
         </div>
 
@@ -397,7 +397,7 @@ const formatSeconds = (seconds) => {
 
       .titleLeft {
         font-size: 16px;
-        color: var(--ex-default-font-color);
+        color: #fff;
         display: flex;
         align-items: center;
 

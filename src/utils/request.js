@@ -59,7 +59,6 @@ _axios.interceptors.response.use((response) => {
             // 判断钱包清除用户数据  浏览器 跳转登录页
             let userStore = useUserStore()
             userStore.signOut()
-
             //跳转登录页
             _toView('/')
             // setTimeout(() => location.reload(), 10)
@@ -68,7 +67,6 @@ _axios.interceptors.response.use((response) => {
             // 判断钱包清除用户数据  浏览器 跳转登录页
             let userStore = useUserStore()
             userStore.signOut()
-
             //跳转登录页
             _toView('/')
             // setTimeout(() => location.reload(), 10)

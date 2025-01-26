@@ -8,7 +8,7 @@
         </linearGradient>
     </defs>
     <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="首页2" transform="translate(-338.000000, -59.000000)" fill="url(#linearGradient-1)">
+        <g id="首页2" transform="translate(-338.000000, -59.000000)" fill="#333">
             <path d="M343,66.0033 L358,66.0033 L358,68.0033 L343,68.0033 L343,66.0033 Z M338,59.3333 L358,59.3333 L358,61.3333 L338,61.3333 L338,59.3333 Z M338,72.6633 L358,72.6633 L358,74.6633 L338,74.6633 L338,72.6633 Z" id="菜单"></path>
         </g>
     </g>

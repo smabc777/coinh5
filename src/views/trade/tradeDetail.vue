@@ -48,7 +48,7 @@
     <div class="content">
       <Candlestick v-if="coinInfo.coin" type="detail"></Candlestick>
     </div>
-    <div class="line"></div>
+    <!-- <div class="line"></div> -->
     <!-- 成交/深度图 -->
     <div class="entrust">
       <div class="entrustL">
@@ -170,10 +170,10 @@ onUnmounted(() => {
     height: 60px;
     padding: 0 15px;
     align-items: center;
-    // background-color: var(--ex-default-background-color);
+    background-color: var(--ex-default-background-color);
     z-index: 99;
     justify-content: space-between;
-    border-bottom: 1px solid var(--ex-border-color);
+    border-bottom: 1px solid var(--ex--backup-background-color-2);
     position: relative;
 
     .leftImg {
@@ -267,7 +267,7 @@ onUnmounted(() => {
     padding: 0 15px;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--ex-border-color);
+    border-bottom: 1px solid var(--ex--backup-background-color-2);
 
     .entrustL {
       font-size: 14px;

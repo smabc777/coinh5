@@ -79,7 +79,7 @@ const tohref = (url) => {
   box-sizing: border-box;
 
   .laod-header {
-    background-image: url('@/assets/download/banner.png');
+    // background-image: url('@/assets/download/banner.png');
     //height: 390px;
     padding-bottom: 30px;
     background-size: cover;
@@ -121,7 +121,7 @@ const tohref = (url) => {
         flex-direction: column;
         align-items: center;
         padding: 18px 0;
-        background: #161a33;
+        background: #edeffa;
         border-radius: 10px;
         img {
           width: 40px;

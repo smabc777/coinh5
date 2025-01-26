@@ -130,7 +130,7 @@ const submit = () => {
   color: var(--ex-default-font-color);
 }
 .content1 {
-  border-bottom: 1px solid var(--ex-border-color);
+  // border-bottom: 1px solid var(--ex-border-color);
   padding: 20px 15px 30px;
   .jine {
     & > div {
@@ -207,7 +207,7 @@ const submit = () => {
     text-align: center;
     border-radius: 8px;
     background: var(--ex-primary-color);
-    color: var(--ex-default-font-color);
+    color: #fff;
   }
 }
 </style>

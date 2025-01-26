@@ -557,7 +557,7 @@ watch(
       background: var(--ex-trade-buy-bg-color);
       border-radius: 6px;
       font-size: 14px;
-      color: var(--ex-font-color);
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;

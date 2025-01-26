@@ -144,8 +144,8 @@ const market = ref('')
 //   getStockList()
 // }
 onMounted(async () => {
-  await getSecondTabs()
-  await getStockList()
+  // await getSecondTabs()
+  // await getStockList()
 })
 // 刷新列表
 const refresh = async() => {

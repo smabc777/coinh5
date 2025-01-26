@@ -237,6 +237,7 @@ const linkTo = async (item) => {
       height: 50px;
       border-radius: 8px;
       background: var(--ex-default-background-color);
+      border:1px solid var(--ex--backup-background-color-2);
     }
   }
 

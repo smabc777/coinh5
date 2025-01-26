@@ -40,7 +40,7 @@ const props = defineProps({
   .header {
     padding: 10px 17px;
     font-size: 15px;
-    color: var(--ex-default-font-color);
+    color: var(--ex-font-color);
     background: #252a4d;
     border-radius: 8px;
     display: flex;

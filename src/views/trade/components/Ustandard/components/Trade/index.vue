@@ -906,7 +906,7 @@ onUnmounted(() => {
       background: var(--ex-trade-buy-bg-color);
       border-radius: 6px;
       font-size: 14px;
-      color: var(--ex-font-color);
+      color: #ffff;
       display: flex;
       justify-content: center;
       align-items: center;

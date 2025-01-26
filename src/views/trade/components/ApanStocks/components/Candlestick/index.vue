@@ -813,7 +813,7 @@ const setStudy = (name) => {
 
 .third {
   padding: 10px 0;
-  border-bottom: 1px solid var(--ex-border-color);
+  // border-bottom: 1px solid var(--ex-border-color);
 
   .list {
     background-color: #000;

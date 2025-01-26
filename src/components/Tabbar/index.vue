@@ -56,7 +56,7 @@ watch(
 <style lang="scss" scoped>
 .tab-bar-box {
   padding-bottom: constant(safe-area-inset-bottom); /* iOS 11.0 */
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   position: fixed;
   z-index: 9;
   background-color: var(--ex-home-tabbar-background-color);
@@ -93,7 +93,7 @@ watch(
         color: var(--ex-passive-font-color);
 
         &.active {
-          //color: var(--ex-active-font-color);
+          color: #50a978;
         }
         span{
           word-break: break-word;

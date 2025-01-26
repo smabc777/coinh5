@@ -1,8 +1,8 @@
 export const getOverrides = (theme) => {
   var themes = {
     light: {
-      up: '#00E291',
-      down: '#FF6058',
+      up: '#4BBD83',
+      down: '#D62548',
       bg: '#ffffff',
       grid: '#F2F4F7',
       cross: '#333',
@@ -11,9 +11,9 @@ export const getOverrides = (theme) => {
       line: '#ECECEC'
     },
     dark: {
-      up: '#00E291',
-      down: '#FF6058',
-      bg: '#161A33',
+      up: '#4BBD83',
+      down: '#D62548',
+      bg: '#202329',
       grid: '#35393E',
       cross: '#999',
       border: '#35393E',

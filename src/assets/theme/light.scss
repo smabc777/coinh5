@@ -1,13 +1,13 @@
 /** 白色主题*/
 :root body[theme='light'] {
   /* 主题色 */
-  --ex-primary-color: #613af1;
+  --ex-primary-color: #17ac74;
   //二级主题颜色
   --ex-two-level-theme-color: #00e291;
   //三级主题颜色
   --ex-three-level-theme-color: #ff6058;
   // 文字颜色
-  --ex-text-color: #8885fb;
+  --ex-text-color: #17ac74;
   /* 默认背景色 */
   --ex-default-background-color: #fff;
   /* 二级背景色 */
@@ -35,7 +35,7 @@
   --ex-home-tabbar-border: rgb(208 218 213 /30%); //边框
 
   /* 首页行情tabs */
-  --ex-home-tabs-bg-color: #fff; //背景色
+  --ex-home-tabs-bg-color: #fbfbfb; //背景色
   --ex-home-tabs-bg-atv-color: #f0f0f0; //高亮
   --ex-home-tabs-text-color: #7a7a7a; //字体颜色
   --ex-home-tabs-text-atv-color: #17ac74; //字体高亮
@@ -43,7 +43,7 @@
 
   /* 理财模块 */
   --ex-financial-card-bg-color: #fff; //背景色
-  --ex-financial-adorn-bg-color: #00e291;
+  --ex-financial-adorn-bg-color: #17ac74;
   --ex-financial-num-bg-color: #8885fb;
   --ex-financial-line-bg-color: #d0dad547;
   --ex-financial-vip-bg-color: linear-gradient(225deg, #2bddb9 0%, #b95fe3 100%);
@@ -56,8 +56,8 @@
   --ex-assets--record-font-color: #10f4b1;
 
   /*交易模块*/
-  --ex-trade-buy-bg-color: #00e291; //买背景色
-  --ex-trade-Sell-bg-color: #ff6058; //卖背景色
+  --ex-trade-buy-bg-color: #17ac74; //买背景色
+  --ex-trade-Sell-bg-color: #d62548; //卖背景色
   --ex-trade-chart-text-color: #a2a2a2; //图表字体颜色
 
   /* 复制按钮色 */
@@ -71,7 +71,7 @@
   --ex-placeholder-font: #7a7a7a;
 
   // 涨
-  --ex-rfd-rise-bg: rgba(46, 189, 133, 0.2);
+  --ex-rfd-rise-bg: rgba(46, 189, 133, 0.2); 
   // 跌
   --ex-rfd-fall-bg: rgba(223, 41, 74, 0.2);
   // 平
@@ -83,7 +83,7 @@
   --ex-rfd-rise: #4bbd83;
   // 跌
   //--ex-rfd-fall: #f6263f;
-  --ex-rfd-fall: #ff6058;
+  --ex-rfd-fall: #d62548;
   // 平
   --ex-rfd-draw: #7d919d;
 
@@ -299,7 +299,7 @@
 
   --ex-border-color: #34393e;
   --ex-border-color1: #4c4e53;
-  --ex-border-color2: #34393e;
+  --ex-border-color2: #e3e3e3;
   --ex-border-color3: #613af1;
   --ex-border-color4: #613af1;
   --ex-border-color5: #34393e;

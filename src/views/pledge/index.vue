@@ -14,7 +14,7 @@
       :cuttentRight="cuttentRight"
       @showPopup="showPopup"
   ></HeaderBar>
-  <Info/>
+  <!-- <Info/> -->
   <!-- 广告图 -->
   <div class="banner">
     <image-load
@@ -42,41 +42,39 @@
         <span class="line"></span>
       </div>
       <div class="fund">
-        <van-grid :gutter="10" :column-num="2" :border="false" class="list">
-          <van-grid-item class="item">
-            <image-load filePath="defi/pledge_hosting.png" name="defi" class="icon"></image-load>
-            <p class="fw-num">{{ priceFormat(showInfo.amount) || 0 }}</p>
-            <!-- 正在托管 -->
-            <span class="til">{{ _t18('pledge_hosting') }}</span>
-          </van-grid-item>
-          <van-grid-item class="item">
-            <image-load
-                filePath="defi/pledge_commissioned_order.png"
-                name="defi"
-                class="icon"
-            ></image-load>
-            <p class="fw-num">{{ showInfo.orderNum || 0 }}</p>
-            <!-- 委托订单 -->
-            <span class="til">{{ _t18('pledge_commissioned_order') }}</span>
-          </van-grid-item>
-          <van-grid-item class="item">
-            <image-load
-                filePath="defi/pledge_Today_Earnings.png"
-                name="defi"
-                class="icon"
-            ></image-load>
-            <p class="fw-num">{{ priceFormat(showInfo.todayProfit) || 0 }}</p>
-            <!-- 今日收益 -->
-            <span class="til">{{ _t18('pledge_Today_Earnings') }}</span>
-          </van-grid-item>
-          <van-grid-item class="item">
-            <image-load filePath="defi/Cumulative_income.png" name="defi" class="icon"></image-load>
-            <p class="fw-num">{{ priceFormat(showInfo.profitMoney) || 0 }}</p>
-            <!-- 累计收益 -->
-            <span class="til">{{ _t18('Cumulative_income') }}</span>
-          </van-grid-item>
-        </van-grid>
+      <!-- <image-load filePath="zhiyaimg.png" name="zhiyaimg" class="zhiyaimg"></image-load> -->
+      <image-load
+        v-if="['mimic'].includes(_getConfig('_APP_ENV'))"
+        class="zhiyaimg"
+        :filePath="`zhiyaimg_${_getConfig('_APP_ENV')}.png`"
+        name="zhiyaimg"
+      ></image-load>
+      <image-load v-else filePath="zhiyaimg.png" name="zhiyaimg" class="zhiyaimg"></image-load>
+      <div class="top">
+        <div class="left">
+          <p class="fw-num">{{ priceFormat(showInfo.amount) || 0 }}</p>
+          <!-- 正在托管 -->
+          <span>{{ _t18('pledge_hosting') }}</span>
+        </div>
+        <div class="right">
+          <p class="fw-num">{{ showInfo.orderNum || 0 }}</p>
+          <!-- 委托订单 -->
+          <span>{{ _t18('pledge_commissioned_order') }}</span>
+        </div>
       </div>
+      <div class="bottom">
+        <div class="left">
+          <p class="fw-num">{{ priceFormat(showInfo.todayProfit) || 0 }}</p>
+          <!-- 今日收益 -->
+          <span>{{ _t18('pledge_Today_Earnings') }}</span>
+        </div>
+        <div class="right">
+          <p class="fw-num">{{ priceFormat(showInfo.profitMoney) || 0 }}</p>
+          <!-- 累计收益 -->
+          <span>{{ _t18('Cumulative_income') }}</span>
+        </div>
+      </div>
+    </div>
     </div>
   </lazy-component>
 
@@ -225,34 +223,59 @@ onMounted(() => {
   color: var(--ex-default-font-color);
 
   .fund {
-    .item {
-      align-items: flex-start;
-      border-radius: 10px;
-      position: relative;
+    border: 1px solid var(--ex-box-border-color);
+    border-radius: 10px;
+    position: relative;
+    background: var(--ex-default-bgcolor);
+    .zhiyaimg {
+      position: absolute;
+      font-size: 50px;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+    }
+    .top,
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      .left,
+      .right {
+        width: 100%;
+        height: 100%;
+        padding: 25px 15px;
 
-      .icon {
-        width: 30px;
-        height: 30px;
+        p,
+        span {
+          max-width: 100%;
+          word-break: break-word;
+        }
       }
-
-      .fw-num {
-        font-size: 16px;
-        word-break: break-all;
-        color: var(--ex-default-font-color);
-        margin: 20px 0 6px;
+      .right {
+        border-left: 1px solid var(--ex-box-border-color);
+        text-align: right;
       }
-
-      .til {
-        word-wrap: break-word;
-        color: #9493AC;
+      p {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      span {
+        color: var(--ex-passive-font-color);
       }
     }
-
-    :deep(.van-grid-item__content) {
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      align-items: flex-start;
-      padding-left: 10px;
+    .bottom {
+      border-top: 1px solid var(--ex-box-border-color);
+      p {
+        color: var(--ex-primary-color);
+      }
+    }
+    .title {
+      margin-bottom: 14px;
+      span {
+        color: var(--ex-passive-font-color);
+      }
+    }
+    .amount {
+      font-size: 28px;
     }
   }
 }

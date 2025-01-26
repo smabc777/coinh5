@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <div class="title" v-if="['gridai'].includes(_getConfig('_APP_META_TITLE'))" style="text-align:center">
+    <!-- <div class="title"  style="text-align:center">
       <div class="left">{{ _t18('pledge_title',['gridai']) }}</div>
-    </div>
-    <div class="title" v-else>
+    </div> -->
+    <!-- <div class="title" v-else>
       <div class="left">{{ _getConfig('_APP_META_TITLE').toUpperCase() }}</div>
       <div class="middle">Pledge</div>
       <div class="right">Mining</div>
-    </div>
-    <div class="sub_title" v-if="['gridai'].includes(_getConfig('_APP_META_TITLE'))" style="text-align:center">{{ _t18('pledge_info',['gridai']) }}</div>
-    <div class="sub_title" v-else>Ultra high yield One click DeFi</div>
+    </div> -->
+    <!-- <div class="sub_title" v-if="['gridai'].includes(_getConfig('_APP_META_TITLE'))" style="text-align:center">{{ _t18('pledge_info',['gridai']) }}</div>
+    <div class="sub_title" v-else>Ultra high yield One click DeFi</div> -->
     <div class="introduce" v-if="['gridai'].includes(_getConfig('_APP_META_TITLE'))">
       {{_t18('pledge_content',['gridai'])}}
     </div>
@@ -30,7 +30,7 @@ import {_getConfig} from "@/utils/public";
   .title{
     font-size: 31px;
     font-weight: 600;
-    color: var(--ex-font-color);
+    color: var(--ex--home-grid-text-color);
     line-height: 47px;
     display: flex;
     justify-content: center;
@@ -42,7 +42,7 @@ import {_getConfig} from "@/utils/public";
   .sub_title{
     font-size: 24px;
     font-weight: 500;
-    color: var(--ex-font-color);
+    color: var(--ex--home-grid-text-color);
     line-height: 36px;
     display: flex;
     justify-content: center;

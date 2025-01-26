@@ -632,7 +632,8 @@ onUnmounted(() => {
 
       span {
         display: inline-block;
-        color: var(--ex-font-color);
+        color: var(--ex-default-font-color);
+
         font-size: 12px;
         transform: scale(0.8333);
       }

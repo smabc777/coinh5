@@ -27,7 +27,7 @@
           </div>
 
           <div class="titleRight" @click="SecondTradeData.show = false">
-            <van-icon name="close" size="18" color="#fff" />
+            <van-icon name="close" size="18" color="#333" />
           </div>
         </div>
 
@@ -391,13 +391,14 @@ const formatSeconds = (seconds) => {
       flex-grow: 1;
       width: 100%;
       padding: 18px 20px;
-      background-color: var(--ex-primary-color);
+      // background-color: var(--ex-primary-color);
       display: flex;
       justify-content: space-between;
+      border-bottom:1px solid var(--ex--backup-background-color-2);
 
       .titleLeft {
         font-size: 16px;
-        color: #fff;
+        color: var(--ex-default-font-color);
         display: flex;
         align-items: center;
 
@@ -410,6 +411,7 @@ const formatSeconds = (seconds) => {
           font-size: 12px;
           margin-left: 8px;
           border-radius: 4px;
+          color:#fff;
         }
 
         .titleColor {
@@ -467,7 +469,7 @@ const formatSeconds = (seconds) => {
 
               .item-time {
                 margin-top: 8px;
-                color: #613af1;
+                color: #333;
                 font-size: 18px;
               }
 
@@ -491,8 +493,8 @@ const formatSeconds = (seconds) => {
             }
 
             &.hightColor {
-              background: rgba(97, 58, 241, 0.11);
-              border: 1px solid #613af1;
+              background: rgb(162 241 208 / 11%);
+              border: 1px solid var(--ex-trade-buy-bg-color);
 
               .item-atv {
                 display: block;

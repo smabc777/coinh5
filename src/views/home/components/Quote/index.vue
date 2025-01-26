@@ -9,6 +9,8 @@
             {{ item.name }}
           </div>
         </template>
+    <!-- <QuoteFilter></QuoteFilter> -->
+
 
         <template #default v-if="showSecondTabs">
           <!-- 二级分类 -->
@@ -104,6 +106,7 @@ import { getStocklistApi } from '@/api/stock'
 import { getSettingConfigApi } from '@/api/common'
 import { computed,toRaw } from 'vue'
 import { template } from 'lodash'
+import QuoteFilter from "@/components/QuoteFilter/index.vue";
 
 import { useStockStore } from '@/store/stock'
 
@@ -331,6 +334,14 @@ const currentCoinList = computed(() => {
   return list
 })
 
+// //秒合约数据
+// const currentList = ref(tradeStore.secondContractCoinList || [])
+// const setCurrentList = (val) => {
+//   currentList.value = val
+// }
+// provide('currentList', currentList)
+// provide('setCurrentList', setCurrentList)
+
 //跳转
 const linkTo = (item, item2, index) => {
   if (item2.coinType[0] == 6) {
@@ -444,7 +455,7 @@ const linkTo = (item, item2, index) => {
       .Quote-list-item {
         display: flex;
         justify-content: space-between;
-        padding: 16px 14px;
+        padding: 16px 0px;
         background: var(--ex-home-tabs-bg-color);
         margin: 10px 0;
 

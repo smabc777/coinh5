@@ -162,7 +162,8 @@ header {
 
       .rightIcon {
         margin-left: 20px;
-        font-size: 16px;
+        width:26px;
+        height:26px;
       }
 
       .name {

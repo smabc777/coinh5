@@ -52,12 +52,12 @@
     <!-- 投资人 -->
     <PersonList :itemObj="rankUserLastList"></PersonList>
 
-    <div class="gpt-desc">
+    <!-- <div class="gpt-desc">
       <div class="gpt-desc-title">AI交易智能操作</div>
       <div class="gpt-desc-info">  人工智能操作，热门经理人，智能助手引领投资决策，抓住市场机会。利用自然语言处理技术，分析海量数据，深入挖掘潜在趋势，提供精准投资建议。无论是股票、外汇、期货还是加密货币，操作揭示独到市场见解，助您获取更高回报。 </div>
       <div class="gpt-desc-info">   它不受情绪波动影响，始终冷静客观，以数据为依据作出理性决策。通过持续学习和优化，GPT操作不断提升预测准确性，为您创造稳定增长的财富 </div>
       <img class="gpt-desc-img" src="/resource/images/headimg/code.gif" alt="">
-    </div>
+    </div> -->
     
     <div class="cardTitle marginTop15">收益产出</div>
     <FundCard :itemObj="rankList"></FundCard>

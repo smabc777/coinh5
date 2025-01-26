@@ -259,8 +259,8 @@ const getaccountStatisticslist = async (account) => {
     stockType: account || 'US'
   }
   const res = await getaccountStatistics(obj)
-  if (res.code == 200) {
-    accountlist.value = res.data[0]
+  if (res?.code == 200) {
+    accountlist.value = res?.data[0]
   }
 }
 defineExpose({

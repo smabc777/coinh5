@@ -93,8 +93,8 @@ const clickTab = (e) => {
     curIndex.value = e.name
   }
   if (e.name == "股票资产") {
-    childComp.value[1].getaccountStatisticslist()
-    childComp.value[1].onClickTab(0)
+    childComp.value[1]?.getaccountStatisticslist()
+    childComp.value[1]?.onClickTab(0)
   }
 }
 
@@ -193,8 +193,11 @@ watch(
   () => {
     tabActive.value = route.query.name
     setTimeout(() => {
-      childComp.value[1].getaccountStatisticslist()
-      childComp.value[1].onClickTab(0)
+      if(childComp?.value[1]?.getaccountStatisticslist){
+        childComp?.value[1]?.getaccountStatisticslist() 
+        childComp?.value[1]?.onClickTab(0) 
+      }
+     
     }, 50);
   },
   { immediate: true }

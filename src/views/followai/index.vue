@@ -49,11 +49,11 @@
       <div style="margin-top: 20px" class="cardText">
         它不受情绪波动影响，始终冷静客观，以数据为依据作出理性决策。通过持续学习和优化，GPT操作不断提升预测准确性，为您创造稳定增长的财富
       </div>
-      <div class="followKline">
+      <!-- <div class="followKline">
         <div style="height: 300px; margin-top: 30px">
           <van-image width="100%" height="100%" src="/resource/images/headimg/code.gif" />
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="followViewBox">

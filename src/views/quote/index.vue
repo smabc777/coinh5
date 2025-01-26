@@ -156,7 +156,8 @@ export default {
 
   :deep(.searchInput) {
     border-radius: 8px;
-    border: 1px solid var(--ex-border-color2);
+    border:1px solid var(--ex--backup-background-color-2);
+
 
     /* 焦点状态样式 */
     &:hover {

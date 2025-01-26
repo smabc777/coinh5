@@ -171,8 +171,8 @@ onMounted(() => {
     }
 
     .grid-img {
-      width: 30px;
-      height: 30px;
+      width: 26px;
+      height: 26px;
       margin-bottom: 14px;
     }
 

@@ -38,7 +38,8 @@
   --ex-home-tabs-bg-color: #fff; //背景色
   --ex-home-tabs-bg-atv-color: #f0f0f0; //高亮
   --ex-home-tabs-text-color: #7a7a7a; //字体颜色
-  --ex-home-tabs-text-atv-color: #333; //字体高亮
+  --ex-home-tabs-text-atv-color: #17ac74; //字体高亮
+
 
   /* 理财模块 */
   --ex-financial-card-bg-color: #fff; //背景色
@@ -49,7 +50,7 @@
   --ex-financial-vip-font-bg-color: #d5d4ff;
 
   /* 资产模块 */
-  --ex-assets--font-color: #c1c7cd;
+  --ex-assets--font-color: #333333;
   --ex-assets--font-card-color: #b9c1d9;
   --ex-assets--record-card-color: #10f4b121;
   --ex-assets--record-font-color: #10f4b1;
@@ -60,7 +61,7 @@
   --ex-trade-chart-text-color: #a2a2a2; //图表字体颜色
 
   /* 复制按钮色 */
-  --ex-copy-font-color: #613af1;
+  --ex-copy-font-color: #17ac74;
   --ex-copy-font-bg-color: #f2ecff;
 
   --ex-card-deep-bg-color: #252a4d;
@@ -75,9 +76,11 @@
   --ex-rfd-fall-bg: rgba(223, 41, 74, 0.2);
   // 平
   --ex-rfd-draw-bg: rgba(125, 145, 157, 0.2);
+
+ 
   // 涨
   //--ex-rfd-rise: #00b97b;
-  --ex-rfd-rise: #00e291;
+  --ex-rfd-rise: #4bbd83;
   // 跌
   //--ex-rfd-fall: #f6263f;
   --ex-rfd-fall: #ff6058;
@@ -124,7 +127,7 @@
 
   /* 按钮*/
   /* 提交按钮背景 字体 边框*/
-  --ex-btn-background-color: #613af1;
+  --ex-btn-background-color: #17ac74;
   --ex-btn-font-color: #fff;
   --ex-btn-background-color2: #fff;
   --ex-btn-font-color2: #613af1;
@@ -216,7 +219,7 @@
   --ex-font-color8: #999;
   --ex-font-color14: red;
   --ex-font-color17: #bbb;
-  --ex-font-color20: #fff;
+  --ex-font-color20: #000;
   --ex-font-color22: #fff;
   --ex-font-color1: #ffffff;
   --ex-font-color2: #138a5d;

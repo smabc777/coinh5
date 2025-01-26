@@ -185,7 +185,8 @@ const toRecharge = (url) => {
   }
 
   .currencyIcon {
-    font-size: 48px;
+    width:46px;
+    height:46px;
     margin-bottom: 8px;
   }
 

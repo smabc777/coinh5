@@ -241,6 +241,7 @@ onMounted(() => {
       height: 50px;
       border-radius: 8px;
       border: 2px solid var(--ex--backup-background-color-2);
+      
     }
   }
 

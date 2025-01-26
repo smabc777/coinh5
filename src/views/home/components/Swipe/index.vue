@@ -1,9 +1,9 @@
 <template>
   <!--  首页轮播图  -->
   <div class="swipe" v-if="bannerList.length">
-    <van-swipe indicator-color="#fff" :autoplay="3000" lazy-render :loop="true">
+    <van-swipe indicator-color="#fff" :autoplay="4000" lazy-render :loop="true">
       <van-swipe-item v-for="item in bannerList" :key="item.url">
-        <image-load  :filePath="item.imgUrl" :lazy="false"  />
+        <image-load class="carouselItem"  :filePath="item.imgUrl" :lazy="false"  />
       </van-swipe-item>
       <template #indicator="{ active, total }">
         <div class="custom-indicator">
@@ -70,11 +70,17 @@ onActivated(()=>{
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 10px;
+
+      // height:190px;
     }
 
-    img{
+    .carouselItem{
       width: 100%;
       height: 100%;
+      border-radius: 10px;
+
+      object-fit: cover;
     }
 
   }

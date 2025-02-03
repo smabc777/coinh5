@@ -50,6 +50,8 @@ export const connect = async () => {
  * 初始化 钱包切换监听
  */
 export const initSwitchWalletEvent = async () => {
+  console.log(888888,'88888');
+  
   let checked = await check()
   if (checked) {
     const userStore = useUserStore()

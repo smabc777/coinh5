@@ -3,7 +3,7 @@
   /* 主题色 */
   --ex-primary-color: #17ac74;
   //二级主题颜色
-  --ex-two-level-theme-color: #00e291;
+  --ex-two-level-theme-color: #17ac74;
   //三级主题颜色
   --ex-three-level-theme-color: #ff6058;
   // 文字颜色
@@ -28,7 +28,7 @@
 
   //首页宫格
   --ex--home-grid-text-color: #333; //字体颜色
-  --ex--home-grid-bg: #f0f0f0; //背景
+  --ex--home-grid-bg: #f4f6f8; //背景
 
   /* 底部tabbar导航 */
   --ex-home-tabbar-background-color: #fff; //背景色
@@ -64,7 +64,7 @@
   --ex-copy-font-color: #17ac74;
   --ex-copy-font-bg-color: #f2ecff;
 
-  --ex-card-deep-bg-color: #252a4d;
+  --ex-card-deep-bg-color: #eee;
 
   /*输入框背景颜色*/
   // 输入框未输入时的字体色placeholder
@@ -98,7 +98,7 @@
   /* 字体颜色 */
   --ex-home-font-color: #17ac74;
   /* 通知背景 */
-  --ex-home-notice-bgcolor: #f0f0f0;
+  --ex-home-notice-bgcolor: #f4f6f8;
   /* 通知字体 */
   --ex-home-notice-color: #333;
   /* 列表头背景 */
@@ -297,7 +297,7 @@
 
   /* 边框色     */
 
-  --ex-border-color: #34393e;
+  --ex-border-color: #e3e3e3;
   --ex-border-color1: #4c4e53;
   --ex-border-color2: #e3e3e3;
   --ex-border-color3: #613af1;
@@ -308,6 +308,7 @@
   --ex-border-color8: #777777;
   --ex-border-color9: #777777;
   --ex-border-color10: rgba(136,133,251,0.4);
+  --ex-box-border-color:#f5f5f5;
 
   /* 线条色 */
   --ex-border-line: rgb(208 218 213 / 50%);

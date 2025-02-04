@@ -25,13 +25,13 @@
     <image-load v-else filePath="zhiyabg.png" name="defi"></image-load>
   </div>
   <!-- 质押记录 -->
-  <div class="pledge_record" @click="router.push('/pledge/pledgeOrder')">
+  <!-- <div class="pledge_record" @click="router.push('/pledge/pledgeOrder')">
     <div class="flex">
       <image-load filePath="defi/time.png" name="defi" class="time"></image-load>
       <span class="text">{{ _t18('pledge_records') }}</span>
     </div>
     <image-load filePath="defi/right-arrow.png" name="defi" class="right-arrow"></image-load>
-  </div>
+  </div> -->
 
   <lazy-component>
     <!-- 收益信息（资金、收益） -->
@@ -128,9 +128,11 @@ let closePopup = () => {
 }
 const cuttentRight = reactive({
   iconRight: [
-    {iconName: 'right-rule', clickTo: '', name: _showName('gameplay_description',['vitc'])},
-    // { iconName: 'jilu', clickTo: '/pledge/pledgeOrder' }
+    {iconName: 'right-rule', clickTo: ''},
+    { iconName: 'sub-record', clickTo: '/pledge/pledgeOrder' }
   ]
+
+ 
 })
 const toView = (data) => {
   router.push({

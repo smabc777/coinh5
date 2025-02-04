@@ -17,6 +17,8 @@ const props = defineProps({
   padding: 20px 15px;
   background: var(--ex-financial-card-bg-color);
   border-radius: 8px;
+  border-bottom:1px solid var(--ex--backup-background-color-2);
+
 
   .item {
     font-size: 12px;

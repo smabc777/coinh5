@@ -139,7 +139,7 @@ onMounted(()=>{
       }
       .rate{
         color: var(--ex-two-level-theme-color);
-        margin-top: 4px;
+        margin-top: 10px;
         font-size: 17px;
       }
       .title {
@@ -155,7 +155,7 @@ onMounted(()=>{
   }
   .content {
     display: flex;
-    padding: 20px 10px 0;
+    padding: 20px 10px 0px 0;
     justify-content: space-between;
     .left {
       flex:1;
@@ -168,6 +168,7 @@ onMounted(()=>{
         justify-content: space-between;
         color: var(--ex-passive-font-color);
         font-size: 12px;
+        margin-top:12px;
         p {
           min-width: 36px;
         }
@@ -175,7 +176,7 @@ onMounted(()=>{
           margin-left: 20px;
           color: var(--ex-default-font-color);
           font-size: 14px;
-          margin-top: 14px;
+          // margin-top: 14px;
         }
         span.rate {
           color: var(--ex-font-color9);

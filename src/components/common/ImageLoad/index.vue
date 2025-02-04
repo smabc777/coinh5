@@ -34,7 +34,6 @@ const path = computed(() => {
     tempTheme = `${__theme}/`
   }
 
-
   if (props.filePath?.includes('http')) {
     tempPath = `${props.filePath}?${_APP_VERSION}`
     // tempPath = `${props.filePath?.replace(
@@ -44,9 +43,9 @@ const path = computed(() => {
 
   } else if (props.filePath) {
     if (isCustomized.value) {
-      tempPath = `/resource/images/${tempTheme}${__config._APP_ENV}/${props.filePath}?${_APP_VERSION}`
+      tempPath = `./resource/images/${tempTheme}${__config._APP_ENV}/${props.filePath}?${_APP_VERSION}`
     } else {
-      tempPath = `/resource/images/${tempTheme}${props.filePath}?${_APP_VERSION}`
+      tempPath = `./resource/images/${tempTheme}${props.filePath}?${_APP_VERSION}`
     }
 
   }

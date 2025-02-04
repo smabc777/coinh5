@@ -69,21 +69,25 @@ onMounted(async () => {
       border-radius: 6px;
     }
   }
+  
   .navigationList {
-    padding: 19px 15px 0;
+    padding: 19px 15px 19px;
     display: flex;
     justify-content: space-between;
+    border-bottom:1px solid var(--ex--backup-background-color-2);
+    border-top:1px solid var(--ex--backup-background-color-2);
+
     .item {
       flex: 1;
       text-align: center;
       align-items: center;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--ex-default-font-color);
       justify-content: center;
       padding: 0 5px;
       .itemImg {
-        width: 30px;
-        height: 30px;
+        width: 44px;
+        height: 44px;
         margin-bottom: 10px;
       }
       .itemName {

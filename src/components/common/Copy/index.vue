@@ -45,10 +45,11 @@ const toCopy = async () => {
   padding: 5px 0;
   display: flex;
   color: var(--ex-default-font-color);
+  align-items: center;
 
   // padding-right: 10px;
   .img {
-    margin-left: 10px;
+    margin-left: 6px;
     // font-size: 14px;
   }
 }

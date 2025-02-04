@@ -1,5 +1,5 @@
 <template>
-  <HeaderBar :currentName="_t18(`host.detail`)" />
+  <HeaderBar :currentName="_t18(`host.detail`)" :border_bottom="true" />
   <div class="financialDetails">
     <!-- 详情 -->
     <FinancialHeader :headerObj="headerObj"></FinancialHeader>
@@ -146,7 +146,7 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .financialDetails {
-  padding: 16px;
+  padding: 10px 16px;
   .subtitle {
     font-size: 15px;
     font-weight: 400;
@@ -158,6 +158,8 @@ onMounted(() => {
     font-size: 12px;
     background: var(--ex-financial-card-bg-color);
     border-radius: 8px;
+    border-bottom:1px solid var(--ex--backup-background-color-2);
+
     div {
       color: var(--ex-passive-font-color);
     }

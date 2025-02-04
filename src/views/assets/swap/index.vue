@@ -24,9 +24,7 @@
       <!-- 交换按钮 -->
 
       <div class="exchange_btn">
-        <div>
           <svg-load name="huazhuanbtn" class="dui" @click="jiaohuan()"></svg-load>
-        </div>
       </div>
       <p class="label">{{ _t18(`transfer_in`) }}</p>
       <div class="to">
@@ -282,7 +280,7 @@ const submit = async () => {
 }
 
 .content {
-  padding: 30px 15px;
+  padding: 20px 15px;
   background: var(--ex-financial-card-bg-color);
   margin-top: 20px;
   border-radius: 5px;
@@ -345,7 +343,7 @@ const submit = async () => {
       justify-content: space-around;
       align-items: center;
       padding-bottom: 13px;
-      border-bottom: 1px solid var(--ex-font-color24);
+      border-bottom: 1px solid var(--ex--backup-background-color-2);
     }
 
     input {
@@ -366,20 +364,21 @@ const submit = async () => {
   }
 
   .exchange_btn {
-    margin-left: 94px;
-
-    div {
+    padding:40px 0;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
       .dui {
-        font-size: 40px;
+        font-size: 42px;
       }
-    }
   }
 
   .rate {
     display: flex;
     align-items: center;
     margin-top: 20px;
-    padding: 15px;
+    padding: 15px 0;
     border-radius: 5px;
     // background: var(--ex-card-deep-bg-color);
 

@@ -40,7 +40,7 @@ const QuoteSidebarRef = ref(null)
 .top {
   padding: 8px 14px;
   z-index: 9;
-  background: var(--ex--backup-background-color-2);
+  // background: var(--ex--backup-background-color-2);
   border-radius: 8px;
 
   .first {

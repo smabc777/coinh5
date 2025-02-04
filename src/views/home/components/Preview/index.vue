@@ -127,12 +127,11 @@ const linkTo = (item, index) => {
         flex-direction: column;
         align-items: center;
 
-        background: var(--ex--home-grid-bg);
+        background: var(--ex-home-tabs-bg-color);
         border-radius: 10px;
         border: 1px solid var(--ex-border-line);
         backdrop-filter: blur(10px);
         position: relative;
-
         &:after {
           z-index: -1;
           position: absolute;
@@ -185,9 +184,9 @@ const linkTo = (item, index) => {
         .item-but {
           margin-top: 12px;
           text-align: center;
-          width: 120px;
-          padding: 10px 10px;
-          background: #613AF1;
+          width: 110px;
+          padding: 8px 10px;
+          background: var(--ex-trade-buy-bg-color);
           border-radius: 9px;
           font-size: 14px;
           color: #FFFFFF;

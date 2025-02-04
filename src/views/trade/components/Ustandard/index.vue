@@ -102,7 +102,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .Ustandard {
-  padding: 0px 0px 150px;
+  padding: 10px 0px 150px;
   height: 100vh;
   overflow-x: auto;
 

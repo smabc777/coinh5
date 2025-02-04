@@ -1,7 +1,7 @@
 <template>
   <div class="loan-detail">
     <div class="header-record">
-      <image-load filePath="deposit.png" class="left-icon"></image-load>
+      <!-- <image-load filePath="deposit.png" class="left-icon"></image-load> -->
       <div class="right-status">
         <p class="tips">{{ _t18('loan_records_key') }}</p>
         <p :class="'status' + props.dataList.status">{{ status }}</p>
@@ -9,7 +9,13 @@
     </div>
     <div class="message">
       <div class="item">
-        <!-- 借款金额 -->
+      <!-- 借款金额 -->
+      <div class="left">{{ _t18('loan_amount') }}</div>
+      <div class="right">{{ props.dataList.amount }}</div>
+    </div>
+   
+      <div class="item" v-if="props.dataList.disburseAmount!=null">
+        <!-- 审批金额 -->
         <div class="left">{{ _t18('loan_amount') }}</div>
         <div class="right">{{ props.dataList.disburseAmount }}</div>
       </div>

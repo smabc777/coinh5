@@ -377,7 +377,6 @@ const blur = () => {
         border-radius: 3px;
         align-items: center;
         margin-bottom: 20px;
-        border:1px solid var(--ex-box-border-color);
         & > span {
           color: var(--ex-tip-font-color);
         }

@@ -1,7 +1,7 @@
 <template>
   <!--  行情  -->
   <div class="Quote">
-    <van-tabs class="tabs" v-model:active="active" line-width="0" :ellipsis="false" swipeable animated>
+    <van-tabs swipeable   :swipe-threshold="3" line-width="0" class="tabs" v-model:active="active"  :ellipsis="false"  animated>
       <van-tab v-for="(item, index) in headerList" :key="index">
         <template #title>
           <div class="tab-item" v-if="item.show" :class="{ atv: index == active }"
@@ -455,8 +455,8 @@ const linkTo = (item, item2, index) => {
       .Quote-list-item {
         display: flex;
         justify-content: space-between;
-        padding: 16px 0px;
-        background: var(--ex-home-tabs-bg-color);
+        padding: 10px 0px;
+        // background: var(--ex-home-tabs-bg-color);
         margin: 10px 0;
 
         border-radius: 10px;

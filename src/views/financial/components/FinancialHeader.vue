@@ -37,6 +37,8 @@ const props = defineProps({
 .financia-header {
   background: var(--ex-financial-card-bg-color);
   border-radius: 8px;
+  border-bottom:1px solid var(--ex--backup-background-color-2);
+
   .header {
     padding: 10px 17px;
     font-size: 15px;
@@ -52,7 +54,7 @@ const props = defineProps({
     }
   }
   .headerList {
-    padding: 10px 15px 20px;
+    padding: 20px 15px 20px;
     display: flex;
     .item {
       flex: 1;
@@ -71,8 +73,6 @@ const props = defineProps({
     .item:nth-child(1) {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
     }
     .item:nth-child(2) {
       display: flex;

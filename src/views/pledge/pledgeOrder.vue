@@ -144,7 +144,7 @@ watch(
 <style lang="scss" scoped>
 .content {
   // border-bottom: 1px solid var(--ex-border-color);
-  padding: 20px 15px;
+  // padding: 0px 15px;
 }
 .van-loading {
   text-align: center;
@@ -153,13 +153,9 @@ watch(
 :deep(.van-cell) {
   background: var(--ex-default-background-color) !important;
 }
-:deep(.van-tabs) {
-  background: var(--ex-home-tabbar-background-color) !important ;
-}
+
 :deep(.van-tab) {
   padding: 10px;
-  color: var(--ex-home-list-ftcolor) !important;
-  background: var(--ex-home-tabbar-background-color) !important ;
   &.van-tabs__nav--line{
     padding: 0;
   }
@@ -167,4 +163,27 @@ watch(
 :deep(.van-cell::after) {
   border-bottom: 1px solid var(--ex-border-color) !important;
 }
+
+
+:deep(.van-tabs) {
+  background: var(--ex-home-tabbar-background-color) !important;
+}
+
+:deep(.van-tabs__nav) {
+  background: var(--ex-home-tabbar-background-color) !important;
+}
+
+:deep(.van-tab) {
+  color: var(--ex-placeholder-font) !important;
+  background: var(--ex-home-tabbar-background-color) !important;
+}
+
+:deep(.van-tabs__line) {
+  background: var(--ex-home-tabs-text-atv-color) !important;
+}
+
+:deep(.van-tab--active) {
+  color: var(--ex-home-tabs-text-atv-color) !important;
+}
+
 </style>

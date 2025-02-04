@@ -35,68 +35,125 @@
   <div v-else>
     <HeaderBar :currentName="_t18('plug')" :cuttentRight="cuttentRight" @showPopup="showPopup"></HeaderBar>
     <!-- 团队信息 -->
-    <div class="banner">
-      <div class="plug-section" v-if="!['das'].includes(_getConfig('_APP_ENV'))">
-        <div class="plug-header">
-          <div class="row-header">
-            <img src="@/assets/invite/icon.png" class="itemImg" />
-            <div>{{ _t18('my_team') }}</div>
+    
+     <div class="banner">
+      <div
+        class="plug_bg plug_bg2"
+        v-if="['aigc'].includes(_getConfig('_APP_ENV'))"
+      >
+        <image-load
+          :isPublic="true"
+          :filePath="`aigc_plug_bg.png`"
+          class="img-bg"
+        ></image-load>
+        <div class="shareContent shareContent2">
+          <div class="sharkCode">
+            <p class="sharkP">{{ _t18("plug_shareCode") }}：</p>
+            <Copy
+              :data="sharkCode"
+              :contentFix="'space-between'"
+              :fontSize="'14px'"
+            >
+              <template #copyMsg>
+                <!-- 邀请码 -->
+                <p
+                  class="ff-num"
+                  style="
+                    display: flex;
+                    flex: 1;
+                    justify-content: space-between;
+                    fontsize: 16px;
+                  "
+                >
+                  {{ sharkCode }}
+                </p>
+              </template>
+            </Copy>
           </div>
-          <div class="row-body">
-            <div>{{ _t18('plug_amount', ['aams', 'aug']) }}</div>
-            <div>{{ teamInfo.sumAmount || 0 }}</div>
+          <div class="shareLink" :contentFix="'start'">
+            <p class="sharkP">{{ _t18("plug_shareLink", ["aigc"]) }}：</p>
+            <Copy :data="`${shareLink}${sharkCode}`" :fontSize="'14px'">
+              <template #copyMsg>
+                <!-- 推广链接 -->
+                <p
+                  class="ff-num"
+                  style="
+                    display: flex;
+                    flex: 1;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    fontsize: 16px;
+                  "
+                >
+                  {{ shareLink }}{{ sharkCode }}
+                </p>
+              </template>
+            </Copy>
           </div>
         </div>
-        <div class="plug-conter">
+      </div>
+      <div class="plug_bg" :style="{ backgroundImage: backgroundImage }" v-else>
+        <div class="shareContent">
+          <!-- 邀请好友一起赚币 -->
+          <p class="shareContent_title fw-bold">
+            {{ _t18("plug_invite", ["aams"]) }}
+          </p>
+          <!-- 邀请好友，充值即刻获取佣金 -->
+          <p class="shareContent_info">{{ _t18("plug_toInvite") }}</p>
+          <div class="sharkCode">
+            <Copy :data="sharkCode" :contentFix="'start'" :fontSize="'12px'">
+              <template #copyMsg>
+                <!-- 邀请码 -->
+                <p class="ff-num">
+                  {{ _t18("plug_shareCode") }}：{{ sharkCode }}
+                </p>
+              </template>
+            </Copy>
+          </div>
+          <div class="shareLink" :contentFix="'start'">
+            <Copy :data="`${shareLink}${sharkCode}`" :fontSize="'12px'">
+              <template #copyMsg>
+                <!-- 推广链接 -->
+                <p class="ff-num">
+                  {{ _t18("plug_shareLink") }}：{{ shareLink }}{{ sharkCode }}
+                </p>
+              </template>
+            </Copy>
+          </div>
+        </div>
+      </div>
+      <div >
+        <div class="teamInfo">
           <!-- 一代人数 -->
-          <div class="row-item">
-            <div class="row-item-left">
-              <div class="line"></div>
-              <div class="num">{{ teamInfo.oneCount || 0 }}</div>
-              <div>{{ _t18('plug_oneNum', ['aams', 'aug']) }}</div>
-            </div>
-            <div class="row-item-right">
-              <img src="@/assets/invite/team1.png" class="itemImg" />
-            </div>
+          <div>
+            <p>{{ _t18("plug_oneNum", ["aams", "aug", "mngx"]) }}</p>
+            <span class="ff-num">{{ teamInfo.oneCount || 0 }}</span>
           </div>
           <!-- 二代人数 -->
-          <div class="row-item">
-            <div class="row-item-left">
-              <div class="line"></div>
-              <div class="num">{{ teamInfo.twoCount || 0 }}</div>
-              <div>{{ _t18('plug_twoNum', ['aams', 'aug']) }}</div>
-            </div>
-            <div class="row-item-right">
-              <img src="@/assets/invite/team2.png" class="itemImg" />
-            </div>
+          <div>
+            <p>{{ _t18("plug_twoNum", ["aams", "aug", "mngx"]) }}</p>
+            <span class="ff-num">{{ teamInfo.twoCount || 0 }}</span>
           </div>
-          <!--三代人数 -->
-          <div class="row-item">
-            <div class="row-item-left">
-              <div class="line"></div>
-              <div class="num">{{ teamInfo.threeCount || 0 }}</div>
-              <div>{{ _t18('plug_threeNum', ['aams', 'aug']) }}</div>
-            </div>
-            <div class="row-item-right">
-              <img src="@/assets/invite/team3.png" class="itemImg" />
-            </div>
+          <!-- 三代人数 -->
+          <div>
+            <p>{{ _t18("plug_threeNum", ["aams", "aug", "mngx"]) }}</p>
+            <span class="ff-num">{{ teamInfo.threeCount || 0 }}</span>
           </div>
           <!-- 推广总人数 -->
-          <div class="row-item">
-            <div class="row-item-left">
-              <div class="line"></div>
-              <div class="num">{{ teamInfo.sumCount || 0 }}</div>
-              <div>{{ _t18('plug_sum', ['aams', 'aug']) }}</div>
-            </div>
-            <div class="row-item-right">
-              <img src="@/assets/invite/team4.png" class="itemImg" />
-            </div>
+          <div>
+            <p>{{ _t18("plug_sum", ["aams", "aug", "mngx"]) }}</p>
+            <span class="fw-num">{{ teamInfo.sumCount || 0 }}</span>
           </div>
+          <!-- 佣金金额 -->
+          <div>
+            <p>{{ _t18("plug_amount", ["aams", "aug", "mngx"]) }}</p>
+            <span class="ff-num">{{ teamInfo.sumAmount || 0 }}</span>
+          </div>
+          <div></div>
         </div>
-        <div class="plug-invite" @click="showInvite = true">{{ _t18('invite_now') }}</div>
       </div>
     </div>
-    <div v-if="!['das'].includes(_getConfig('_APP_ENV'))">
+    <div >
       <!-- 我的推广 -->
       <div class="promotion_my" v-if="!['bitfly'].includes(_getConfig('_APP_ENV'))">
         <div class="title fw-bold">{{ _t18('plug_myShare', ['aams']) }}</div>
@@ -180,7 +237,7 @@ import { computed, onMounted, ref } from 'vue'
 import { rulesList } from '@/api/common/index'
 import { useCopy } from '@/hook/useCopy'
 const cuttentRight = {
-  iconRight: [{ iconName: 'right-rule', clickTo: '', name: _t18('revenue_rules') }]
+  iconRight: [{ iconName: 'right-rule', clickTo: '' }]
 }
 const useStore = useUserStore()
 const userInfo = useStore.userInfo
@@ -229,10 +286,11 @@ const getPopupContent = async () => {
     popupContent.value = res.data
   }
 }
-// const backgroundImage = computed(() => {
-//   let temp = `url('/resource/images/${__theme}/plugbg.png') no-repeat center`
-//   return temp
-// })
+
+const backgroundImage = computed(() => {
+  let temp = `url('/resource/images/${__theme}/plugbg.png')`;
+  return temp;
+});
 onMounted(() => {
   getTeamInfo()
   getTeamList()
@@ -351,106 +409,96 @@ const changeIndex = (v) => {
 }
 
 .banner {
-  .plug-section {
-    padding: 16px 16px;
+  .plug_bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 45px 15px 20px;
 
-    .plug-header {
-      background: var(--ex-default-font-color);
-      border-radius: 8px;
+    .shareContent {
+      width: 60%;
 
-      .row-header {
-        display: flex;
-        align-items: center;
-        background: var(--ex-primary-color);
-        padding: 15px 14px;
-        border-radius: 8px 8px 0 0;
-
-        img {
-          width: 17px;
-          height: 16px;
-        }
-
-        div {
-          margin-left: 4px;
-          font-size: 16px;
-          font-weight: 500;
-          color:#fff;
-        }
+      .shareContent_title {
+        font-size: 20px;
+        color: var(--ex-default-font-color);
       }
 
-      .row-body {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px;
+      .shareContent_info {
+        font-size: 14px;
+        color: var(--ex-default-font-color);
+        padding: 10px 0 30px;
+      }
 
-        div {
+      .sharkCode,
+      .shareLink {
+        p {
+          line-height: 1.2;
           font-size: 12px;
-          font-weight: 500;
-          color: var(--ex-default-background-color);
+          word-break: break-all;
+          color: var(--ex-default-font-color);
+          // word-wrap:break-word;
+          // word-break:normal;
         }
       }
     }
-
-    .plug-conter {
-      display: grid;
-      grid-template-columns: 166px 166px;
-      grid-column-gap: 11px;
-      grid-row-gap: 11px;
-      margin: 14px 0 30px;
-
-      .row-item {
-        display: flex;
-        justify-content: space-between;
-        border-radius: 10px;
-        border: 1px solid var(--ex-border-line);
-        padding: 18px 14px;
-
-        .row-item-left {
-          width: calc(166px - 80px);
-
-          .line {
-            width: 18px;
-            height: 2px;
-            background: var(--ex-text-color);
-          }
-
-          .num {
-            font-size: 16px;
-            font-weight: 600;
-            margin: 21px 0 3px;
-            word-break: break-all;
-          }
-
-          :last-child {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--ex--home-grid-text-color);
-          }
-        }
-
-        .row-item-right {
-          img {
-            width: 44px;
-            height: 44px;
-          }
-        }
+  }
+  .plug_bg2 {
+    padding: 0;
+    .shareContent2 {
+      width: auto;
+      margin: 15px;
+      padding: 0 15px;
+      border: 1px solid var(--ex-box-border-color-deep);
+      background: #282d34;
+      border-radius: 5px;
+      .sharkCode {
+        padding: 10px 0 15px;
+        border-bottom: 1px solid var(--ex-box-border-color-deep);
+      }
+      .shareLink {
+        padding: 10px 0 15px;
+      }
+      .sharkP {
+        margin-bottom: 10px;
+        font-size: 14px !important;
+      }
+      .ff-num {
+        color: #3776ff !important;
+        font-weight: bold;
       }
     }
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
 
-    .plug-invite {
-      width: 343px;
-      height: 54px;
-      line-height: 54px;
+  .teamInfo {
+    padding: 15px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+      width: 33.33%;
+      padding: 15px 5px;
       text-align: center;
-      background: var(--ex-copy-font-color);
-      border-radius: 8px;
-      color:#fff;
+      // flex: 1;
+      p {
+        height: 30px;
+        color: var(--ex-passive-font-color);
+        margin-bottom: 15px;
+        word-wrap: break-word;
+      }
+
+      span {
+        font-size: 16px;
+        font-weight: 500;
+      }
     }
   }
 }
-
 .promotion_my {
+  margin-top:14px;
   .title {
     padding: 0 15px 20px;
     color: var(--ex-font-color6);
@@ -613,7 +661,7 @@ const changeIndex = (v) => {
     // border: 3px double var(--ex-primary-color);
     border: 1px solid var(--ex-text-color);
     border-radius: 10px;
-    padding: 35px 15px;
+    padding: 20px 15px;
 
 
 

@@ -1,10 +1,11 @@
 <template>
-  <div class="home">
+  <div class="home" v-if="check()">
     <!-- 模拟交易-->
     <template v-if="isSimulate">
       <HeaderSimulate></HeaderSimulate>
       <Quote></Quote>
     </template>
+    
     <template v-else>
       <!-- 头部 -->
       <Header></Header>

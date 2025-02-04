@@ -27,7 +27,7 @@
           </div>
 
           <div class="titleRight" @click="SecondTradeData.show = false">
-            <van-icon name="close" size="18" color="#333" />
+            <van-icon name="close" size="24" color="#333" />
           </div>
         </div>
 
@@ -546,7 +546,7 @@ const formatSeconds = (seconds) => {
             align-items: center;
             justify-content: center;
             min-height: 44px;
-            background: var(--ex--backup-background-color-2);
+            background:transparent;
             border: 1px solid var(--ex--backup-background-color-2);
             color: var(--ex-font-color8);
             border-radius: 10px;

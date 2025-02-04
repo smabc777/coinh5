@@ -70,7 +70,7 @@ const props = defineProps({
   padding: 20px 14px;
   box-sizing: border-box;
   border:1px solid var(--ex--backup-background-color-2);
-
+  box-shadow:0px 0.08rem 0.16rem 0.026667rem var(--ex-box-shadow);
   .item-header {
     .header-top {
       display: flex;
@@ -151,9 +151,9 @@ const props = defineProps({
       .row-value {
         color: #000;
       }
-      .num {
-        color: var(--ex-financial-num-bg-color);
-      }
+      // .num {
+      //   color: var(--ex-financial-num-bg-color);
+      // }
     }
     .line {
       margin-top: 14px;

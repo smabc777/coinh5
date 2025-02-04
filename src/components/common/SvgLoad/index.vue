@@ -17,23 +17,21 @@ const isCustomized = computed(() => props.platform.includes(__config._APP_ENV))
 /**
  * 资源路径
  */
-const path = computed(() => {
+ const path = computed(() => {
   let tempPath = ''
-
-  if (props?.name == null) return ''
-
-  if (props.name.includes('http')) {
-    tempPath = `${props.name}?${_APP_VERSION}`
-    // tempPath = `${props.name?.replace(
-    //     'https://echo-res.oss-cn-hongkong.aliyuncs.com',
-    //     __config._STATIC_API
-    // )}?${_APP_VERSION}`
-
-  } else if (props.name) {
-    if (isCustomized.value) {
-      tempPath = `/resource/svg/${__theme}/${__config._APP_ENV}/${props.name}.svg?${_APP_VERSION}`
-    } else {
-      tempPath = `/resource/svg/${__theme}/${props.name}.svg?${_APP_VERSION}`
+  if (props.name) {
+    if (!props.isPublic) {
+      if (isCustomized.value) {
+        tempPath = `./resource/svg/${__theme}/${__config._APP_ENV}/${props.name}.svg?${_APP_VERSION}`
+      } else {
+        tempPath = `./resource/svg/${__theme}/${props.name}.svg?${_APP_VERSION}`
+      }
+    }else{
+      if (isCustomized.value) {
+        tempPath = `./resource/svg/common/${__config._APP_ENV}/${props.name}.svg?${_APP_VERSION}`
+      } else {
+        tempPath = `./resource/svg/common/${props.name}.svg?${_APP_VERSION}`
+      }
     }
   }
   return tempPath

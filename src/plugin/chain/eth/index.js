@@ -55,21 +55,17 @@ export const initSwitchWalletEvent = async () => {
     const userStore = useUserStore()
     window.ethereum.on('accountsChanged', async (accounts) => {
       // 钱包切换
-      currentAddress = accounts[0].toLocaleLowerCase()
-      if (userStore.walletAddress && currentAddress && userStore.walletAddress != currentAddress) {
-        userStore.signOut()
-        setTimeout(() => location.reload(), 10)
-      }
+      console.log('accountsChanged', accounts)
+      currentAddress = accounts[0]
+      userStore.signOut()
+      setTimeout(() => location.reload(), 10)
     })
     window.ethereum.on('chainChanged', async (e) => {
       //监听链网络改变
       console.log('chainChanged', e)
-      if (userStore.walletAddress && currentAddress && userStore.walletAddress != currentAddress) {
-        userStore.signOut()
-        setTimeout(() => location.reload(), 10)
-      }
+      userStore.signOut()
+      setTimeout(() => location.reload(), 10)
     })
-
     window.ethereum.on('disconnect', (code, reason) => {
       // 断开连接
       console.log('disconnect', code, reason)

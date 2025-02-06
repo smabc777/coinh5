@@ -60,6 +60,7 @@ export const getAcount = async () => {
  * 切换钱包监听事件
  */
 export const initSwitchWalletEvent = async () => {
+  
   isTron = await checkTRON()
   isEth = await checkETH()
   // 需要检测是否链接

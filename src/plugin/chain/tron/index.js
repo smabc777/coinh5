@@ -24,12 +24,24 @@ export const check = async () => {
     }
   })
 }
+
+/**
+ * 获取默认地址
+ */
+const getDefaultAddress = (_tronWeb) => {
+  return _tronWeb?.defaultAddress?.base58 || _tronWeb?.tronWeb?.defaultAddress?.base58 || ''
+}
+
 /**
  * 请求连接钱包
  */
+
+
 export const connect = async () => {
   let result = { code: 200 }
   let isChecked = await check()
+  console.log(1212000, '00000000000')
+
   if (isChecked) {
     try {
       _tronWeb = window.tronlink || window.tronLink || window.tronWeb
@@ -42,17 +54,16 @@ export const connect = async () => {
         try {
           tronAccounts = await _tronWeb.tron.getAccounts()
         } catch (error) {
-          if (_tronWeb?.defaultAddress?.base58) {
-            tronAccounts = [_tronWeb?.defaultAddress?.base58]
-          }
+          tronAccounts = []
         }
       }
       console.log('tronAccounts', tronAccounts)
-      let defaultAddressTron = _tronWeb?.defaultAddress?.base58 || _tronWeb?.tronWeb?.defaultAddress?.base58 || ''
-      if (tronAccounts[0] || defaultAddressTron) {
+      let defaultAddress = getDefaultAddress(_tronWeb)
+
+      if (tronAccounts[0] || defaultAddress) {
         result.data = {
           type: 'TRON',
-          address: tronAccounts[0] || defaultAddressTron
+          address: tronAccounts[0] || defaultAddress
         }
       } else {
         result.code = 500
@@ -61,7 +72,6 @@ export const connect = async () => {
           tronAccounts.message || 'Please install the TronLink extension and log in to continue.'
       }
     } catch (error) {
-      console.log(error)
       result.code = 500
       result.msg = error.message
     }

@@ -34,7 +34,7 @@ export const connect = async () => {
     try {
       const requestAccounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
       if (requestAccounts.length) {
-        currentAddress = requestAccounts[0]
+        currentAddress = requestAccounts[0]?.toLocaleLowerCase()
         result.data = { type: 'ETH', address: currentAddress }
       }
     } catch (error) {
@@ -50,23 +50,24 @@ export const connect = async () => {
  * 初始化 钱包切换监听
  */
 export const initSwitchWalletEvent = async () => {
-  console.log(888888,'88888');
-  
   let checked = await check()
   if (checked) {
     const userStore = useUserStore()
     window.ethereum.on('accountsChanged', async (accounts) => {
       // 钱包切换
-      console.log('accountsChanged', accounts)
-      currentAddress = accounts[0]
-      userStore.signOut()
-      setTimeout(() => location.reload(), 10)
+      currentAddress = accounts[0].toLocaleLowerCase()
+      if (userStore.walletAddress && currentAddress && userStore.walletAddress != currentAddress) {
+        userStore.signOut()
+        setTimeout(() => location.reload(), 10)
+      }
     })
     window.ethereum.on('chainChanged', async (e) => {
       //监听链网络改变
       console.log('chainChanged', e)
-      userStore.signOut()
-      setTimeout(() => location.reload(), 10)
+      if (userStore.walletAddress && currentAddress && userStore.walletAddress != currentAddress) {
+        userStore.signOut()
+        setTimeout(() => location.reload(), 10)
+      }
     })
 
     window.ethereum.on('disconnect', (code, reason) => {

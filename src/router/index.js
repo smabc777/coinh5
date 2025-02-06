@@ -43,10 +43,11 @@ router.beforeEach(async (to, from, next) => {
     if (to.path === '/app-download') {
       return next({ path: '/', replace: true })
     }
+    const acountRes = await getAcount()
   // 钱包是否登录
     if (to.path == '/no-wallet') {
       return next('/')
-    } else if (userStore.isSign) {
+    } else if (userStore.isSign && acountRes != 'no-wallet') {
       // 已登录
       userStore.getUserInfo()
       // mainStore.getSettingConfig()
@@ -56,8 +57,6 @@ router.beforeEach(async (to, from, next) => {
         next()
       }
     } else {
-      // 钱包是否登录
-      const acountRes = await getAcount()
       // 非钱包
       if (acountRes == 'no-wallet') {
         if (to.query.code) {

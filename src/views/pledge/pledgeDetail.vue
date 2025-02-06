@@ -84,12 +84,24 @@ const data = reactive(JSON.parse(decodeURI(route.query.data)))
  */
 const userStore = useUserStore()
 const { asset } = storeToRefs(userStore)
+// const amount = computed(() => {
+//   // let data = 999
+//   console.log(asset.value);
+  
+//   let data = asset.value.filter((item, index) => {
+//     return item.type == '1' && item.symbol == 'usdt'
+//   })[0].availableAmount
+//   return data
+// })
+
 const amount = computed(() => {
-  // let data = 999
-  let data = asset.value.filter((item, index) => {
-    return item.type == '1' && item.symbol == 'usdt'
-  })[0].availableAmount
-  return data
+  let availableAmount = 0
+  asset.value.forEach((item) => {
+    if (item.type == 1 && item.symbol == 'usdt') {
+      availableAmount += item.availableAmount
+    }
+  })
+  return availableAmount
 })
 const maxAmount = ref('')
 let maxNum = () => {

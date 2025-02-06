@@ -172,11 +172,11 @@ watch(
 
 :deep(.van-tabs__line) {
   bottom: 6px !important;
-  background: var(--ex-default-font-color) !important;
+  background: var(--ex-home-tabs-text-atv-color) !important;
 }
 
 :deep(.van-tab--active) {
-  color: var(--ex-default-font-color) !important;
+  color: var(--ex-home-tabs-text-atv-color) !important;
 }
 
 .record-list {

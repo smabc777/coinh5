@@ -591,7 +591,7 @@ const submit = () => {
   .form {
     background: var(--ex-financial-card-bg-color);
     border-radius: 10px;
-    padding: 20px 14px 5px;
+    padding: 20px 0px 5px;
 
     &>div {
       .top {

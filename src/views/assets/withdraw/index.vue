@@ -1,8 +1,8 @@
 <!-- 提现 -->
 <template>
-  <HeaderBar :currentName="_t18('withdraw', ['latcoin'])"></HeaderBar>
+  <HeaderBar :cuttentRight="cuttentRight" :currentName="_t18('withdraw', ['latcoin'])"></HeaderBar>
   <WithdrawList :data="coinList"> </WithdrawList>
-  <div class="record-info" v-if="['cmmetrics'].includes(_getConfig('_APP_ENV'))">
+  <div class="record-info" v-if="!['cmmetrics'].includes(_getConfig('_APP_ENV'))">
     <div class="record-card" @click="dispatchCustomEvent('event_serviceChange')">
       <image-load filePath="record-coin.png" class="left-img"></image-load>
       <div class="record-right">
@@ -11,15 +11,7 @@
       </div>
     </div>
   </div>
-  <div class="record-info">
-    <div class="record-card" @click="toUrl">
-      <image-load filePath="record-coin.png" class="left-img"></image-load>
-      <div class="record-right">
-        <div>{{ _t18(`coin_withdrawal_record`, ['vitc']) }}</div>
-        <image-load filePath="right-coin.png" class="right-img"></image-load>
-      </div>
-    </div>
-  </div>
+  
 </template>
 <script setup>
 import { dispatchCustomEvent } from '@/utils'
@@ -38,6 +30,13 @@ const $router = useRouter()
 const toUrl = (item) => {
   $router.push(`/withdraw-order`)
 }
+const cuttentRight = reactive({
+  iconRight: [
+    { iconName: 'sub-record', clickTo: '/withdraw-order' }
+  ]
+
+ 
+})
 const userStore = useUserStore()
 // 用户余额信息
 const { asset } = storeToRefs(userStore)

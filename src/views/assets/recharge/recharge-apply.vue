@@ -77,9 +77,8 @@
     <!--    </template>-->
     <!--    <template v-else-if="['aams', 'gmmoin'].includes(_getConfig('_APP_ENV'))"></template>-->
     <!-- 确认充值 -->
-    <div class="btn" @click="submit">
-      <p>{{ _t18('recharge_require', ['bitmake']) }}</p>
-    </div>
+    
+    <ButtonBar  @click="submit" :btnValue="_t18('recharge_require', ['bitmake']) "></ButtonBar>
 
     <!--    <div class="advertBox" v-if="['mirae', 'miraeasset'].includes(_getConfig('_APP_ENV'))">-->
     <!--      <Advert></Advert>-->
@@ -305,6 +304,7 @@ const address = computed(() => {
 
 .recharge-apply {
   padding: 0 16px;
+  padding-bottom: 40px;
 
   .apply-header {
     background: var(--ex-financial-card-bg-color);

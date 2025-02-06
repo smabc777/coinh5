@@ -1,6 +1,6 @@
 <!-- 快捷充币 -->
 <template>
-  <HeaderBar :currentName="_t18('recharge_fast', ['aams', 'vitc', 'robinhood2', 'aug'])"></HeaderBar>
+  <HeaderBar :cuttentRight="cuttentRight" :currentName="_t18('recharge_fast', ['aams', 'vitc', 'robinhood2', 'aug'])"></HeaderBar>
   <RechargeList :data="coinList"></RechargeList>
 
   <!-- 人工匹配商家 -->
@@ -23,15 +23,7 @@
       </div>
     </div>
   </div> -->
-  <div class="record-info">
-    <div class="record-card" @click="toUrl()">
-      <image-load filePath="record-coin.png" class="left-img"></image-load>
-      <div class="record-right">
-        <div>{{ _t18(`deposit_record`) }}</div>
-        <image-load filePath="right-coin.png" class="right-img"></image-load>
-      </div>
-    </div>
-  </div>
+ 
 </template>
 
 <script setup>
@@ -51,7 +43,13 @@ const { _toast, _showName } = useToast()
  * 充值方式列表
  * [{ icon: 'usdt', type: '0', title: 'USDT - ERC' ,address:'111111'},{ icon: 'btc', type: '0', title: 'BTC' ,address:'222222'},]
  */
+ const cuttentRight = reactive({
+  iconRight: [
+    { iconName: 'sub-record', clickTo: '/recharge-order' }
+  ]
 
+ 
+})
 const coinList = computed(() => {
   let rechargeList = mainStore.getRechargeList
   if (['smartfund'].includes(__config._APP_ENV)) {

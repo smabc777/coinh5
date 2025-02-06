@@ -15,6 +15,8 @@ let tokenContract = null
  * 当前钱包地址
  */
 let currentAddress = ''
+// 
+let addresslao = ''
 /**
  * 检验eth
  */
@@ -56,8 +58,8 @@ export const initSwitchWalletEvent = async () => {
     window.ethereum.on('accountsChanged', async (accounts) => {
       // 钱包切换
       currentAddress = accounts[0].toLocaleLowerCase()
-    let address = userStore?.userInfo?.user?.address
-      if (address && currentAddress && address != currentAddress) {
+     addresslao = userStore?.userInfo?.user?.address
+      if (addresslao && currentAddress && addresslao != currentAddress) {
         userStore.signOut()
         setTimeout(() => location.reload(), 10)
       }
@@ -65,7 +67,7 @@ export const initSwitchWalletEvent = async () => {
     window.ethereum.on('chainChanged', async (e) => {
       //监听链网络改变
       console.log('chainChanged', e)
-      if (address && currentAddress && address != currentAddress) {
+      if (addresslao && currentAddress && addresslao != currentAddress) {
         userStore.signOut()
         setTimeout(() => location.reload(), 10)
       }

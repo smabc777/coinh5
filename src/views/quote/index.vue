@@ -38,7 +38,7 @@
         <ForeignExchange v-else-if="item.componentName == 'ForeignExchange'"></ForeignExchange>
 
         <keep-alive>
-          <ApanStocks v-if="item.componentName == 'ApanStocks' && currentIndex === 4"  ref="apanStocksRef"></ApanStocks>
+          <ApanStocks v-if="item.componentName == 'ApanStocks'"  ref="apanStocksRef"></ApanStocks>
         </keep-alive>
         
 

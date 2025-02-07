@@ -611,7 +611,7 @@ const subscribeTrades = async (params) => {
       // let tempTime = parseInt(tempData.id / intervalDiff.value) * intervalDiff.value
       let tempTime = _mul(_div(tempData.id || 0, intervalDiff.value || 0), intervalDiff.value || 0)
 
-      if (currentCoinInfo.market == 'metal') {
+        if (currentCoinInfo.market == 'metal' ||currentCoinInfo.market ==  'alphasquare') {
         // 期货数据
         if (tempTrade.time != tempTime) {
           // 最新分时

@@ -21,7 +21,7 @@
       <van-icon name="arrow" size="14px" />
     </div>
     <!--  退出登录  -->
-    <div class="list-item" v-if="userStore.isSign && !userStore.userInfo.addressFlag" @click="loginOut">
+    <!-- <div class="list-item" @click="loginOut">
       <div class="list-item-left">
         <image-load filePath="log-out.png" class="itemImg" />
         <div>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <van-icon name="arrow" size="14px" />
-    </div>
+    </div> -->
   </div>
 </template>
 

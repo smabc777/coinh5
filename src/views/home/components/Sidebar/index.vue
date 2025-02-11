@@ -64,7 +64,7 @@ const sidebarShow = inject('sidebarShow')
     }
 
     .van-button__text {
-      color: var(--ex-default-font-color);
+      color: var(--ex-font-color);
     }
 
   }

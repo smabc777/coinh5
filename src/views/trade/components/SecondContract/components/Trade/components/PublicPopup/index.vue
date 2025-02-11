@@ -1,7 +1,8 @@
 <template>
-
+<!-- 70% -->
   <van-popup v-model:show="SecondTradeData.show" position="bottom" round teleport="#app" safe-area-inset-top
-    safe-area-inset-bottom :style="{ position: 'absolute', height: '70%', maxWidth: 'var(--ex-max-width)' }">
+    safe-area-inset-bottom :style="{ position: 'absolute', height: '75%', maxWidth: 'var(--ex-max-width)' }">
+
     <div class="popup-content">
 
       <div class="top-content">
@@ -68,10 +69,26 @@
             <!-- 选择周期 -->
             <div class="firstHeader fw-bold">{{ _t18(`select_cycle`, ['moonex']) }}</div>
 
-            <van-tabs v-model="cycleIndex" color="transparent" shrink swipeable :swipe-threshold="2" :line-width="0">
+            <!-- <van-tabs v-model="cycleIndex" color="transparent" shrink swipeable :swipe-threshold="2" :line-width="0">
               <van-tab v-for="(item, index) in cycleList" :key="index">
                 <template #title>
                   <div class="firstItem fw-num" @click="chooseCycle(index, item)"
+                    :class="{ hightColor: cycleIndex === index }">
+                    <div class="van-tab-item">
+                      <div class="item-atv" :class="{ active: cycleIndex == index }">
+                        <svg-load name="first-atv"></svg-load>
+                      </div>
+                      <div class="item-time">{{ formatSeconds(item.period) }}</div>
+                      <div class="item-price" :class="{ 'Sell-bg-color': !formData.betContent }">
+                        {{ _mul(item.odds, 100) }}%
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </van-tab>
+            </van-tabs> -->
+            <div class="bbbbbb" >
+                  <div class="firstItem fw-num" v-for="(item, index) in cycleList" :key="index" @click="chooseCycle(index, item)"
                     :class="{ hightColor: cycleIndex === index }">
                     <div class="van-tab-item">
                       <div class="item-atv" :class="{ active: cycleIndex == index }">
@@ -84,9 +101,7 @@
                       </div>
                     </div>
                   </div>
-                </template>
-              </van-tab>
-            </van-tabs>
+              </div>
           </div>
 
           <div class="item">
@@ -657,5 +672,74 @@ const formatSeconds = (seconds) => {
   }
 
   :deep(.van-picker__frame) {}
+}
+.bbbbbb{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .firstItem:nth-child(1),.firstItem:nth-child(2),.firstItem:nth-child(3){
+    margin-bottom:16px;
+  }
+  .firstItem {
+  position: relative;
+
+            width:30%;
+            background: var(--ex--backup-background-color-2);
+            border: 1px solid var(--ex--backup-background-color-2);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--ex-default-font-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+
+            .van-tab-item {
+
+              .item-text {
+                font-size: 12px;
+                margin-top: 16px;
+              }
+
+              .item-time {
+                margin-top: 8px;
+                color: #333;
+                font-size: 18px;
+              }
+
+              .item-price {
+                margin-top: 6px;
+                color: var(--ex-trade-buy-bg-color);
+                font-size: 12px;
+              }
+
+              .item-atv {
+                position: absolute;
+                top: -1px;
+                right: 0;
+                display: none;
+
+                img {
+                  width: 33px;
+                  height: 33px;
+                }
+              }
+            }
+
+            &.hightColor {
+              background: rgb(162 241 208 / 11%);
+              border: 1px solid var(--ex-trade-buy-bg-color);
+
+              .item-atv {
+                display: block;
+              }
+            }
+
+            .firstItemTop {
+              line-height: 38px;
+            }
+          }
 }
 </style>

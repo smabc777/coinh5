@@ -85,9 +85,12 @@ export const useMainStore = defineStore('main', {
         }
     },
     getters: {
+         // 获取充值类型配置
+         getsupportsetting: (state) => {
+            return state.settingConfig.SUPPORT_SETTING || {}
+        },
         // 获取股票类型
         getstockenable: (state) => {
-            
             return state.settingConfig.STOCK_ENABLE || []
         },
         // 获取侧边栏

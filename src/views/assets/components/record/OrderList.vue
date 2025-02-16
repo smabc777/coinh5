@@ -1,17 +1,26 @@
 <template>
   <div @click="toDetail(dataValue)" class="record-card">
-    <div class="header-record">
-      <image-load filePath="deposit.png" class="left-icon"></image-load>
-      <div class="right-status">
-        <!-- 充提币 -->
+    <div class="header-record flex-ct">
+      <!-- <image-load filePath="deposit.png" class="left-icon"></image-load> -->
+      <div class="left flex-st">
+        <svg-load name="card" class="usdt" v-if="dataValue.type == 'BANK'"></svg-load>
+        <svg-load :name="filterCoin2(dataValue.coin)" class="usdt" v-else></svg-load>
+        <div class="txt">
+          {{ dataValue.type }}
+        </div>
         <p class="tips" v-if="router.currentRoute.value.name == 'RechargOrder'">{{ _t18('recharge') }}</p>
         <p class="tips" v-if="router.currentRoute.value.name == 'WithdrawOrder'">{{ _t18('asset_withdraw') }}</p>
+      </div>
+      <div class="right-status">
+        <!-- 充提币 -->
+       
 
         <p class="status0" v-if="dataValue.status == 0">{{ _t18('recharge_waiting') }}</p>
         <p class="status1" v-if="dataValue.status == 1">{{ _t18('recharge_tab_success') }}</p>
         <p class="status2" v-if="dataValue.status == 2">{{ _t18('recharge_tab_error') }}</p>
       </div>
     </div>
+    
     <div class="message">
       <div>
         <p class="left">{{ _t18('recharge_coin') }}</p>
@@ -101,9 +110,11 @@ console.log(dataValue)
 }
 
 .record-card {
-  background: var(--ex-financial-card-bg-color);
   border-radius: 10px;
   padding: 14px 14px 16px;
+
+  background: var(--ex-backup--background-color);
+    border: 0.026667rem solid var(--ex--backup-background-color-2);
 
   .header-record {
     display: flex;
@@ -111,17 +122,17 @@ console.log(dataValue)
     padding-bottom: 15px;
     border-bottom: 1px solid var(--ex-select-border-btmcolor);
 
-    .left-icon {
+    .usdt {
       width: 28px;
       height: 28px;
+      margin-right: 6px;
     }
 
     .right-status {
       margin-left: 6px;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      // display: flex;
+      // align-items: center;
+      // justify-content: space-between;
 
       .status0 {
         color: var(--ex-font-color29);

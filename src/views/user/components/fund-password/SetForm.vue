@@ -49,7 +49,7 @@ const submit = () => {
 
   var data = { pwd: formData.value.password }
 
-  setFundPwd(formData.value.password, data).then((res) => {
+  setFundPwd(formData.value.password, data,{loading:true}).then((res) => {
     if (res.code == '200') {
       // showToast('设置成功')
       _toast('Fund_password_set_success')
@@ -64,6 +64,7 @@ const submit = () => {
   <div class="content">
     <div class="input">
       <svg-load name="mima" class="icon1"></svg-load>
+
       <input autocomplete="off" :type="form.pwd ? 'text' : 'password'" v-model="formData.password" />
       <svg-load :name="form.pwd ? 'openeyes' : 'closeeyse'" class="icon2" @click="setVal"></svg-load>
     </div>
@@ -94,7 +95,7 @@ const submit = () => {
       height: 100%;
       padding: 0 38px;
       font-size: 14px;
-      background: var(--ex-input-background-color);
+      border: 0.026667rem solid var(--ex-border-line);
     }
 
     /* 焦点状态样式 */

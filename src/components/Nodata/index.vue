@@ -1,7 +1,7 @@
 <template>
   <div class="noData">
     <svg-load name="noyet" class="noDatAimg"></svg-load>
-<!--    <div class="noName">{{ _t18(`no_data`) }}</div>-->
+   <div class="noName">{{ _t18(`no_data`) }}</div>
   </div>
 </template>
 <script setup>
@@ -17,7 +17,7 @@ import { _t18 } from '@/utils/public'
   }
   .noName {
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
     color: var(--ex-passive-font-color);
   }

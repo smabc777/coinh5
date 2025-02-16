@@ -52,10 +52,10 @@ export const getUserInfo = () => post('/api/user/getInfo')
  * 资金密码
  */
 // 设置资金密码
-export const setFundPwd = (pwd, data) => post(`/api/user/tardPwdSet?pwd=${pwd}`, data)
+export const setFundPwd = (pwd, data,loading) => post(`/api/user/tardPwdSet?pwd=${pwd}`, data,loading)
 // 修改资金密码
-export const updateFundPwd = (oldPwd, newPwd, signType, data) =>
-  post(`/api/user/updatePwd?oldPwd=${oldPwd}&newPwd=${newPwd}&signType=${signType}`, data)
+export const updateFundPwd = (oldPwd, newPwd, signType, data,loading) =>
+  post(`/api/user/updatePwd?oldPwd=${oldPwd}&newPwd=${newPwd}&signType=${signType}`, data,loading)
 
 /**
  *
@@ -73,7 +73,7 @@ export const updateFundPwd = (oldPwd, newPwd, signType, data) =>
 //   post(
 //     `/api/user/uploadKYC?realName=${realName}&idCard=${idCard}&flag=${flag}&frontUrl=${frontUrl}&backUrl=${backUrl}&country=${country}&handelUrl=${handelUrl}&cardType=${cardType}`
 //   )
-export const uploadKYC = (params) => post(`/api/user/uploadKYC?${params}`)
+export const uploadKYC = (params,loading) => post(`/api/user/uploadKYC?${params}`,loading)
 
 export const getFreezeList = (params) => post(`api/withdraw/freezeList`)
 

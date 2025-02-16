@@ -179,7 +179,7 @@ const submit = () => {
 
   // realName 姓名 ,idCard 证件号码 ,flag 1 初级 2高级 ,frontUrl 正面照片 ,backUrl 反面照片 ,country 国家 ,handelUrl 手持照片 ,cardType 类型
   let params = `realName=${formData.userName}&idCard=${formData.number}&flag=2&frontUrl=${filePath1}&backUrl=${filePath2}&country=${country.value}&handelUrl=${filePath3}&cardType=${type.value}`
-  uploadKYC(params).then((res) => {
+  uploadKYC(params,{loading:true}).then((res) => {
     if (res.code == '200') {
       // showToast('提交成功，请等待...')
       _toast('please_wait')
@@ -228,7 +228,8 @@ onMounted(() => {
     :cuttentRight="cuttentRight"></HeaderBar>
   <div class="content" v-if="advancedAuth == '0' || advancedAuth == null">
     <div class="tip advanced_txt">
-      <image-load filePath="defi/tips.png" name="tips" class="tips"></image-load>
+      <svg-load name="right-rule"  class="tips"></svg-load>
+
       {{ _t18('advanced_txt', ['aams', 'aug', 'moonex', 'vitc']) }}
     </div>
     <div v-if="['coinsexpto'].includes(_getConfig('_APP_ENV'))" class="tip_info">
@@ -288,19 +289,22 @@ onMounted(() => {
     <div class="upload-box">
       <div class="item">
         <van-uploader accept=".png, .jpg, .jpeg" :after-read="afterRead1" v-model="fileList1">
-          <image-load filePath="defi/delete.png" name="delete" class="img"></image-load>
+          <svg-load v-if="!filePath1" name="Gellary" class="afterread-img"></svg-load>
+
           <div class="tit">{{ _t18('upload_positive', 'smartfund') }}</div>
         </van-uploader>
       </div>
       <div class="item">
         <van-uploader :after-read="afterRead2" v-model="fileList2">
-          <image-load filePath="defi/delete.png" name="delete" class="img"></image-load>
+          <svg-load v-if="!filePath2" name="Gellary" class="afterread-img"></svg-load>
+
           <div class="tit">{{ _t18('upload_reverse side', ['smartfund', 'moonex', 'vitc']) }}</div>
         </van-uploader>
       </div>
       <div class="item" v-if="!REALNAME.includes(_getConfig('_APP_ENV'))">
         <van-uploader :after-read="afterRead3" v-model="fileList3">
-          <image-load filePath="defi/delete.png" name="delete" class="img"></image-load>
+          <svg-load v-if="!filePath3" name="Gellary" class="afterread-img"></svg-load>
+
           <div class="tit" v-if="['coinsexpto'].includes(_getConfig('_APP_ENV'))">
             {{ _t18('Upload_passport_photo2') }}
           </div>
@@ -341,6 +345,8 @@ onMounted(() => {
   color: var(--ex-select-font-color) !important;
   display: flex;
   align-items: center;
+  border: 0.026667rem solid var(--ex-border-line);
+background: transparent;
 }
 
 .van-cell:after {
@@ -352,7 +358,7 @@ onMounted(() => {
 // }
 
 .content {
-  padding: 30px 15px 0 15px;
+  padding: 16px 15px 0 15px;
 
   .tip {
     font-size: 14px;
@@ -361,8 +367,8 @@ onMounted(() => {
   }
 
   .tips {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height:20px;
     margin: 0 2px;
     vertical-align: top;
   }
@@ -392,8 +398,7 @@ onMounted(() => {
         height: 46px;
         font-size: 14px;
         border-radius: 8px;
-        background: var(--ex-input-background-color);
-        border: 1px solid rgba(0, 0, 0, 0);
+        border: 0.026667rem solid var(--ex-border-line);
 
         &::placeholder {
           color: var(--ex-input-font-color2);
@@ -438,7 +443,7 @@ onMounted(() => {
 
   .upload-box {
     .item {
-      height: 194px;
+      height: 180px;
       background: var(--ex-default-background-color);
       border-radius: 8px;
       border: 1px dashed var(--ex-border-color10);
@@ -447,6 +452,9 @@ onMounted(() => {
       flex-direction: column;
       align-items: center;
       overflow: hidden;
+      .van-uploader{
+        height: 180px;
+      }
 
       .van-uploader {
         width: 100%;
@@ -460,6 +468,7 @@ onMounted(() => {
             display: flex;
             flex-direction: column;
             align-items: center;
+            height: 180px;
           }
 
           .van-uploader__preview {
@@ -469,7 +478,7 @@ onMounted(() => {
 
             .van-uploader__preview-image {
               width: 100%;
-              height: 194px;
+              height: 180px;
             }
           }
 
@@ -484,15 +493,15 @@ onMounted(() => {
         }
       }
 
-      .img {
+      .afterread-img {
         // width: 100%;
         // height: 100%;
-        width: 44px;
-        height: 44px;
+        width: 30px;
+        height: 30px;
         min-width: none;
         min-height: none;
         object-fit: contain;
-        margin: 56px 0 10px 0;
+        margin: 60px 0 10px 0;
       }
 
       .tit {

@@ -14,7 +14,7 @@
           <span :class="-1 == wireTransferListIndex ? 'cueBank' : ''">EUR</span>
         </div>
         <div class="bankinfo" @click="bankinfodialog(it.title, idx)"
-          v-for="( it, idx ) in  mainStore.rechargeWireTransfer " :key="idx">
+          v-for="( it, idx ) in mainStore.rechargeWireTransfer " :key="idx">
           <span :class="idx == wireTransferListIndex ? 'cueBank' : ''">{{ it.title }}</span>
         </div>
         <p class="promptinfo">{{ _t18('promp_tinfo') }}</p>
@@ -24,9 +24,8 @@
       <div class="online-address" v-if="!route.query.isMCS">
         <p class="top">{{ _t18('recharge_address', ['bitmake']) }}({{ route.query.type }})</p>
         <div class="address">{{ address }}</div>
-        <van-button block class="service-btn" @click="_copy(address)">
-          {{ _t18('copy') }}
-        </van-button>
+       
+        <div class="service-btn" @click="_copy(address)">{{ _t18('copy') }}</div>
       </div>
     </div>
     <!-- 申请信息 -->
@@ -35,7 +34,7 @@
         <!-- 充值数量 -->
         <p class="top">{{ _t18('recharge_number', ['bitmake']) }}</p>
         <div class="bottom">
-          <input type="number" :placeholder="_t18('recharge_input')" class="ff-num" v-model="num" />
+          <input type="number" :placeholder="_t18('recharge_input')+_t18('recharge_number', ['bitmake'])" class="ff-num" v-model="num" />
         </div>
       </div>
       <div class="uploadImg">
@@ -77,8 +76,8 @@
     <!--    </template>-->
     <!--    <template v-else-if="['aams', 'gmmoin'].includes(_getConfig('_APP_ENV'))"></template>-->
     <!-- 确认充值 -->
-    
-    <ButtonBar  @click="submit" :btnValue="_t18('recharge_require', ['bitmake']) "></ButtonBar>
+
+    <ButtonBar @click="submit" :btnValue="_t18('recharge_require', ['bitmake'])"></ButtonBar>
 
     <!--    <div class="advertBox" v-if="['mirae', 'miraeasset'].includes(_getConfig('_APP_ENV'))">-->
     <!--      <Advert></Advert>-->
@@ -259,7 +258,7 @@ const submit = debounce(() => {
     }
   }
   console.log(params)
-  rechargeSubmit(params,{loading:true}).then((res) => {
+  rechargeSubmit(params, { loading: true }).then((res) => {
     if (res.code == '200') {
       _toast('recharge_success') // 充值成功
       num.value = ''
@@ -271,29 +270,32 @@ const submit = debounce(() => {
     }
   })
 }, 500)
-
+// 获取通道数据
+const getAdderssInfo = () => {
+  let address = mainStore.getRechargeList.filter((elem) => elem.coinName == route.query.type)
+  return address[0].coinAddress
+}
 const mainStore = useMainStore()
 /**
  * 充值地址
  */
 const address = computed(() => {
-  /* let tempAddress = mainStore.userRechageMap[route.query.type]
-  if (tempAddress != undefined) {
-    let rechargeObj = mainStore.getRechargeList.find((elem) => elem.coinName == route.query.type)
-    tempAddress = tempAddress || rechargeObj.address
-  }
-  return tempAddress */
-
-  // 一个接口获取所有充值地址
-  let tempAddress = mainStore.settingRechargeAddress[route.query.type]
-  console.log(mainStore.settingRechargeAddress,'tempAddresstempAddresstempAddress')
-
-  if (tempAddress != undefined) {
-    let rechargeObj = mainStore.getRechargeList.find((elem) => elem.coinName == route.query.type)
-    tempAddress = tempAddress || rechargeObj.address
+  let tempAddress = ''
+  
+  if (mainStore.getsupportsetting?.choose == 0) {
+    // 获取全局充值通道地址
+    tempAddress= getAdderssInfo()
+  } else {
+    // 一个接口获取所有充值地址
+    tempAddress = mainStore.settingRechargeAddress[route.query.type]
+    if (tempAddress != undefined) {
+      let rechargeObj = mainStore.getRechargeList.find((elem) => elem.coinName == route.query.type)
+      tempAddress = tempAddress || rechargeObj.address
+    }
   }
   return tempAddress
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -309,7 +311,7 @@ const address = computed(() => {
   .apply-header {
     background: var(--ex-financial-card-bg-color);
     border-radius: 10px;
-    padding: 20px 0 30px;
+    padding: 20px 0 20px;
 
     .header-coin {
       display: flex;
@@ -320,6 +322,8 @@ const address = computed(() => {
     .erweima {
       // padding: 48px 0 30px;
       padding: 15px 0 10px;
+      img{
+      }
 
       .bankinfo {
         font-size: 18px;
@@ -367,12 +371,13 @@ const address = computed(() => {
 
       .address {
         font-size: 12px;
-        padding: 8px 12px;
+        padding: 8px 20px;
         border-radius: 8px;
         border: 1px solid var(--ex-border-line);
         margin: 10px 0 16px;
         word-wrap: break-word;
         word-break: break-all;
+        text-align: center;
       }
     }
   }
@@ -381,7 +386,7 @@ const address = computed(() => {
 .applyMes {
   background: var(--ex-financial-card-bg-color);
   border-radius: 10px;
-  padding: 20px 14px 30px;
+  padding: 20px 0px 30px;
   margin-top: 16px;
 
   &>div {
@@ -440,13 +445,9 @@ const address = computed(() => {
 }
 
 .service-btn {
-  width: 113px;
-  height: 35px;
+  
   text-align: center;
-  background: var(--ex-copy-font-bg-color);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 400;
+ 
   color: var(--ex-copy-font-color);
 }
 

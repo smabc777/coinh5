@@ -73,6 +73,8 @@ const coinList = computed(() => {
     )
   }
   let list = []
+  console.log(rechargeList,'rechargeListrechargeListrechargeList');
+  
 
   rechargeList.map((item, index) => {
     if (item.isShow) {

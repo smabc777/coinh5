@@ -79,7 +79,7 @@ const changePwd = () => {
     signType: 1
   }
 
-  updateFundPwd(form.value.oldPwd, form.value.newPwd, 1, data).then((res) => {
+  updateFundPwd(form.value.oldPwd, form.value.newPwd, 1, data,{loading:true}).then((res) => {
     if (res.code == '200') {
       // showToast('资金密码修改成功')
       _toast('Fund_password_update_success')
@@ -148,7 +148,7 @@ const changePwd = () => {
       height: 100%;
       padding: 0 38px;
       font-size: 14px;
-      background: var(--ex-input-background-color);
+      border: 0.026667rem solid var(--ex-border-line);
     }
 
     /* 焦点状态样式 */

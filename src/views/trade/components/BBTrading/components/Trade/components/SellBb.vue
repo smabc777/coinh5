@@ -156,7 +156,9 @@ const coinInfo = inject('coinInfo')
 const coinInfoCoin = computed(() => coinInfo.customizeFlag === 2 ? matchText(coinInfo.value.showSymbol, '/USDT') : coinInfo.value.coin?.toUpperCase())
 // 账户余额
 const {asset} = storeToRefs(userStore)
+
 const availableBalance = computed(() => {
+
   let tempValue = 0
   if (asset.value.length) {
     tempValue = asset.value.filter((item) => item.symbol === coinInfo.value.coin)[0]?.availableAmount || 0

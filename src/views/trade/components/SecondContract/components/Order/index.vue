@@ -180,7 +180,7 @@ defineExpose({
         .van-tab--shrink {
           padding: 0;
           padding-right: 10px;
-          background: none;
+          background: transparent;
         }
 
       }

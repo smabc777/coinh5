@@ -194,6 +194,9 @@ defineExpose({
 
 </script>
 <style scoped lang="scss">
+:deep(.van-cell){
+  background: transparent;
+}
 .content {
   text-align: center;
   min-height: 240px;

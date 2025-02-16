@@ -160,7 +160,7 @@ export default {
       .van-tabs__nav {
         border-radius: 8px;
         padding: 0;
-        background: var(--ex-home-tabs-bg-color);
+        // background: var(--ex-home-tabs-bg-color);
       }
 
       .tab-item {

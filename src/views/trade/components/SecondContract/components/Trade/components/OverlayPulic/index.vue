@@ -238,8 +238,8 @@ const onFinish = () => {
 
 //进度条颜色值
 const gradientColor = {
-  '0%': '#805EFF',
-  '100%': '#E567BF'
+  '0%': '#138A5D',
+  '100%': '#17ac74'
 };
 
 const countDownRef = ref(null);
@@ -291,10 +291,11 @@ defineExpose({ setOverlayPulicShow })
         margin-left: 6px;
         min-width: 34px;
         padding: 2px;
-        background: linear-gradient(225deg, #2BDDB9 0%, #B95FE3 100%);
+        background: var(--ex-trade-buy-bg-color);
         border-radius: 4px;
         font-size: 12px;
         text-align: center;
+        color: #fff;
       }
     }
   }

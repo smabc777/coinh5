@@ -242,6 +242,9 @@ defineExpose({
 })
 </script>
 <style scoped lang="scss">
+:deep(.van-cell){
+  background: transparent;
+}
 .content {
   text-align: center;
   min-height: 240px;
@@ -256,6 +259,7 @@ defineExpose({
 
   .hisToryList {
     padding: 20px 15px 0;
+    border-bottom: 1px solid var(--ex-border-color);
 
     // border-bottom: 1px solid var(--ex-border-color);
     .header {

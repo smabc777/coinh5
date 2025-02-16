@@ -28,7 +28,7 @@
             type="number"
             class="input"
             v-model.trim="money"
-            :placeholder="_t18(`exchange.input`)"
+            :placeholder="_t18(`swap_input`)"
         />
         <div>USDT</div>
       </div>
@@ -295,17 +295,17 @@ watch(
     background: var(--ex-default-background-color);
   }
 
-  input::-webkit-input-placeholder {
-    color: var(--ex-font-color1);
-  }
+  // input::-webkit-input-placeholder {
+  //   color: var(--ex-font-color1);
+  // }
 
-  input::-moz-input-placeholder {
-    color: var(--ex-font-color1);
-  }
+  // input::-moz-input-placeholder {
+  //   color: var(--ex-font-color1);
+  // }
 
-  input::-ms-input-placeholder {
-    color: var(--ex-font-color1);
-  }
+  // input::-ms-input-placeholder {
+  //   color: var(--ex-font-color1);
+  // }
 }
 
 .rightFourth {
@@ -401,7 +401,7 @@ watch(
 }
 
 .determine {
-  margin: 50px 0 30px;
+  margin: 50px 0 10px;
 
   .determinebtn {
     height: 50px;

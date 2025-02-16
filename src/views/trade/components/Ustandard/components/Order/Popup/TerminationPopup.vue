@@ -31,7 +31,7 @@
             type="number"
             class="input"
             v-model.trim="earnPriceValue"
-            :placeholder="_t18(`exchange.input`)"
+            :placeholder="_t18(`swap_input`)"
         />
         <div>USDT</div>
       </div>
@@ -279,17 +279,17 @@ const selcetItem = () => {
     background: var(--ex-default-background-color);
   }
 
-  input::-webkit-input-placeholder {
-    color: var(--ex-font-color1);
-  }
+  // input::-webkit-input-placeholder {
+  //   color: var(--ex-font-color1);
+  // }
 
-  input::-moz-input-placeholder {
-    color: var(--ex-font-color1);
-  }
+  // input::-moz-input-placeholder {
+  //   color: var(--ex-font-color1);
+  // }
 
-  input::-ms-input-placeholder {
-    color: var(--ex-font-color1);
-  }
+  // input::-ms-input-placeholder {
+  //   color: var(--ex-font-color1);
+  // }
 }
 
 .rightFourth {
@@ -375,7 +375,7 @@ const selcetItem = () => {
 }
 
 .determine {
-  margin: 50px 0 30px;
+  margin: 50px 0 10px;
 
   .determinebtn {
     height: 50px;

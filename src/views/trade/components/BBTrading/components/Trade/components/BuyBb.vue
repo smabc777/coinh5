@@ -162,7 +162,7 @@ const coinInfoCoin = computed(() => coinInfo.value.customizeFlag === 2 ? matchTe
 const availableBalance = computed(() => {
   let tempValue = 0
   if (asset.value.length) {
-    tempValue = asset.value.filter((item) => item.symbol === 'usdt')[0]?.availableAmount || 0
+    tempValue = asset.value.filter((item) => item.symbol === 'usdt' && item.type === 1)[0]?.availableAmount || 0
   }
   return tempValue
 })

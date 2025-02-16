@@ -303,7 +303,7 @@ const linkTo = async (item) => {
   // display: flex;
   // align-content: center;
   // justify-content: space-between;
-  border-bottom: 1px solid #272c3c;
+  border-bottom: 1px solid var(--ex--backup-background-color-2);
   margin-top: 20px;
 
   :deep(.van-tab) {
@@ -311,12 +311,12 @@ const linkTo = async (item) => {
   }
 
   :deep(.van-tab--active) {
-    color: #7833f6;
+    color: var(--ex-home-tabs-text-atv-color);
     font-size: 15px;
   }
 
   :deep(.van-tabs__line) {
-    background-color: #7833f6;
+    background-color: var(--ex-home-tabs-text-atv-color);
     bottom: 0px;
 
   }

@@ -112,7 +112,7 @@
       <!--      >-->
       <!--      </div>-->
       <div v-if="!['vitc'].includes(_getConfig('_APP_ENV'))">
-        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ $route.query.ratio }}%</span>
+        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ $route.query.ratio * allAmount }}</span>
       </div>
     </div>
   </div>
@@ -280,7 +280,6 @@ const advancedAuth = computed(() => {
 })
 // 提交
 const submitForm = async () => {
-  await userStore.getUserInfo()
 
   let flag = true
   // 非空判断
@@ -303,6 +302,7 @@ const submitForm = async () => {
       return
     }
   }
+  // await userStore.getUserInfo()
 
   if (userInfo.value.detail?.userTardPwd == null) {
     // showToast('请设置资金密码')
@@ -425,7 +425,7 @@ const submitApi = (params, data) => {
       _toast('stock91')
       // 提交成功
       setTimeout(() => {
-        router.push('/withdraw')
+        router.push('/withdraw-order')
       }, 1000)
     } else {
       showToast(res.msg)
@@ -453,7 +453,7 @@ const submit = () => {
 .header-amount {
   display: flex;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 16px 15px 0;
 
   .coin {
     display: flex;

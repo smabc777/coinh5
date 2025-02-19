@@ -82,13 +82,12 @@
     </div>
 
     <!-- 可用余额 -->
-    <div class="rightSix">
+    <div class="nineSix">
       <div>{{ _t18(`account_available`) }}</div>
       <div class="number fw-num">{{ availableBalance || 0 }} USDT</div>
     </div>
-
     <!-- 手续费 -->
-    <div class="handlingFee" v-if="handlingFee != null">
+     <div class="nineSix" v-if="handlingFee != null">
       <div>{{ _t18(`withdraw_commission`) }}</div>
       <div class="number fw-num">{{ handlingFee }} USDT</div>
     </div>
@@ -103,7 +102,7 @@
 
     <!-- 可开空-->
     <div class="nineSix">
-      <p>{{ _t18(`openable`, ['smartfund']) }}</p>
+      <p>{{ _t18(`can_do_more`) }}</p>
       <div class="number fw-num">
         {{ bearableValue ? _toFixed(bearableValue, 4) : 0 }}
         {{
@@ -885,13 +884,12 @@ onUnmounted(() => {
 
   .handlingFee {
     margin-top: 10px;
-    flex: 1;
-    width: 100%;
+    // width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    font-size: 10px;
-    white-space: nowrap;
+    // align-items: center;
+    // font-size: 10px;
+    // white-space: nowrap;
     color: var(--ex-passive-font-color);
 
     .number {

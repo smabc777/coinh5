@@ -51,7 +51,7 @@
 
     <!-- 通用：数量(手lots/张lots2) -->
     <van-field autocomplete="off" class="rightFifth" type="number" v-model="formData.delegateTotal"
-      :placeholder="['smartfund'].includes(_getConfig('_APP_ENV')) ? `${_t18(`metastaking_bb_count`, 'smartfund')}` : `${_t18(`metastaking_bb_count`)}(${_t18(`lots`)})`" />
+      :placeholder="!['smartfund'].includes(_getConfig('_APP_ENV')) ? `${_t18(`metastaking_bb_count`, 'smartfund')}` : `${_t18(`metastaking_bb_count`)}(${_t18(`lots`)})`" />
 
     <!-- 滑块部分 -->
     <div class="rightFourth">

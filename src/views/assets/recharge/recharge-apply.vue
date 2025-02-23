@@ -5,9 +5,9 @@
     <div class="apply-header">
       <svg-load :name="route.query.coin" class="header-coin"></svg-load>
       <!-- 二维码 -->
-      <div class="erweima" v-if="!route.query.isMCS">
+      <!-- <div class="erweima" v-if="!route.query.isMCS">
         <QRCode :address="address"></QRCode>
-      </div>
+      </div> -->
       <!-- 银行信息 -->
       <div class="erweima" v-if="['smartfund'].includes(_getConfig('_APP_ENV')) && route.query.isMCS">
         <div class="bankinfo" @click="bankinfodialog('EUR1', -1)">
@@ -316,7 +316,12 @@ const address = computed(() => {
     .header-coin {
       display: flex;
       margin: 0 auto;
-      font-size: 50px;
+      // font-size: 50px;
+      font-size: 80px;
+      margin-bottom: 18px;
+
+
+     
     }
 
     .erweima {

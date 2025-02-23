@@ -13,7 +13,7 @@
       <p class="tips">{{ _t18('swap_available') }}</p>
       <p class="tips-amount">
         <span>{{ priceFormat(amount) }}</span>
-        <span>{{ $route.query.type?.toUpperCase() }}</span>
+        <span>{{  $route.query.icon.toLocaleUpperCase() }}</span>
       </p>
     </div>
   </div>
@@ -103,17 +103,18 @@
           _t18('withdraw_tip')
         }}<span class="customer" @click="dispatchCustomEvent('event_serviceChange')">{{
           _t18('custorm_service')
-          }}</span>
+        }}</span>
       </div>
       <!-- 手续费 -->
-      <!--      <div v-if="['coinsexpto'].includes(_getConfig('_APP_ENV'))">-->
-      <!--        {{ _t18('withdraw_commission') }}：<span class="ff-num"-->
-      <!--      >{{ $route.query.fee || '' }} {{ $route.query.icon.toLocaleUpperCase() }}</span-->
-      <!--      >-->
-      <!--      </div>-->
-      <div v-if="!['vitc'].includes(_getConfig('_APP_ENV'))">
-        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ $route.query.ratio * allAmount }}</span>
+      <div v-if="$route.query.ratio">
+        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ $route.query.ratio * allAmount }} {{
+          $route.query.icon.toLocaleUpperCase() }}</span>
       </div>
+      <div v-else>
+        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ $route.query.fee || '' }} {{
+          $route.query.icon.toLocaleUpperCase() }}</span>
+      </div>
+
     </div>
   </div>
   <div class="btnBox" @click="submit">

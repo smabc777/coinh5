@@ -107,7 +107,7 @@
       </div>
       <!-- 手续费 -->
       <div v-if="$route.query.ratio">
-        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ $route.query.ratio * allAmount }} {{
+        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{priceFormat($route.query.ratio * allAmount) }} {{
           $route.query.icon.toLocaleUpperCase() }}</span>
       </div>
       <div v-else>

@@ -527,165 +527,183 @@ const createStudy = () => {
 /**
  * 订阅客户端列表
  */
-const subscribeClientList = []
+ const subscribeClientList = [];
 /**
  * 取消订阅
  * @param {*} firstDataRequest
  */
 const unsubscribeTrades = (firstDataRequest = false) => {
-  if (currentCoinInfo.coin) {
-    _coinWebSocket.send({
-      op: socketDict.unsubscribe,
-      type: socketDict.KLINE,
-      symbol: currentCoinInfo.coin,
-      interval: currentInterval.key
-    })
-    if (firstDataRequest) {
-      subscribeClientList.forEach((subKey) => {
-        subKey && PubSub.unsubscribe(subKey)
-      })
-      subscribeClientList.length = 0
-      _coinWebSocket.send({
-        op: socketDict.unsubscribe,
-        type: socketDict.TRADE,
-        symbol: currentCoinInfo.coin
-      })
+    if (currentCoinInfo.coin) {
+        _coinWebSocket.send({
+            op: socketDict.unsubscribe,
+            type: socketDict.KLINE,
+            symbol: currentCoinInfo.coin,
+            interval: currentInterval.key,
+        });
+        if (firstDataRequest) {
+            subscribeClientList.forEach((subKey) => {
+                subKey && PubSub.unsubscribe(subKey);
+            });
+            subscribeClientList.length = 0;
+            _coinWebSocket.send({
+                op: socketDict.unsubscribe,
+                type: socketDict.TRADE,
+                symbol: currentCoinInfo.coin,
+            });
+        }
     }
-  }
-}
+};
 
 /**
  * 订阅实时成交
  */
 const subscribeTrades = async (params) => {
-  // 先取消订阅
-  unsubscribeTrades(params.firstDataRequest)
+    // 先取消订阅
+    unsubscribeTrades(params.firstDataRequest);
 
-  _coinWebSocket.send({
-    op: socketDict.subscribe,
-    type: socketDict.KLINE,
-    symbol: params.coin,
-    interval: params.interval
-  })
-
-  if (params.firstDataRequest) {
     _coinWebSocket.send({
-      op: socketDict.subscribe,
-      type: socketDict.TRADE,
-      symbol: params.coin
-    })
-  }
-  // let marketTradeKey = PubSub.subscribe(socketDict.TRADE, (key, data) => {
-  // // 实时成交
-  // if (data.symbol == params.coin) {
-  //   let tempData = data.data.tick.data[0]
-  //   // console.log('实时成交', data.symbol, tempData)
-  //   if (
-  //     tempTrade.time <= tempData.ts &&
-  //     priceFormat(tempTrade.close) != priceFormat(tempData.price)
-  //   ) {
-  //     if (tempTrade.high < tempData.price) {
-  //       tempTrade.high = tempData.price
-  //     } else if (tempTrade.low > tempData.price) {
-  //       tempTrade.low = tempData.price
-  //     }
-  //     tempTrade.close = Number(priceFormat(tempData.price))
-  //     // updateDataKlineThrottle(tempTrade)
-  //     updateDataKline(tempTrade)
-  //   }
-  // }
-  // })
-  // subscribeClientList.push(marketTradeKey)
-  let candlestickKey = PubSub.subscribe(socketDict.KLINE, (key, data) => {
-    // console.log('----------', data)
-    // K线数据
-    // console.log('K线数据', tempTrade.lastClose, intervalDiff.value, data.data.tick)
-    let tempData = data.data.tick
-    if (data.symbol == params.coin?.toLocaleLowerCase()) {
-      if (tempTrade.intervention != tempData?.intervention) {
-        console.log('干预', tempTrade.intervention, tempData?.intervention, tempTrade.lastClose)
-        tempData.open = tempTrade.lastClose
-        tempTrade.intervention = tempData?.intervention
-      }
-      // 本次时间
-      // let tempTime = parseInt(tempData.id / intervalDiff.value) * intervalDiff.value
-      let tempTime = _mul(_div(tempData.id || 0, intervalDiff.value || 0), intervalDiff.value || 0)
+        op: socketDict.subscribe,
+        type: socketDict.KLINE,
+        symbol: params.coin,
+        interval: params.interval,
+    });
 
-      if (currentCoinInfo.market == 'metal') {
-        // 期货数据
-        if (tempTrade.time != tempTime) {
-          // 最新分时
-          // console.log('最新分时', tempTime, tempData, tempTrade)
-
-          // tempData.open = tempData.close
-
-          if (Math.abs(tempTrade.time - tempTime) < intervalDiff.value) {
-            tempData.open = tempData.close
-          } else {
-            tempTrade.open = tempData.close
-          }
-          console.log('不一样', intervalDiff.value, tempTrade.time, tempTime, tempData.close, tempData.open, tempTrade.open)
-
-
-
-          tempTrade.time = tempTime
-          tempData.high = tempData.close
-          tempData.low = tempData.close
-          tempTrade.high = tempData.close
-          tempTrade.low = tempData.close
-        } else {
-          // 当前分时
-          tempData.high = tempTrade.high
-          tempData.low = tempTrade.low
-          if (tempTrade.open < tempData.close) {
-            tempData.high = tempData.close
-          } else if (tempTrade.open > tempData.close) {
-            tempData.low = tempData.close
-          }
-        }
-      } else {
-        // 币安数据
-        console.log('上一次的时间', tempTrade.time, tempTrade.time < tempTime)
-        if (tempTrade.time < tempTime) {
-          console.log('本次时间', tempData.open, tempTrade.time, tempTime, tempData)
-          tempTrade.open = Number(priceFormat(tempData.open, 6))
-          tempTrade.time = tempTime
-        }
-      }
-
-      if (currentCoinInfo.market == 'mt5') {
-        tempTrade.high = tempData.close
-        tempTrade.low = tempData.close
-      } else {
-        tempTrade.high = tempData.high
-        tempTrade.low = tempData.low
-      }
-
-      tempTrade.close = Number(priceFormat(tempData.close, 6))
-      tempTrade.volume = tempData.vol
-      updateDataKline(tempTrade)
+    if (params.firstDataRequest) {
+        _coinWebSocket.send({
+            op: socketDict.subscribe,
+            type: socketDict.TRADE,
+            symbol: params.coin,
+        });
     }
-  })
-  subscribeClientList.push(candlestickKey)
-}
+    // let marketTradeKey = PubSub.subscribe(socketDict.TRADE, (key, data) => {
+    // // 实时成交
+    // if (data.symbol == params.coin) {
+    //   let tempData = data.data.tick.data[0]
+    //   // console.log('实时成交', data.symbol, tempData)
+    //   if (
+    //     tempTrade.time <= tempData.ts &&
+    //     priceFormat(tempTrade.close) != priceFormat(tempData.price)
+    //   ) {
+    //     if (tempTrade.high < tempData.price) {
+    //       tempTrade.high = tempData.price
+    //     } else if (tempTrade.low > tempData.price) {
+    //       tempTrade.low = tempData.price
+    //     }
+    //     tempTrade.close = Number(priceFormat(tempData.price))
+    //     // updateDataKlineThrottle(tempTrade)
+    //     updateDataKline(tempTrade)
+    //   }
+    // }
+    // })
+    // subscribeClientList.push(marketTradeKey)
+    let candlestickKey = PubSub.subscribe(socketDict.KLINE, (key, data) => {
+        // K线数据
+        // console.log('K线数据', tempTrade.lastClose, intervalDiff.value, data.data.tick, currentCoinInfo)
+        let tempData = data.data.tick;
+        if (data.symbol == params.coin?.toLocaleLowerCase()) {
+            if (tempTrade.intervention != tempData?.intervention) {
+                // console.log('干预', tempTrade.intervention, tempData?.intervention, tempTrade.lastClose)
+                tempData.open = tempTrade.lastClose;
+                tempTrade.intervention = tempData?.intervention;
+            }
+            // 本次时间
+            let tempTime =
+                parseInt(tempData.id / intervalDiff.value) * intervalDiff.value;
+
+            // 换源改K线:外汇改成和期货一样
+            // if (
+            //   currentCoinInfo.market == 'metal' ||
+            //   currentCoinInfo.market == 'stock'
+            // )
+
+            if (
+                currentCoinInfo.market == "metal" ||
+                currentCoinInfo.market == "stock" ||
+                currentCoinInfo.market == "mt5"||
+                currentCoinInfo.market == "alphasquare"
+
+            ) {
+                // 期货数据
+                if (tempTrade.time != tempTime) {
+                    // 最新分时
+                    // console.log('最新分时', tempTime, tempData, tempTrade)
+
+                    // tempData.open = tempData.close
+
+                    if (Math.abs(tempTrade.time - tempTime) < intervalDiff.value) {
+                        tempData.open = tempData.close;
+                    } else {
+                        tempTrade.open = tempData.close;
+                    }
+                    console.log(
+                        "不一样",
+                        intervalDiff.value,
+                        tempTrade.time,
+                        tempTime,
+                        tempData.close,
+                        tempData.open,
+                        tempTrade.open
+                    );
+
+                    tempTrade.time = tempTime;
+                    tempData.high = tempData.close;
+                    tempData.low = tempData.close;
+                    tempTrade.high = tempData.close;
+                    tempTrade.low = tempData.close;
+                } else {
+                    // 当前分时
+                    tempData.high = tempTrade.high;
+                    tempData.low = tempTrade.low;
+                    if (tempTrade.open < tempData.close) {
+                        tempData.high = tempData.close;
+                    } else if (tempTrade.open > tempData.close) {
+                        tempData.low = tempData.close;
+                    }
+                }
+            } else {
+                // 币安数据
+                if (tempTrade.time < tempTime) {
+                    // console.log('本次时间', tempData.open, tempTrade.time, tempTime, tempData)
+                    tempTrade.time = tempTime;
+                    tempTrade.open = tempData.open;
+                }
+            }
+            // 换源改K线:外汇改成和期货一样
+            // if (currentCoinInfo.market == 'mt5') {
+            //   tempTrade.high = tempData.close
+            //   tempTrade.low = tempData.close
+            // } else {
+            //   tempTrade.high = tempData.high
+            //   tempTrade.low = tempData.low
+            // }
+            tempTrade.high = tempData.high;
+            tempTrade.low = tempData.low;
+
+            tempTrade.close = Number(priceFormat(tempData.close));
+            tempTrade.volume = tempData.vol;
+            updateDataKline(tempTrade);
+        }
+    });
+    subscribeClientList.push(candlestickKey);
+};
 /**
  * 更新数据
  */
-const updateDataKline = async (newData) => {
-  if (newData?.close) {
-    // console.log('更新数据', newData)
-    await datafeeds.updateData(newData)
-    await PubSub.publish(socketDict.DETAIL, {
-      data: {
-        ...newData,
-        vol: newData.volume
-      },
-      origin: 'kline',
-      symbol: currentCoinInfo.coin,
-      type: socketDict.DETAIL
-    })
-  }
-}
+const updateDataKline = (newData) => {
+    if (newData?.close) {
+        // console.log('更新数据', newData)
+        datafeeds.updateData(newData);
+        PubSub.publish(socketDict.DETAIL, {
+            data: {
+                ...newData,
+                vol: newData.volume,
+            },
+            origin: "kline",
+            symbol: currentCoinInfo.coin,
+            type: socketDict.DETAIL,
+        });
+    }
+};
 /**
  * 更新数据 限流
  */
@@ -757,16 +775,17 @@ const setStudy = (name) => {
 
 .third {
   padding: 10px 0;
-  border-bottom: 1px solid var(--ex--backup-background-color-2);
+  border-bottom: 1px solid var(--ex-border-color);
 
   .list {
+    background-color: #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .thirdLeft {
       flex: 1;
-      // background-color: var(--ex-candlestick-bg);
+      background-color: var(--ex-candlestick-bg);
       display: flex;
       justify-content: space-between;
       font-size: 14px;

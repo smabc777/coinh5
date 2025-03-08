@@ -1,5 +1,5 @@
 <template>
-  <div class="home" v-if="check()">
+  <div class="home">
     <!-- 模拟交易-->
     <template v-if="isSimulate">
       <HeaderSimulate></HeaderSimulate>
@@ -151,23 +151,23 @@ onMounted(() => {
   // getStockList()
 })
 
-const check =  () => {
-  return  typeof window.ethereum !== 'undefined'
-}
- watch(() => router.currentRoute.value.fullPath,
-  (no, ol) => {
-    let isChecked =  check()
-  if (!isChecked && no != '/app-download') {
-    router.push('/app-download')
-  }
-  }
-)
-onMounted(async() => {
-let isChecked =  check()
-  if (!isChecked) {
-    router.push('/app-download')
-  }
-})
+// const check =  () => {
+//   return  typeof window.ethereum !== 'undefined'
+// }
+//  watch(() => router.currentRoute.value.fullPath,
+//   (no, ol) => {
+//     let isChecked =  check()
+//   if (!isChecked && no != '/app-download') {
+//     router.push('/app-download')
+//   }
+//   }
+// )
+// onMounted(async() => {
+// let isChecked =  check()
+//   if (!isChecked) {
+//     router.push('/app-download')
+//   }
+// })
 </script>
 
 <script>

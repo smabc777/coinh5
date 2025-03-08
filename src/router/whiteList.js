@@ -30,16 +30,17 @@ export const noLoginRouterList = [
   '/AITradingDetail',
   '/benefitDetail',
   '/benefitDetailTable',
-  '/newsDetail'
+  '/newsDetail',
+  '/login', // 登录
+  '/register', // 注册
+  '/forgot-password', // 忘记密码
 ]
 
 /**
  * 须登录 可访问
  */
 export const hasLoginRouterList = [
-  '/login', // 登录
-  '/register', // 注册
-  '/forgot-password', // 忘记密码
+
   '/recharge', // 充币
   '/withdraw', // 提币
   '/swap', // 兑换

@@ -43,14 +43,13 @@
     </div>
 
 
-    <van-button class="form-but" type="primary" color="#613AF1" @click="submit">{{
-      _t18('register')
-    }}
-    </van-button>
+   
+    <ButtonBar class="form-but" :btnValue="_t18('register')" @click="submit"></ButtonBar>
+
 
     <div class="is-account">
       {{ _t18('register_haveAccount') }}？
-      <span @click="_toReplace('/')">
+      <span @click="_toReplace('/login')">
         {{ _t18('register_toLogin') }}
       </span>
     </div>
@@ -155,7 +154,7 @@ const submit = async () => {
     return showToast({
       message: _showName('register_success'),
       onClose: () => {
-        _toReplace('/')
+        _toReplace('/login')
       }
     })
   } else {
@@ -246,5 +245,8 @@ const submit = async () => {
     }
   }
 
+}
+.van-cell:after{
+  display:none;
 }
 </style>

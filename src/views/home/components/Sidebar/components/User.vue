@@ -33,10 +33,10 @@
       </div>
     </div>
     <!-- 登录/注册 按钮  -->
-    <!-- <div v-else class="user-login">
+    <div v-else class="user-login">
       <div class="user-login-but" @click="_toView('/login')">{{ _t18('login') }}</div>
       <div class="user-login-but" @click="_toView('/register')">{{ _t18('register') }}</div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -165,10 +165,11 @@ const toCopy = async (data) => {
 
     .user-login-but {
       padding: 10px 20px;
-      background: #613af1;
+      background: var(--ex-trade-buy-bg-color);
       border-radius: 8px;
       font-size: 14px;
       margin-right: 20px;
+      color: #fff;
     }
   }
 }

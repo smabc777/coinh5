@@ -7,7 +7,7 @@
         <image-load :filePath="currentLanguage.imgUrl" class="lang img" />
         <span>{{ currentLanguage.remark }}</span>
       </div>
-      <van-icon @click="_toView('/')" name="cross" size="20" color="var(--ex-default-font-color)" />
+      <van-icon @click="_toView('/login')" name="cross" size="20" color="var(--ex-default-font-color)" />
     </div>
 
     <div class="content">
@@ -138,7 +138,7 @@ const forgerPasswordSubmit = (params) => {
         // _toast('重置成功！')
         _toast('reset_success')
         setTimeout(() => {
-          router.push('/')
+          router.push('/login')
         }, 500)
       } else {
         _toast(res.msg)

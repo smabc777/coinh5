@@ -27,10 +27,8 @@
       </van-field>
     </div>
 
-    <van-button class="form-but" type="primary" color="#613AF1" @click="submit">{{
-        _t18('login')
-      }}
-    </van-button>
+ 
+    <ButtonBar class="form-but" :btnValue="_t18('login')" @click="submit"></ButtonBar>
 
     <div class="is-account">
       {{ _t18('login_noAccount') }}？
@@ -284,5 +282,8 @@ const submit = async () => {
     }
   }
 
+}
+.van-cell:after{
+  display:none;
 }
 </style>

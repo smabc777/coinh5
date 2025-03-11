@@ -13,7 +13,7 @@
       <p class="tips">{{ _t18('swap_available') }}</p>
       <p class="tips-amount">
         <span>{{ priceFormat(amount) }}</span>
-        <span>{{  $route.query.icon.toLocaleUpperCase() }}</span>
+        <span>{{ $route.query.icon.toLocaleUpperCase() }}</span>
       </p>
     </div>
   </div>
@@ -81,8 +81,10 @@
         <!-- 提现地址 -->
         <div class="top">{{ _t18('withdraw_address') }}</div>
         <div class="bottom">
-          <input type="text" v-model="address" :placeholder="_t18('withdraw_input')" />
+          <input  class="input" type="text" v-model="address" :placeholder="_t18('withdraw_input')" />
         </div>
+
+
       </div>
       <div class="password">
         <!-- 提现密码 -->
@@ -107,7 +109,7 @@
       </div>
       <!-- 手续费 -->
       <div v-if="$route.query.ratio">
-        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{priceFormat($route.query.ratio * allAmount) }} {{
+        {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ priceFormat($route.query.ratio * allAmount) }} {{
           $route.query.icon.toLocaleUpperCase() }}</span>
       </div>
       <div v-else>
@@ -259,6 +261,49 @@ const allAmount = ref('')
  * 提现地址
  */
 const address = ref('')
+const dispalyAddress = ref('')
+const desenText = (str) => {
+  let res = str;
+  const len = str.length;
+  let pre4 = '';
+  let last6 = '';
+  pre4 = str.slice(0, 4);
+  last6 = str.slice(Math.max(len - 4, 4));
+  const star = Math.max(0, len - 8);
+  res = pre4 + '*'.repeat(star) + last6;
+  return res;
+}
+//输入框动态脱敏
+const desenInputText = (e) => {
+  const ind = e.target.selectionStart - 1;
+  let value = address.value;
+  const showValue = dispalyAddress.value;
+  const isAdd = showValue.length > value.length;
+  const num = Math.abs(value.length - showValue.length);
+  if (isAdd) {
+    value =
+      value.slice(0, ind - num + 1) +
+      showValue.slice(ind - num + 1, ind + 1) +
+      value.slice(ind - num + 1);
+  } else {
+    value = value.slice(0, ind + 1) + value.slice(ind + num + 1);
+  }
+  address.value = value;
+  dispalyAddress.value = desenText(value);
+  nextTick(() => {
+    const elem = e.target;
+    if (elem.setSelectionRange) {
+      // 标准浏览器
+      elem.setSelectionRange(ind + 1, ind + 1);
+    } else {
+      // IE9-
+      const range = elem.createTextRange();
+      range.moveStart('character', ind + 1);
+      range.moveEnd('character', ind + 1);
+      range.select();
+    }
+  });
+}
 provide('address', address)
 if ([].includes(__config._APP_ENV)) {
   // 显示用户绑定地址
@@ -635,6 +680,16 @@ const submit = () => {
           color: var(--ex-placeholder-font) !important;
         }
 
+        .input {
+          font-size: 16px;
+          flex: none;
+          width: 210px;
+          letter-spacing: .8px;
+        }
+        input::-webkit-input-placeholder {
+ 
+    font-size: 13px;
+}
         p {
           //   color: var(--ex-font-color9);
           color: var(--ex-copy-font-color);

@@ -301,16 +301,7 @@ onMounted(() => {
           <div class="tit">{{ _t18('upload_reverse side', ['smartfund', 'moonex', 'vitc']) }}</div>
         </van-uploader>
       </div>
-      <div class="item" v-if="!REALNAME.includes(_getConfig('_APP_ENV'))">
-        <van-uploader :after-read="afterRead3" v-model="fileList3">
-          <svg-load v-if="!filePath3" name="Gellary" class="afterread-img"></svg-load>
-
-          <div class="tit" v-if="['coinsexpto'].includes(_getConfig('_APP_ENV'))">
-            {{ _t18('Upload_passport_photo2') }}
-          </div>
-          <div class="tit" v-else>{{ _t18('Upload_passport_photo', ['moonex']) }}</div>
-        </van-uploader>
-      </div>
+      
     </div>
     <div class="btnBox" @click="submit">
       <ButtonBar :btnValue="_t18('advanced_submit')" />

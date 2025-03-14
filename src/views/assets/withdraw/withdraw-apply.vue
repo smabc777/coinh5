@@ -81,7 +81,9 @@
         <!-- 提现地址 -->
         <div class="top">{{ _t18('withdraw_address') }}</div>
         <div class="bottom">
-          <input  class="input" type="text" v-model="address" :placeholder="_t18('withdraw_input')" />
+          <span></span>
+
+          <input @paste="chanePaste" :style="{left:leftValue + '%'}" @input="changeInput" class="input" type="text" v-model="address" :placeholder="_t18('withdraw_input')" />
         </div>
 
 
@@ -312,6 +314,28 @@ if ([].includes(__config._APP_ENV)) {
 const password = ref('')
 let allNum = () => {
   allAmount.value = amount.value
+}
+const leftValue = ref(0)
+const flagvalue = ref(false)
+const changeInput = (e) => {
+  
+  if(e.target.value.length < 20) return
+  if(e.target.value.length > 20){
+    leftValue.value += -1
+  }else{
+    leftValue.value = 0
+
+  }
+  
+
+}
+const chanePaste = (e) => {
+  flagvalue.value = true
+  leftValue.value = -15.55
+  setTimeout(() => {
+  flagvalue.value = false
+    
+  }, 1000);
 }
 
 // 特殊平台，提现需要初级认证（初级）
@@ -665,7 +689,9 @@ const submit = () => {
         display: flex;
         align-items: center;
         justify-content: space-between;
-
+        background: #fff;
+        overflow: hidden;
+position: relative;
         .left {
           display: flex;
           align-items: center;
@@ -679,12 +705,24 @@ const submit = () => {
         input::placeholder {
           color: var(--ex-placeholder-font) !important;
         }
+        span{
+          width: 10px;
+          background: #fff;
+          height: 20px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          z-index: 100;
+        }
 
         .input {
           font-size: 16px;
           flex: none;
-          width: 210px;
-          letter-spacing: .8px;
+          letter-spacing: 1px;
+          position: relative;
+          flex: 1;
         }
         input::-webkit-input-placeholder {
  

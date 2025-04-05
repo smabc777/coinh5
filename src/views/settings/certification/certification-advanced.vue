@@ -204,8 +204,8 @@ const reSubmit = () => {
 
 const init = () => {
   if (['cmmetrics'].includes(__config._APP_ENV)) {
-    nationName.value = 'nation_Brazil'
-    country.value = 'Brazil'
+    nationName.value = 'nation_United States of America'
+    country.value = 'United States of America'
   } else if (['das'].includes(__config._APP_ENV)) {
     nationName.value = 'nation_Singapore'
     country.value = 'Singapore'

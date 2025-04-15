@@ -157,11 +157,11 @@ const submit = () => {
     _toast('loan_idcardReverse')
     return
   }
-  if (!REALNAME.includes(__config._APP_ENV) && fileList3.value.length == 0) {
-    // showToast('请上传手持证件照')
-    _toast('please_loan_hand')
-    return
-  }
+  // if (!REALNAME.includes(__config._APP_ENV) && fileList3.value.length == 0) {
+  //   // showToast('请上传手持证件照')
+  //   _toast('please_loan_hand')
+  //   return
+  // }
   const file1 = fileList1.value[0] || {}
   let filePath1 = file1.res
   const file2 = fileList2.value[0] || {}
@@ -171,14 +171,15 @@ const submit = () => {
   if (REALNAME.includes(__config._APP_ENV)) {
     file3.status = 'success'
   }
-  if (file1.status != 'success' || file2.status != 'success' || file3.status != 'success') {
+  
+  if (file1.status != 'success' || file2.status != 'success') {
     // showToast('图片上传中,稍后重试')
     _toast('recharge_img_load')
     return
   }
 
-  // realName 姓名 ,idCard 证件号码 ,flag 1 初级 2高级 ,frontUrl 正面照片 ,backUrl 反面照片 ,country 国家 ,handelUrl 手持照片 ,cardType 类型
-  let params = `realName=${formData.userName}&idCard=${formData.number}&flag=2&frontUrl=${filePath1}&backUrl=${filePath2}&country=${country.value}&handelUrl=${filePath3}&cardType=${type.value}`
+  // realName 姓名 ,idCard 证件号码 ,flag 1 初级 2高级 ,frontUrl 正面照片 ,backUrl 反面照片 ,country 国家 ,handelUrl 手持照片 ,cardType 类型      filePath3
+  let params = `realName=${formData.userName}&idCard=${formData.number}&flag=2&frontUrl=${filePath1}&backUrl=${filePath2}&country=${country.value}&handelUrl=${0}&cardType=${type.value}`
   uploadKYC(params,{loading:true}).then((res) => {
     if (res.code == '200') {
       // showToast('提交成功，请等待...')
@@ -301,6 +302,17 @@ onMounted(() => {
           <div class="tit">{{ _t18('upload_reverse side', ['smartfund', 'moonex', 'vitc']) }}</div>
         </van-uploader>
       </div>
+      <!-- <div class="item">
+        <van-uploader :after-read="afterRead3" v-model="fileList3">
+          <svg-load v-if="!filePath3" name="Gellary" class="afterread-img"></svg-load>
+
+          <div class="tit" v-if="['coinsexpto'].includes(_getConfig('_APP_ENV'))">
+            {{ _t18('Upload_passport_photo2') }}
+          </div>
+          <div class="tit" v-else>{{ _t18('Upload_passport_photo', ['moonex']) }}</div>
+        </van-uploader>
+      </div> -->
+
       
     </div>
     <div class="btnBox" @click="submit">

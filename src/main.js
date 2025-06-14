@@ -91,6 +91,7 @@ Promise.all([
     if (!defaultLanguage && currentLanguage.length) {
         defaultLanguage = currentLanguage[0].dictValue
     }
+    
     const i18n = await setupI18n(defaultLanguage)
     app.use(i18n)
     app.mount('#app')

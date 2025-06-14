@@ -111,7 +111,7 @@ export default ({ mode }) =>
     },
     build: {
       // 指定输出路径
-      outDir: 'h5',
+      outDir: 'cmmetrics-h5',
       // 小于此阈值的导入或引用资源将内联为 base64 编码，避免额外的 HTTP 请求。设置为 0 可以完全禁用此项
       assetsInlineLimit: 500,
       // 启用/禁用 CSS 代码拆分

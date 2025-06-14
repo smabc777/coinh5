@@ -73,9 +73,10 @@
             <div class="itemRight fw-num">{{ formData.buyPrice }} USDT</div>
           </div>
           <!-- 预计盈利 -->
-          <div class="item">
-            <div>{{ _t18(`quick_label_7`, ['moonex']) }}</div>
             <!-- fx平即为输 -->
+
+          <!-- <div class="item">
+            <div>{{ _t18(`quick_label_7`, ['moonex']) }}</div>
             <div v-if="['fx', 'dev'].includes(_getConfig('_APP_ENV')) &&
     _sub(formData.openPrice, coinPriceInfo.close) == 0
     " class="itemRight fw-num hightDown">
@@ -96,7 +97,7 @@
   }}
               USDT
             </div>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -155,7 +156,6 @@
           </div>
         </div>
       </div>
-
 
       <!-- 最终价格以系统结算为准 -->
       <div class="countFooter">

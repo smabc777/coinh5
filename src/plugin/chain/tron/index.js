@@ -72,6 +72,8 @@ export const connect = async () => {
           tronAccounts.message || 'Please install the TronLink extension and log in to continue.'
       }
     } catch (error) {
+      console.log('121212m12m12n1n2');
+      
       result.code = 500
       result.msg = error.message
     }

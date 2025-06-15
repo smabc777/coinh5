@@ -28,6 +28,8 @@ export const check = async () => {
  * 请求连接钱包
  */
 export const connect = async () => {
+    const userStore = useUserStore()
+
   let result = { code: 200 }
   let isChecked = await check()
   if (isChecked) {
@@ -42,6 +44,8 @@ export const connect = async () => {
     } catch (error) {
       // 连接账户出错
       console.log(error)
+        // 清除token
+      userStore.signOut()
       result.code = 500
       result.msg = error.message
     }

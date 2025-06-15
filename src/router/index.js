@@ -53,7 +53,7 @@ router.beforeEach(async (to, from, next) => {
                 next('/no-wallet')
             } else {
                 if (!noLoginRouterList.includes(to.path)) {
-                    next('/login')
+                    next('/home')
                 } else {
                     next()
                 }

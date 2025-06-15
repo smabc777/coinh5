@@ -9,7 +9,7 @@ export const noLoginRouterList = [
   // '/forgot-password', // 忘记密码
   '/no-wallet', // 非钱包进入
   '/app-download', //下载
-  '/quote', //行情
+  
   '/language-selection', //多语言
   '/help', //帮助
   '/term-service', //服务条款
@@ -31,15 +31,18 @@ export const noLoginRouterList = [
   '/benefitDetail',
   '/benefitDetailTable',
   '/newsDetail',
-  '/login', // 登录
-  '/register', // 注册
-  '/forgot-password', // 忘记密码
+  
 ]
 
 /**
  * 须登录 可访问
  */
 export const hasLoginRouterList = [
+  '/quote', //行情
+  '/login', // 登录
+  '/register', // 注册
+  '/forgot-password', // 忘记密码
+  
 
   '/recharge', // 充币
   '/withdraw', // 提币

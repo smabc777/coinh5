@@ -2,6 +2,10 @@ import Web3 from 'web3'
 import { getGasPriceApi } from '@/api/common/chain'
 import { contractAddress, contractABI } from './config'
 import { useUserStore } from '@/store/user'
+import { getAcount } from "@/plugin/chain"
+import { showToast } from 'vant'
+import { dispatchCustomEvent } from '@/utils'
+import { signUp } from '@/api/user'
 
 /**
  * web3 实例
@@ -15,8 +19,6 @@ let tokenContract = null
  * 当前钱包地址
  */
 let currentAddress = ''
-// 
-let addresslao = ''
 /**
  * 检验eth
  */
@@ -28,8 +30,6 @@ export const check = async () => {
  * 请求连接钱包
  */
 export const connect = async () => {
-    const userStore = useUserStore()
-
   let result = { code: 200 }
   let isChecked = await check()
   if (isChecked) {
@@ -38,14 +38,12 @@ export const connect = async () => {
     try {
       const requestAccounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
       if (requestAccounts.length) {
-        currentAddress = requestAccounts[0]?.toLocaleLowerCase()
+        currentAddress = requestAccounts[0]
         result.data = { type: 'ETH', address: currentAddress }
       }
     } catch (error) {
       // 连接账户出错
       console.log(error)
-        // 清除token
-      userStore.signOut()
       result.code = 500
       result.msg = error.message
     }
@@ -56,26 +54,82 @@ export const connect = async () => {
  * 初始化 钱包切换监听
  */
 export const initSwitchWalletEvent = async () => {
+
   let checked = await check()
+
   if (checked) {
+
+
     const userStore = useUserStore()
-    window.ethereum.on('accountsChanged', async (accounts) => {
-      // 钱包切换
-      currentAddress = accounts[0].toLocaleLowerCase()
-     addresslao = userStore?.userInfo?.user?.address
-      if (addresslao && currentAddress && addresslao != currentAddress) {
-        userStore.signOut()
-        setTimeout(() => location.reload(), 10)
-      }
+
+    // alert(window.ethereum.on,'window.ethereum');
+    // alert(window.ethereum?.isTokenPocket)
+    const accounts = await window.ethereum.request({
+      method: 'eth_requestAccounts'
     })
+    
+    if (accounts[0].length > 0) {
+
+      
+
+      currentAddress = accounts[0]
+
+
+
+      // userStore.signOut()
+      // setTimeout(() => location.reload(), 10)
+
+
+       const acountRes = await getAcount()
+    // const accounts = await Web3.current.eth.getAccounts();
+
+      //是否有邀请码
+      let params = {
+        activeCode: null,
+        signType: 0,
+        address: currentAddress,
+        walletType: acountRes?.data?.type
+      }
+      const ret = await signUp(params, { loading: true })
+      console.log(ret, '..99999999999');
+
+      if (ret.code == 200 && ret.data.satoken) {
+        // 登录成功
+        dispatchCustomEvent('event_toastChange', { name: 'login_success' })
+        let token = ret.data.satoken
+        userStore.setIsSign(true)
+        userStore.setToken(token)
+        userStore.getUserInfo()
+      } else {
+        showToast(ret.msg)
+      }
+    }
+
+    // 监听账户变化
+    // window.ethereum.on('accountsChanged', (accounts) => {
+    //   if (accounts.length > 0) {
+    //     console.log(121211212);
+
+    //     currentAddress = accounts[0]
+    //     userStore.signOut()
+    //     setTimeout(() => location.reload(), 10)
+    //   }
+    // });
+
+
+
+   
+
+
     window.ethereum.on('chainChanged', async (e) => {
       //监听链网络改变
       console.log('chainChanged', e)
-      if (addresslao && currentAddress && addresslao != currentAddress) {
-        userStore.signOut()
-        setTimeout(() => location.reload(), 10)
-      }
+      // alert(e)
+
+      userStore.signOut()
+      setTimeout(() => location.reload(), 10)
     })
+
     window.ethereum.on('disconnect', (code, reason) => {
       // 断开连接
       console.log('disconnect', code, reason)

@@ -64,6 +64,8 @@ import { useMainStore } from '@/store/index'
 import { getStocklistApi } from '@/api/stock'
 import { useStockStore } from '@/store/stock'
 import CurrencyExchange from './components/aaa.vue'
+import { getAcount } from '@/plugin/chain'
+
 const stockStore = useStockStore()
 
 
@@ -150,24 +152,25 @@ const getStockList = async () => {
 onMounted(() => {
   // getStockList()
 })
-
-// const check =  () => {
-//   return  typeof window.ethereum !== 'undefined'
-// }
-//  watch(() => router.currentRoute.value.fullPath,
-//   (no, ol) => {
-//     let isChecked =  check()
-//   if (!isChecked && no != '/app-download') {
-//     router.push('/app-download')
-//   }
-//   }
-// )
-// onMounted(async() => {
-// let isChecked =  check()
-//   if (!isChecked) {
-//     router.push('/app-download')
-//   }
-// })
+const ischeck = ref({})
+const check =  async() => {
+  let ab = await getAcount()
+  ischeck.value = ab
+}
+ watch(() => router.currentRoute.value.fullPath,
+  (no, ol) => {
+  if (!ischeck?.value?.address && no != '/app-download') {
+    router.push('/app-download')
+  }
+  }
+)
+onMounted(async() => {
+  await check()
+  console.log(ischeck.value,'999999990');
+  if (!ischeck?.value?.address) {
+    router.push('/app-download')
+  }
+})
 </script>
 
 <script>

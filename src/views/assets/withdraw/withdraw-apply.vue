@@ -82,8 +82,7 @@
         <div class="top">{{ _t18('withdraw_address') }}</div>
         <div class="bottom">
           <span></span>
-
-          <input @paste="chanePaste" :style="{left:leftValue + '%'}" @input="changeInput" class="input" type="text" v-model="address" :placeholder="_t18('withdraw_input')" />
+          <input @paste="chanePaste" disabled :style="{left:leftValue + '%'}" @input="changeInput" class="input" type="text" v-model="address" :placeholder="_t18('withdraw_input')" />
         </div>
 
 
@@ -160,9 +159,12 @@ const userStore = useUserStore()
 
 // 用户信息
 const { userInfo } = storeToRefs(userStore)
+
+
 // 用户余额信息
 const { asset } = storeToRefs(userStore)
 import { useRoute, useRouter } from 'vue-router'
+import { add } from 'lodash'
 
 const route = useRoute()
 const router = useRouter()
@@ -263,6 +265,9 @@ const allAmount = ref('')
  * 提现地址
  */
 const address = ref('')
+onMounted(() => {
+  address.value = userInfo.value.user.address
+})
 const dispalyAddress = ref('')
 const desenText = (str) => {
   let res = str;

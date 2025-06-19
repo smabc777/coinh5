@@ -1,6 +1,6 @@
 <template>
 
-  <div class="login">
+  <div class="login" >
 
     <div class="languages">
       <div class="right" @click="_toView('/language-selection')">
@@ -9,8 +9,8 @@
       </div>
       <van-icon @click="_toView('/home')" name="cross" size="20" color="var(--ex-default-font-color)" />
     </div>
-    <h3 class="login-title fw-bold">{{ _t18('login') }}</h3>
-    <van-tabs v-model:active="active" @change="onchange" line-width="0" :ellipsis="false" swipeable animated>
+    <h3 style="display: none;" class="login-title fw-bold">{{ _t18('login') }}</h3>
+    <van-tabs style="display: none;" v-model:active="active" @change="onchange" line-width="0" :ellipsis="false" swipeable animated>
       <van-tab v-for="(item, index) in tabList" :key="index" :name="item.id">
         <template #title>
           <div class="tab-item" :class="{ atv: item.id == active }"

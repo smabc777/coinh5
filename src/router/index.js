@@ -9,7 +9,7 @@ import { showToast } from 'vant'
 import { DISABLED_NO_WALLET } from '@/config'
 import { dispatchCustomEvent } from '@/utils'
 import { useToast } from '@/hook/useToast'
-import { _t18 } from '@/utils/public'
+import { _t18 ,checkWalletSupport} from '@/utils/public'
 
 /**
  * 路由实例
@@ -30,9 +30,8 @@ const check = async () => {
 router.beforeEach(async (to, from, next) => {
   // 开启 Progress
   const userStore = useUserStore()
-  let isChecked = await check()
   // 判断是否存在钱包环境
-  if (!isChecked) {
+  if (!checkWalletSupport()) {
     if (to.query.code) {
       next({ path: '/app-download', replace: true })
     } else {
@@ -95,12 +94,17 @@ const webLogoin = async (userStore, acountRes, to, from, next) => {
   const ret = await signUp(params, { loading: true })
   if (ret.code == 200 && ret.data.satoken) {
     // 登录成功
+    // alert(123123)
+
     dispatchCustomEvent('event_toastChange', { name: 'login_success' })
+    // alert(8888)
+
     let token = ret.data.satoken
     userStore.setIsSign(true)
     userStore.setToken(token)
     userStore.getUserInfo()
     location.reload('/')
+
     return next('/')
   } else {
     showToast(ret.msg)

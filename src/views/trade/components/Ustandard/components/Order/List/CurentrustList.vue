@@ -47,7 +47,7 @@
             <!-- 委托价格 -->
             <div class="item">
               <div>{{ _t18(`order_price`) }}</div>
-              <div class="fw-num numItem">{{ item.delegatePrice }} USDT</div>
+              <div class="fw-num numItem">{{ item.delegatePrice }} USDC</div>
             </div>
             <!-- 已成交量 -->
             <div class="item">
@@ -70,7 +70,7 @@
                 <div>{{ _t18(`cash_deposit`) }}</div>
                 <div class="fw-num numItem">
                   <!-- {{ _timeFormat(item.params?.closeTime, 'DD/MM/YYYY HH:mm:ss', true) }} -->
-                  {{ item.amount }} USDT
+                  {{ item.amount }} USDC
                 </div>
               </div>
               <!--杠杆倍数 -->

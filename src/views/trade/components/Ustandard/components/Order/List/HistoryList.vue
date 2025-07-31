@@ -34,17 +34,17 @@
             <!--委托价值 -->
             <div class="item">
               <div>{{ _t18(`delegate_value`) }}</div>
-              <div class="fw-num numItem">{{ data.entrustmentValue }} USDT</div>
+              <div class="fw-num numItem">{{ data.entrustmentValue }} USDC</div>
             </div>
             <!-- 委托价格 -->
             <div class="item">
               <div>{{ _t18(`order_price`, ['aams']) }}</div>
-              <div class="fw-num numItem">{{ data.openPrice }} USDT</div>
+              <div class="fw-num numItem">{{ data.openPrice }} USDC</div>
             </div>
             <!-- 平仓价格 -->
             <div class="item">
               <div>{{ _t18(`closing_price`) }}</div>
-              <div class="fw-num numItem">{{ data.dealPrice }} USDT</div>
+              <div class="fw-num numItem">{{ data.dealPrice }} USDC</div>
             </div>
             <!-- 手续费   -->
             <!--            <div class="item" v-if="['cmmetrics'].includes(_getConfig('_APP_ENV'))">-->
@@ -62,7 +62,7 @@
             <div class="item">
               <div>{{ _t18(`income`) }}</div>
               <div :class="[_isRFDE(data.earn), 'fw-num numItem ']">
-                {{ _toFixed(data.earn, 4) }} USDT
+                {{ _toFixed(data.earn, 4) }} USDC
               </div>
             </div>
             <div v-if="['cmmetrics'].includes(_getConfig('_APP_ENV'))">
@@ -71,21 +71,21 @@
               <div class="item">
                 <div>{{ _t18(`cash_deposit`) }}</div>
                 <div class="fw-num numItem">
-                  {{ data.amount }} USDT
+                  {{ data.amount }} USDC
                 </div>
               </div>
               <!--开仓手续费 -->
               <div class="item">
                 <div>{{ _t18(`Opening-fees`) }}</div>
                 <div class="fw-num numItem">
-                  {{ data.openFee || 0 }} USDT
+                  {{ data.openFee || 0 }} USDC
                 </div>
               </div>
               <!--平仓手续费 -->
               <div class="item">
                 <div>{{ _t18(`Closing-fees`) }}</div>
                 <div class="fw-num numItem">
-                  {{ data.sellFee || 0 }} USDT
+                  {{ data.sellFee || 0 }} USDC
                 </div>
               </div>
               <!--杠杆倍数 -->

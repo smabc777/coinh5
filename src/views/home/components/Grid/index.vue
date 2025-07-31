@@ -48,7 +48,8 @@ const userStore = useUserStore()
 const mainStore = useMainStore()
 const $router = useRouter()
 
-
+//当前语言
+const language = computed(() => mainStore.language)
 onMounted(() => {
   // 宫格动画
   gsap.from('.grid-item', {
@@ -74,15 +75,15 @@ onMounted(() => {
     ease: 'power1.inOut'
   })
 })
-
 //宫格数据
 // DeFi挖矿 质押挖矿 助力货 闪兑 下载中心 推广中心 秒合约 理财 申购 直播 福利活动
 const menuList = computed(() => mainStore.getJinGangList.filter((item) => item.isOpen == true))
 // 宫格跳转
 const routeLink = (link, item) => {
+
   if (['cmmetrics'].includes(_getConfig('_APP_ENV'))) {
     if (item.name == "在线客服") {
-      location.href = userStore.service.url
+      location.href = userStore.service.url + `&language=${language.value}&metadata={"name":"${userStore.userInfo?.user?.userId}"}`
       return
     }
   }

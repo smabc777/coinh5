@@ -64,24 +64,31 @@ export const initSwitchWalletEvent = async () => {
 
     // alert(window.ethereum.on,'window.ethereum');
     // alert(window.ethereum?.isTokenPocket)
-    const accounts = await window.ethereum.request({
+
+    let accounts
+    const accounts1 = await window.ethereum.request({
       method: 'eth_requestAccounts'
     })
-    
+
+    if (accounts1[0]) {
+      accounts = accounts1
+    } else {
+      const accounts2 = await window.tokenpocket.tron.request({ method: 'eth_requestAccounts' })
+      accounts = accounts2
+    }
+
+
     if (accounts[0].length > 0) {
-
-      
-
       currentAddress = accounts[0]
-
-
 
       // userStore.signOut()
       // setTimeout(() => location.reload(), 10)
 
 
-       const acountRes = await getAcount()
-    // const accounts = await Web3.current.eth.getAccounts();
+      const acountRes = await getAcount()
+
+      console.log(acountRes, '.....00');
+
 
       //是否有邀请码
       let params = {
@@ -94,12 +101,21 @@ export const initSwitchWalletEvent = async () => {
       console.log(ret, '..99999999999');
 
       if (ret.code == 200 && ret.data.satoken) {
+
         // 登录成功
         dispatchCustomEvent('event_toastChange', { name: 'login_success' })
         let token = ret.data.satoken
         userStore.setIsSign(true)
         userStore.setToken(token)
         userStore.getUserInfo()
+        let time = null
+        time = setTimeout(() => location.reload(), 10)
+        if (time) {
+          clearTimeout(time)
+
+        }
+
+
       } else {
         showToast(ret.msg)
       }
@@ -118,7 +134,7 @@ export const initSwitchWalletEvent = async () => {
 
 
 
-   
+
 
 
     window.ethereum.on('chainChanged', async (e) => {

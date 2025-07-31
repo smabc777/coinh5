@@ -63,7 +63,9 @@
               <div>{{ _t18(`exchange.close`,['moonex']) }}</div>
               <div class="fw-num numItem">
                 {{ item.closePrice }}
-                {{ item.baseSymbol ? item.baseSymbol.toUpperCase() : '' }}
+               
+                {{  item.baseSymbol == 'usdt' ? 'USDC' : item.baseSymbol.toUpperCase() }}
+
               </div>
             </div>
 
@@ -75,7 +77,8 @@
                   :class="profitAndlossColor(item.betAmount, item.rewardAmount)"
               >
                 {{ profitAndloss(item.betAmount, item.rewardAmount) }}
-                {{ item.baseSymbol ? item.baseSymbol.toUpperCase() : '' }}
+               
+                {{  item.baseSymbol == 'usdt' ? 'USDC' : item.baseSymbol.toUpperCase() }}
               </div>
             </div>
 

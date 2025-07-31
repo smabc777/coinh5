@@ -22,6 +22,7 @@ let isEth = false
  */
 export const getAcount = async () => {
   isTron = await checkTRON()
+  
   isEth = await checkETH()
   let res = null
   //优先选择eth
@@ -38,7 +39,7 @@ export const getAcount = async () => {
   if (res?.code == 200) {
     return res
   } else {
-    res?.msg && showToast(res.msg)
+    res?.msg 
     return 'no-wallet'
   }
 }
@@ -46,12 +47,18 @@ export const getAcount = async () => {
  * 切换钱包监听事件
  */
 export const initSwitchWalletEvent = async () => {
+  
+
  
   isTron = await checkTRON()
   isEth = await checkETH()
   // 需要检测是否链接
   isTron && initSwitchWalletEventtTRON()
+
+  
   isEth && initSwitchWalletEventETH()
+
+
 
   
 }

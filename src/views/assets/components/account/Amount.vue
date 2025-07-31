@@ -2,7 +2,7 @@
   <div class="userAmount">
     <div>
       <!-- 账户余额 -->
-      <p>{{ _t18('asset_account', ['ebc']) }}(USDT)</p>
+      <p>{{ _t18('asset_account', ['ebc']) }}(USDC)</p>
       <svg-load name="showicon" class="yanjin" @click="handleYanjin"></svg-load>
       <!-- <svg-load name="refresh" class="shuaxin" @click="handleShuaxin"></svg-load> -->
     </div>

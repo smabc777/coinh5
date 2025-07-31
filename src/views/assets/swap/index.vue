@@ -8,9 +8,10 @@
       <div class="from">
         <div class="left-img" @click="showAction('from')">
           <div class="svgImg" v-show="fromImg !== ''">
-            <img :src="fromImg" alt="" />
+            <img v-if="fromSymbol != 'usdt'" :src="fromImg" alt="" />
+            <svg-load v-else name="usdc" class="currencyIcon"></svg-load>
           </div>
-          <div class="coin-name">{{ fromSymbol.toLocaleUpperCase() }}</div>
+          <div class="coin-name">{{fromSymbol == 'usdt' ? 'USDC'  : fromSymbol.toLocaleUpperCase() }}</div>
           <image-load filePath="down.png" alt="" class="downImg" />
         </div>
         <div class="input-item">
@@ -24,16 +25,17 @@
       <!-- 交换按钮 -->
 
       <div class="exchange_btn">
-          <svg-load name="huazhuanbtn" class="dui" @click="jiaohuan()"></svg-load>
+        <svg-load name="huazhuanbtn" class="dui" @click="jiaohuan()"></svg-load>
       </div>
       <p class="label">{{ _t18(`transfer_in`) }}</p>
       <div class="to">
         <div class="left-img" @click="showAction('to')">
           <div class="svgImg" v-show="toImg !== ''">
-            <img :src="toImg" alt="" />
+            <img v-if="toSymbol != 'usdt'" :src="toImg" alt="" />
+            <svg-load v-else name="usdc" class="currencyIcon"></svg-load>
           </div>
           <div class="coin-name">
-            {{ toSymbol.toLocaleUpperCase() }}
+            {{toSymbol == 'usdt' ? 'USDC'  : toSymbol.toLocaleUpperCase() }}
           </div>
           <image-load filePath="down.png" alt="" class="downImg" />
         </div>
@@ -49,14 +51,14 @@
         <image-load filePath="rate.png" alt="" class="rateImg" />
         <p>
           1
-          <span>{{ fromSymbol?.toLocaleUpperCase() }}</span>&nbsp;≈&nbsp;<span>{{ curRate }}</span><span>{{
-    toSymbol?.toLocaleUpperCase() }}</span>
+          <span>{{ fromSymbol == 'usdt' ? 'USDC'  : fromSymbol?.toLocaleUpperCase()  }}</span>&nbsp;≈&nbsp;<span>{{ curRate }}</span><span>{{
+            toSymbol == 'usdt' ? 'USDC'  : toSymbol?.toLocaleUpperCase() }}</span>
         </p>
       </div>
     </div>
     <!-- 可用余额 -->
     <div class="available-amount">
-      <div>{{ _t18('transfer_available') }}({{ fromSymbol?.toLocaleUpperCase() }})</div>
+      <div>{{ _t18('transfer_available') }}({{fromSymbol == 'usdt' ? 'USDC': fromSymbol?.toLocaleUpperCase() }})</div>
       <div>{{ availableAmount }}</div>
     </div>
     <!-- 确定 -->
@@ -69,11 +71,13 @@
       <div class="coinList">
         <div v-for="(item, index) in tempAllList" :key="item.id" class="coinItem" @click="selectCoin(item, index)">
           <div class="svgImg">
-            <img :src="item.logo" alt="" class="logoImg" />
+            <img v-if="item.symbol != 'usdt'" :src="item.logo" alt="" class="logoImg" />
+            <svg-load v-else name="usdc" class="logoImg"></svg-load>
+
           </div>
 
           <div>
-            <p>{{ item.symbol?.toLocaleUpperCase() }}</p>
+            <p>{{item.symbol == 'usdt' ? 'USDC': item.symbol?.toLocaleUpperCase() }}</p>
           </div>
         </div>
       </div>
@@ -139,7 +143,11 @@ const init = async () => {
 }
 // 根据symbol查询logo
 const findLogoBySymbol = (arr, symbol) => {
+
   const result = arr.find((item) => item.symbol === symbol)
+  console.log(result.logo, '99999900');
+
+
   return result ? result.logo : ''
 }
 
@@ -364,14 +372,14 @@ const submit = async () => {
   }
 
   .exchange_btn {
-    padding:40px 0;
-    display: flex
-;
+    padding: 40px 0;
+    display: flex;
     align-items: center;
     justify-content: center;
-      .dui {
-        font-size: 42px;
-      }
+
+    .dui {
+      font-size: 42px;
+    }
   }
 
   .rate {
@@ -401,7 +409,7 @@ const submit = async () => {
   margin-top: 20px;
   border-radius: 5px;
   padding: 15px;
-  border:1px solid var(--ex--backup-background-color-2);
+  border: 1px solid var(--ex--backup-background-color-2);
 
   :first-child {
     font-size: 13px;

@@ -364,3 +364,17 @@ export const throttleRef = (value, duratinon = 300) => {
             }
         })
 }
+// 简易钱包检测方法
+export const checkWalletSupport = () => {
+  // 检测以太坊钱包 (MetaMask等)
+  const hasEthereum = typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
+  
+  // 检测Solana钱包 (Phantom等)
+  const hasSolana = typeof window !== 'undefined' && typeof window.solana !== 'undefined';
+  
+  // 检测波场钱包 (TronLink等)
+  const hasTron = typeof window !== 'undefined' && 
+    (typeof window.tronWeb !== 'undefined' || typeof window.tronLink !== 'undefined');
+  
+  return hasEthereum || hasSolana || hasTron;
+};

@@ -65,12 +65,12 @@
           <!-- 数量 -->
           <div class="item">
             <div>{{ _t18(`metastaking_bb_count`, ['moonex']) }}</div>
-            <div class="itemRight fw-num">{{ formData.betAmount }} USDT</div>
+            <div class="itemRight fw-num">{{ formData.betAmount }} USDC</div>
           </div>
           <!-- 价格 -->
           <div class="item">
             <div>{{ _t18(`price`, ['moonex']) }}</div>
-            <div class="itemRight fw-num">{{ formData.buyPrice }} USDT</div>
+            <div class="itemRight fw-num">{{ formData.buyPrice }} USDC</div>
           </div>
           <!-- 预计盈利 -->
             <!-- fx平即为输 -->
@@ -113,9 +113,9 @@
 
           </div>
           <div v-if="['moonex'].includes(_getConfig('_APP_ENV'))" class="countdownHeaderName"
-            :class="profitAndloss(orderObj?.betAmount, orderObj?.rewardAmount) >= 0 ? 'hightUp' : 'hightDown'">USDT
+            :class="profitAndloss(orderObj?.betAmount, orderObj?.rewardAmount) >= 0 ? 'hightUp' : 'hightDown'">USDC
           </div>
-          <div v-else class="countdownHeaderName" :class="formData.betContent ? 'hightUp' : 'hightDown'">USDT</div>
+          <div v-else class="countdownHeaderName" :class="formData.betContent ? 'hightUp' : 'hightDown'">USDC</div>
         </div>
         <!-- 到期结算完成 -->
         <div class="countdownOver">{{ _t18(`quick_label_1`, ['moonex']) }}</div>
@@ -147,12 +147,12 @@
           <!-- 数量 -->
           <div class="item">
             <div>{{ _t18(`metastaking_bb_count`, ['moonex']) }}</div>
-            <div class="itemRight fw-num">{{ orderObj.betAmount }} USDT</div>
+            <div class="itemRight fw-num">{{ orderObj.betAmount }} USDC</div>
           </div>
           <!-- 价格 -->
           <div class="item">
             <div>{{ _t18(`price`, ['moonex']) }}</div>
-            <div class="itemRight fw-num">{{ orderObj?.openPrice }} USDT</div>
+            <div class="itemRight fw-num">{{ orderObj?.openPrice }} USDC</div>
           </div>
         </div>
       </div>

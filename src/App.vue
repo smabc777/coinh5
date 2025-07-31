@@ -51,7 +51,8 @@ const route = useRoute()
 const { _toast } = useToast()
 const { _isFreeze } = useFreeze()
 const mainStroe = useMainStore()
-
+//当前语言
+const language = computed(() => mainStroe.language)
 /**
  * 申购订阅Key
  */
@@ -175,7 +176,7 @@ const event_userInfoChange = async (e) => {
  */
 const event_serviceChange = () => {
   if (['cmmetrics'].includes(_getConfig('_APP_ENV'))) {
-    location.href = userStore.service.url
+    location.href = userStore.service.url + `&language=${language.value}&metadata={"name":"${userStore.userInfo?.user?.userId}"}`
     return
   }
 

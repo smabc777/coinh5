@@ -110,7 +110,7 @@
             <div class="inputQuantityBox">
               <van-field autocomplete="off" label-width="0" class="inputQuantity" v-model="formData.betAmount"
                 type="number"
-                :placeholder="`${_t18(`least`, ['vitc', 'moonex'])} ${cycleObj?.minAmount || 0} ${'USDT'}`" />
+                :placeholder="`${_t18(`least`, ['vitc', 'moonex'])} ${cycleObj?.minAmount || 0} ${'USDC'}`" />
               <!--            <p v-if="DIFF_SECOND_FAST.includes(_getConfig('_APP_ENV'))" @click="chooseAll">-->
               <!--              {{ _t18(`all`) }}-->
               <!--            </p>-->
@@ -140,7 +140,7 @@
         <div class="balance mrt10">
           <!-- 可用余额： -->
           <div>{{ _t18(`exchange_balance`) }}：</div>
-          <div class="fw-num">{{ availableBalance }} USDT</div>
+          <div class="fw-num">{{ availableBalance }} USDC</div>
         </div>
         <!-- 确定 -->
         <van-button type="primary" @click="determine" :color="!formData.betContent ? 'var(--ex-trade-Sell-bg-color)' : 'var(--ex-trade-buy-bg-color)'
@@ -181,7 +181,7 @@ const coinPriceInfo = computed(() => tradeStore.allCoinPriceInfo[coinInfo.value.
 const availableBalance = computed(() => {
   let availableAmount = 0
   userStore.asset.forEach((item) => {
-    if (item.type == 1 && item.symbol == 'usdt') {
+    if (item.type == 1 && item.symbol == 'usdt' ||item.symbol ==  'usdc') {
       availableAmount += item.availableAmount
     }
   })

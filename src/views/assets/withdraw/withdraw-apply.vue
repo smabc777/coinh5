@@ -13,7 +13,7 @@
       <p class="tips">{{ _t18('swap_available') }}</p>
       <p class="tips-amount">
         <span>{{ priceFormat(amount) }}</span>
-        <span>{{ $route.query.icon.toLocaleUpperCase() }}</span>
+        <span>{{$route.query.icon == 'usdt' ? 'USDC' : $route.query.icon.toLocaleUpperCase() }}</span>
       </p>
     </div>
   </div>
@@ -111,11 +111,11 @@
       <!-- 手续费 -->
       <div v-if="$route.query.ratio">
         {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ priceFormat($route.query.ratio * allAmount) }} {{
-          $route.query.icon.toLocaleUpperCase() }}</span>
+         $route.query.icon == 'usdt' ? 'USDC' : $route.query.icon.toLocaleUpperCase() }}</span>
       </div>
       <div v-else>
         {{ _t18('withdraw_commission') }}：<span class="ff-num">{{ $route.query.fee || '' }} {{
-          $route.query.icon.toLocaleUpperCase() }}</span>
+         $route.query.icon == 'usdt' ? 'USDC' : $route.query.icon.toLocaleUpperCase() }}</span>
       </div>
 
     </div>
@@ -431,18 +431,18 @@ const submitForm = async () => {
     flag = true
   }
   // 高级实名认证才能提现
-  if (['cmmetrics'].includes(__config._APP_ENV)) {
-    flag = false
-    if (advancedAuth.value !== '1') {
+  // if (['cmmetrics'].includes(__config._APP_ENV)) {
+  //   flag = false
+  //   if (advancedAuth.value !== '1') {
 
-      _toast('please_advanced')
-      setTimeout(() => {
-        router.push('/certification-advanced')
-      }, 1000)
-      return flag
-    }
-    flag = true
-  }
+  //     _toast('please_advanced')
+  //     setTimeout(() => {
+  //       router.push('/certification-advanced')
+  //     }, 1000)
+  //     return flag
+  //   }
+  //   flag = true
+  // }
 
   //  参数组装
   let params = ``

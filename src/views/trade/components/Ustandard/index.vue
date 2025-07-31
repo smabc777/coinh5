@@ -44,7 +44,7 @@ const availableBalance = computed(() => {
   var cur = userStore.asset.filter((item) => {
     //jphskt平台只使用平台资产
     if (['jphskt','smartfund'].includes(_getConfig('_APP_ENV'))) {
-      return (item.type === 1 && item.symbol == 'usdt')
+      return (item.type === 1 && (item.symbol == 'usdt' || item.symbol == 'usdc'))
     } else {
       return item.type === 3
     }

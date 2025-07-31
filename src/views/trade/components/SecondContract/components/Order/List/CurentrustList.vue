@@ -46,7 +46,8 @@
               <div>{{ _t18(`option_now_price`,['moonex']) }}</div>
               <div class="fw-num numItem">
                 {{ tradeStore.allCoinPriceInfo[item.coinSymbol].close }}
-                {{ item.baseSymbol ? item.baseSymbol.toUpperCase() : '' }}
+              
+                {{  item.baseSymbol == 'usdt' ? 'USDC' : item.baseSymbol.toUpperCase() }}
               </div>
             </div>
 
@@ -80,7 +81,7 @@
                   )
                 }}
 
-                {{ item.baseSymbol ? item.baseSymbol.toUpperCase() : '' }}
+                {{  item.baseSymbol == 'usdt' ? 'USDC' : item.baseSymbol.toUpperCase() }}
               </div>
             </div>
 

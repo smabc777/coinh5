@@ -224,4 +224,7 @@ div {
     }
   }
 }
+.tips{
+  margin-left: 4px;
+}
 </style>

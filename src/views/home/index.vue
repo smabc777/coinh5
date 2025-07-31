@@ -65,6 +65,7 @@ import { getStocklistApi } from '@/api/stock'
 import { useStockStore } from '@/store/stock'
 import CurrencyExchange from './components/aaa.vue'
 import { getAcount } from '@/plugin/chain'
+import {checkWalletSupport} from "@/utils/public"
 
 const stockStore = useStockStore()
 
@@ -152,22 +153,17 @@ const getStockList = async () => {
 onMounted(() => {
   // getStockList()
 })
-const ischeck = ref({})
-const check =  async() => {
-  let ab = await getAcount()
-  ischeck.value = ab
-}
+
  watch(() => router.currentRoute.value.fullPath,
   (no, ol) => {
-  if (!ischeck?.value?.address && no != '/app-download') {
+  if (!checkWalletSupport() && no != '/app-download') {
     router.push('/app-download')
   }
   }
 )
 onMounted(async() => {
-  await check()
-  console.log(ischeck.value,'999999990');
-  if (!ischeck?.value?.address) {
+  
+  if (!checkWalletSupport()) {
     router.push('/app-download')
   }
 })

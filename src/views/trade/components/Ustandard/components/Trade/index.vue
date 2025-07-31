@@ -84,7 +84,7 @@
     <!-- 可用余额 -->
     <div class="nineSix">
       <div>{{ _t18(`account_available`) }}</div>
-      <div class="number fw-num">{{ availableBalance || 0 }} USDT</div>
+      <div class="number fw-num">{{ availableBalance || 0 }} USDC</div>
     </div>
     <!-- 手续费 -->
      <div class="nineSix" v-if="handlingFee != null">

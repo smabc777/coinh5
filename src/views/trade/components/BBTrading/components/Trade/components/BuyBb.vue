@@ -111,7 +111,7 @@
     <!-- 可用 -->
     <div class="rightSix">
       <div>{{ _t18(`account_available`) }}</div>
-      <div class="number fw-num">{{ availableBalance }} USDT</div>
+      <div class="number fw-num">{{ availableBalance }} USDC</div>
     </div>
 
     <!-- 买入/ 卖出按钮：自定义币种 (coinInfo.customizeFlag == 2),非自定义币种 -->
@@ -162,7 +162,7 @@ const coinInfoCoin = computed(() => coinInfo.value.customizeFlag === 2 ? matchTe
 const availableBalance = computed(() => {
   let tempValue = 0
   if (asset.value.length) {
-    tempValue = asset.value.filter((item) => item.symbol === 'usdt' && item.type === 1)[0]?.availableAmount || 0
+    tempValue = asset.value.filter((item) => (item.symbol === 'usdt' || item.symbol === 'usdc') && item.type === 1)[0]?.availableAmount || 0
   }
   return tempValue
 })

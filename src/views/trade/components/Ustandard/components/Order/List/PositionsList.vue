@@ -37,7 +37,7 @@
             <!-- 持仓保证金 -->
             <div class="item" v-if="['rxce'].includes(_getConfig('_APP_ENV'))">
               <div>{{ _t18(`Position_margin`) }}</div>
-              <div class="fw-num numItem">{{ item.remainMargin }} USDT</div>
+              <div class="fw-num numItem">{{ item.remainMargin }} USDC</div>
             </div>
             <!-- 担保资产率 -->
             <!--            <div class="item">-->
@@ -47,18 +47,18 @@
             <!-- 开仓均价 -->
             <div class="item">
               <div>{{ _t18(`average_opening_price`) }}</div>
-              <div class="fw-num numItem">{{ item.openPrice }} USDT</div>
+              <div class="fw-num numItem">{{ item.openPrice }} USDC</div>
             </div>
             <!-- 最新价 -->
             <div class="item">
               <div>{{ _t18(`home_newPrice`) }}</div>
-              <div class="fw-num numItem">{{ coinPriceInfo(item) }} USDT</div>
+              <div class="fw-num numItem">{{ coinPriceInfo(item) }} USDC</div>
             </div>
             <!-- 预计强平价 -->
             <div class="item" v-if="!['rxce'].includes(_getConfig('_APP_ENV'))">
               <div>{{ _t18(`expected_strong_parity`) }}</div>
               <div class="fw-num numItem">
-                {{ item.closePrice <= 0 ? '--' : item.closePrice }}USDT </div>
+                {{ item.closePrice <= 0 ? '--' : item.closePrice }}USDC </div>
               </div>
 
               <div v-if="['cmmetrics'].includes(_getConfig('_APP_ENV'))">
@@ -66,17 +66,17 @@
                 <!--保证金 1-->
                 <div class="item">
                   <div>{{ _t18(`cash_deposit`) }}</div>
-                  <div class="fw-num numItem">{{ item.amount }} USDT</div>
+                  <div class="fw-num numItem">{{ item.amount }} USDC</div>
                 </div>
                 <!--开仓手续费 -->
                 <div class="item">
                   <div>{{ _t18(`Opening-fees`) }}</div>
-                  <div class="fw-num numItem">{{ item.openFee || 0 }} USDT</div>
+                  <div class="fw-num numItem">{{ item.openFee || 0 }} USDC</div>
                 </div>
                 <!--平仓手续费 -->
                 <div class="item">
                   <div>{{ _t18(`Closing-fees`) }}</div>
-                  <div class="fw-num numItem">{{ item.sellFee || 0 }} USDT</div>
+                  <div class="fw-num numItem">{{ item.sellFee || 0 }} USDC</div>
                 </div>
                 <!--杠杆倍数 -->
                 <div class="item">
@@ -98,7 +98,7 @@
               <div class="item">
                 <div>{{ _t18(`income`, ['smartfund']) }}</div>
                 <div :class="[_isRFDE(incomeValue(item)), 'fw-num numItem ']">
-                  {{ incomeValue(item) }} USDT
+                  {{ incomeValue(item) }} USDC
                 </div>
               </div>
               <!-- 建仓时间 -->

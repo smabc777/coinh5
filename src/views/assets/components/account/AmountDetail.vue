@@ -7,9 +7,9 @@
       </div>
       <div class="details">
         <div class="top">
-          <svg-load v-if="item.title == 'USDT'" :name="item.icon" class="currencyIcon"></svg-load>
+          <svg-load v-if="item.title == 'USDT'" name="usdc" class="currencyIcon"></svg-load>
           <image-load :filePath="item?.loge || ''" v-else />
-          <span class="fw-num">{{ item.title }}</span>
+          <span class="fw-num">{{item.title == 'USDT' ? 'USDC' : item.title }}</span>
         </div>
         <div class="bottom">
           <div>
@@ -32,7 +32,7 @@
             <p class="til" v-if="['moonex'].includes(_getConfig('_APP_ENV'))">
               {{ _t18('asset_equivalent', ['moonex']) }}
             </p>
-            <p class="til" v-else>{{ _t18('asset_equivalent', ['bitmake', 'ebc']) }}(USDT)</p>
+            <p class="til" v-else>{{ _t18('asset_equivalent', ['bitmake', 'ebc']) }}(USDC)</p>
             <p class="num fw-num">
               {{ amountFormat(item.zhehe) }}
             </p>

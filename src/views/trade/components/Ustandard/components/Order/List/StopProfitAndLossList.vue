@@ -54,7 +54,7 @@
               <!-- delegateType 委托类型（0 限价 1 市价） -->
               <!-- item.delegateType ? '市价委托' : item.loseDelegatePrice + ' USDT' -->
               <div class="fw-num numItem" :class="item.delegateType ? 'colorBlue' : ''">
-                {{ item.delegateType ? _t18(`bb_market_order`) : item.loseDelegatePrice + ' USDT' }}
+                {{ item.delegateType ? _t18(`bb_market_order`) : item.loseDelegatePrice + ' USDC' }}
               </div>
             </div>
             <!-- 触发价格 -->
@@ -63,7 +63,7 @@
               <!-- lossType 0 止盈 1止损 -->
               <div class="fw-num numItem">
                 {{ item.lossType ? item.losePrice : item.earnPrice }}
-                USDT
+                USDC
               </div>
             </div>
             <!-- 建仓时间 -->

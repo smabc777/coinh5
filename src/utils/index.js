@@ -3,6 +3,7 @@ import { storageDict } from '../config/dict'
 
 /**
  * 函数sleep，参数单位 毫秒
+ * 
  */
 export const wait = (ms) => {
   return new Promise((resolve) => setTimeout(() => resolve(), ms))

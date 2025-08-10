@@ -174,9 +174,34 @@ const event_userInfoChange = async (e) => {
  * 2.https://chat.livechats.chat/?channelId=dAj5I2&language=en
  * 3.https://secure.livechatinc.com/licence/15406071/v2/open_chat.cgi
  */
-const event_serviceChange = () => {
+const event_serviceChange = async () => {
   if (['cmmetrics'].includes(_getConfig('_APP_ENV'))) {
-    location.href = userStore.service.url + `&language=${language.value}&metadata={"name":"${userStore.userInfo?.user?.userId}"}`
+    // location.href = userStore.service.url + `&language=${language.value}&metadata={"name":"${userStore.userInfo?.user?.userId}"}`
+    const res = await userStore.getUserInfo()
+    // 客服调用
+    if (res?.user) {
+      ssq.push('setLoginInfo', {
+        user_id: res.user.userId,  // 必填，加密用户ID
+        user_name: res.user.userId,   // 必填，用户名
+        language: mainStroe.language,        // 插件语言
+        // phone: '+861592014xxxx',  // 带国家码的手机号
+        // email: 'user@example.com',
+        // custom_fields_ext: {      // 自定义字段
+        //   "field_id": "value"
+        // }
+      });
+    }
+    // ssq.push('setLoginInfo', {
+    //   user_id: 'encrypted_id',  // 必填，加密用户ID
+    //   user_name: 'test_user',   // 必填，用户名
+    //   language: 'zh-CN',        // 插件语言
+    //   phone: '+861592014xxxx',  // 带国家码的手机号
+    //   email: 'user@example.com',
+    //   custom_fields_ext: {      // 自定义字段
+    //     "field_id": "value"
+    //   }
+    // });
+    window.ssq.push('chatOpen');
     return
   }
 

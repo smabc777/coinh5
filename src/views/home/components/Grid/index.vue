@@ -83,7 +83,8 @@ const routeLink = (link, item) => {
 
   if (['cmmetrics'].includes(_getConfig('_APP_ENV'))) {
     if (item.name == "在线客服") {
-      location.href = userStore.service.url + `&language=${language.value}&metadata={"name":"${userStore.userInfo?.user?.userId}"}`
+      dispatchCustomEvent('event_serviceChange')
+      // location.href = userStore.service.url + `&language=${language.value}&metadata={"name":"${userStore.userInfo?.user?.userId}"}`
       return
     }
   }
@@ -103,7 +104,7 @@ const routeLink = (link, item) => {
     dispatchCustomEvent('event_serviceChange')
   } else {
     console.log('121212','1212',link);
-    
+
     // 跳转页面
     $router.push(link)
   }

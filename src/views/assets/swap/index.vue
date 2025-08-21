@@ -8,10 +8,12 @@
       <div class="from">
         <div class="left-img" @click="showAction('from')">
           <div class="svgImg" v-show="fromImg !== ''">
-            <img v-if="fromSymbol != 'usdt'" :src="fromImg" alt="" />
-            <svg-load v-else name="usdc" class="currencyIcon"></svg-load>
+<!--            <img v-if="fromSymbol != 'usdt'" :src="fromImg" alt="" />-->
+<!--            <svg-load v-else name="usdc" class="currencyIcon"></svg-load>-->
+            <img :src="fromImg" alt="" />
           </div>
-          <div class="coin-name">{{fromSymbol == 'usdt' ? 'USDC'  : fromSymbol.toLocaleUpperCase() }}</div>
+<!--          <div class="coin-name">{{fromSymbol == 'usdt' ? 'USDC'  : fromSymbol.toLocaleUpperCase() }}</div>-->
+          <div class="coin-name">{{fromSymbol.toLocaleUpperCase()}}</div>
           <image-load filePath="down.png" alt="" class="downImg" />
         </div>
         <div class="input-item">
@@ -31,11 +33,13 @@
       <div class="to">
         <div class="left-img" @click="showAction('to')">
           <div class="svgImg" v-show="toImg !== ''">
-            <img v-if="toSymbol != 'usdt'" :src="toImg" alt="" />
-            <svg-load v-else name="usdc" class="currencyIcon"></svg-load>
+<!--            <img v-if="toSymbol != 'usdt'" :src="toImg" alt="" />-->
+<!--            <svg-load v-else name="usdc" class="currencyIcon"></svg-load>-->
+            <img  :src="toImg" alt="" />
           </div>
           <div class="coin-name">
-            {{toSymbol == 'usdt' ? 'USDC'  : toSymbol.toLocaleUpperCase() }}
+<!--            {{toSymbol == 'usdt' ? 'USDC'  : toSymbol.toLocaleUpperCase() }}-->
+            {{ toSymbol.toLocaleUpperCase() }}
           </div>
           <image-load filePath="down.png" alt="" class="downImg" />
         </div>
@@ -71,13 +75,15 @@
       <div class="coinList">
         <div v-for="(item, index) in tempAllList" :key="item.id" class="coinItem" @click="selectCoin(item, index)">
           <div class="svgImg">
-            <img v-if="item.symbol != 'usdt'" :src="item.logo" alt="" class="logoImg" />
-            <svg-load v-else name="usdc" class="logoImg"></svg-load>
+<!--            <img v-if="item.symbol != 'usdt'" :src="item.logo" alt="" class="logoImg" />-->
+<!--            <svg-load v-else name="usdc" class="logoImg"></svg-load>-->
+            <img  :src="item.logo" alt="" class="logoImg" />
 
           </div>
 
           <div>
-            <p>{{item.symbol == 'usdt' ? 'USDC': item.symbol?.toLocaleUpperCase() }}</p>
+<!--            <p>{{item.symbol == 'usdt' ? 'USDC': item.symbol?.toLocaleUpperCase() }}</p>-->
+            <p>{{item.symbol?.toLocaleUpperCase()}}</p>
           </div>
         </div>
       </div>
